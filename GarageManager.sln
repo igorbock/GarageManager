@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarageManager", "GarageManager\GarageManager.csproj", "{6CFE402F-783D-49FC-82F6-0AD76C1FBA51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data\Data.csproj", "{7D5215E9-7DDD-4925-94A2-1F4498235CF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Domain\Dominio\Dominio.csproj", "{F12882EC-0693-4685-A06F-E748B31D8A68}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup Garage Manager", "Setup Garage Manager\Setup Garage Manager.vdproj", "{78550D7F-180E-46DA-9B29-AFE29B5C654F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CFE402F-783D-49FC-82F6-0AD76C1FBA51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CFE402F-783D-49FC-82F6-0AD76C1FBA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CFE402F-783D-49FC-82F6-0AD76C1FBA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CFE402F-783D-49FC-82F6-0AD76C1FBA51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D5215E9-7DDD-4925-94A2-1F4498235CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D5215E9-7DDD-4925-94A2-1F4498235CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D5215E9-7DDD-4925-94A2-1F4498235CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D5215E9-7DDD-4925-94A2-1F4498235CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12882EC-0693-4685-A06F-E748B31D8A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12882EC-0693-4685-A06F-E748B31D8A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12882EC-0693-4685-A06F-E748B31D8A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12882EC-0693-4685-A06F-E748B31D8A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78550D7F-180E-46DA-9B29-AFE29B5C654F}.Debug|Any CPU.ActiveCfg = Debug
+		{78550D7F-180E-46DA-9B29-AFE29B5C654F}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2504E220-E71D-40D3-B60D-12E17BD6FF93}
+	EndGlobalSection
+EndGlobal
