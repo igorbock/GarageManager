@@ -1,7 +1,7 @@
 ﻿namespace GarageManagerLib.Models;
 
 [Table("ordem_servico", Schema = "oficina")]
-public class OrdemServico
+public class OrdemServico : IEntidade
 {
     [Key]
     public int Id { get; set; }

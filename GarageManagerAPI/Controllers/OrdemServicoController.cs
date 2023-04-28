@@ -4,15 +4,15 @@
 [Route("api/[controller]")]
 public class OrdemServicoController : AbstractController, IOrdemServico
 {
-    public OrdemServicoController(HttpClient p_httpClient, Context.Modelo p_modelo) : base(p_httpClient, p_modelo) { }
+    public OrdemServicoController(HttpClient? p_httpClient, Context.Modelo? p_modelo) : base(p_httpClient, p_modelo) { }
 
     [HttpPost]
     public ActionResult CreateOrdemServico(OrdemServico p_ordemServico)
     {
         try
         {
-            _modelo.OrdensServico?.Add(p_ordemServico);
-            return Ok(_modelo.SaveChanges());
+            _modelo?.OrdensServico?.Add(p_ordemServico);
+            return Ok(_modelo?.SaveChanges());
         }
         catch (Exception ex)
         {
@@ -26,9 +26,14 @@ public class OrdemServicoController : AbstractController, IOrdemServico
         try
         {
             if (p_ordemServico is null)
-                return Json(_modelo.OrdensServico, _options);
+                return Json(_modelo?.OrdensServico, _options);
 
-            return Json(_modelo.OrdensServico?.Find(p_ordemServico), _options);
+            var ordem = _modelo?.OrdensServico?.FirstOrDefault(a => a.Id == p_ordemServico);
+            var lista = new List<OrdemServico>
+            {
+                ordem ?? throw new Exception()
+            };
+            return Json(lista, _options);
         }
         catch (Exception ex)
         {
@@ -41,8 +46,8 @@ public class OrdemServicoController : AbstractController, IOrdemServico
     {
         try
         {
-            _modelo.OrdensServico?.Update(p_ordemServico);
-            return Ok(_modelo.SaveChanges());
+            _modelo?.OrdensServico?.Update(p_ordemServico);
+            return Ok(_modelo?.SaveChanges());
         }
         catch (Exception ex)
         {
@@ -55,8 +60,8 @@ public class OrdemServicoController : AbstractController, IOrdemServico
     {
         try
         {
-            _modelo.OrdensServico?.Remove(p_ordemServico);
-            return Ok(_modelo.SaveChanges());
+            _modelo?.OrdensServico?.Remove(p_ordemServico);
+            return Ok(_modelo?.SaveChanges());
         }
         catch (Exception ex)
         {

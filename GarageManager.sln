@@ -13,7 +13,9 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup Garage Manager", "Set
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GarageManagerAPI", "GarageManagerAPI\GarageManagerAPI.csproj", "{C36B8E7E-5A92-4BC7-A297-BAB36E5175B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarageManagerLib", "GarageManagerLib\GarageManagerLib.csproj", "{08BA2DF1-EB10-4E9B-BEEE-7FA12B7F3259}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GarageManagerLib", "GarageManagerLib\GarageManagerLib.csproj", "{08BA2DF1-EB10-4E9B-BEEE-7FA12B7F3259}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarageManagerTeste", "GarageManagerTeste\GarageManagerTeste.csproj", "{751909D1-790D-4E8E-824B-3446606E8A58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{08BA2DF1-EB10-4E9B-BEEE-7FA12B7F3259}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08BA2DF1-EB10-4E9B-BEEE-7FA12B7F3259}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08BA2DF1-EB10-4E9B-BEEE-7FA12B7F3259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{751909D1-790D-4E8E-824B-3446606E8A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{751909D1-790D-4E8E-824B-3446606E8A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{751909D1-790D-4E8E-824B-3446606E8A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{751909D1-790D-4E8E-824B-3446606E8A58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

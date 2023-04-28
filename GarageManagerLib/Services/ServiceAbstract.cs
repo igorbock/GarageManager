@@ -32,8 +32,27 @@ public abstract class ServiceAbstract
         throw new Exception(resposta);
     }
 
-    protected Task<IEnumerable<TipoT>> EnviarParaWS<TipoT>(string p_endereco, int? p_codigo)
+    protected async Task<IEnumerable<TipoT>> EnviarParaWS<TipoT>(string p_endereco, int? p_codigo)
     {
-        throw new NotImplementedException();
+        HttpResponseMessage? response;
+        var m_url = $"{p_endereco}?p_ordemServico={p_codigo}";
+
+        if (p_codigo.HasValue)
+            response = await _httpClient.GetAsync(m_url);
+        else
+            response = await _httpClient.GetAsync(p_endereco);
+
+        if (response is null)
+            throw new Exception();
+
+        var resposta = await response.Content.ReadAsStringAsync();
+        if(string.IsNullOrWhiteSpace(resposta))
+            throw new Exception();
+
+        var enumerable = JsonSerializer.Deserialize<IEnumerable<TipoT>>(resposta);
+        if (enumerable is null)
+            throw new Exception();
+
+        return enumerable;
     }
 }
