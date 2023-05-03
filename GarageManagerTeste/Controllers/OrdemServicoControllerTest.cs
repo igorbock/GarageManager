@@ -1,3 +1,7 @@
+using GarageManagerLib.Services;
+using Moq.Protected;
+using System.Net;
+
 namespace GarageManagerTeste.Controllers;
 
 public class OrdemServicoControllerTest
@@ -112,5 +116,63 @@ public class OrdemServicoControllerTest
         {
             Assert.Fail(ex.Message);
         }
+    }
+
+    [Fact]
+    public async Task OrdemServicoServiceTest()
+    {
+        SetUp();
+
+        // ARRANGE - Define o handler da HttpMessage e o response
+        var httpHandlerMock = new Mock<HttpMessageHandler>();
+        var httpRequest = new HttpRequestMessage();
+        var ordemServico = new OrdemServico { Id = 2, Esperados = "teste" };
+        var contentRequest = new StringContent(JsonSerializer.Serialize(ordemServico));
+        httpRequest.Content = contentRequest;
+        var uri = new Uri("https://localhost:7134/api/OrdemServico");
+        httpRequest.Method = HttpMethod.Post;
+
+        httpHandlerMock
+           .Protected()
+           // Agora chama o setup para HttpResponseMessage
+           .Setup<Task<HttpResponseMessage>>(
+              "SendAsync",
+              ItExpr.IsAny<HttpRequestMessage>(),
+              ItExpr.IsAny<CancellationToken>()
+           )
+           // Set do retorno esperado pela classe Response
+           .ReturnsAsync(new HttpResponseMessage()
+           {
+               StatusCode = HttpStatusCode.OK,
+               Content = new StringContent("1"),
+           })
+           .Verifiable();
+
+        using var httpClient = new HttpClient(httpHandlerMock.Object)
+        {
+            BaseAddress = new Uri("https://localhost:7134/"),
+        };
+
+        // Define váriavel para instanciar o service
+        var instanciaService = new OrdemServicoService(httpClient, "https://localhost:7134/api/OrdemServico");
+
+        // ACT - Chama o service com o método para usar o HttpClient
+        var resultado = await instanciaService.Criar(ordemServico);
+
+        // ASSERT
+        Assert.True(resultado == 1);
+
+        // Verifica se a chamada http é a esperada
+        var expectedUri = new Uri("https://localhost:7134/api/OrdemServico");
+
+        httpHandlerMock.Protected().Verify(
+           "SendAsync",
+           Times.Exactly(1), // somente uma chamada esperada
+           ItExpr.Is<HttpRequestMessage>(req =>
+              req.Method == HttpMethod.Post
+              && req.RequestUri == expectedUri
+           ),
+           ItExpr.IsAny<CancellationToken>()
+        );
     }
 }
