@@ -1,7 +1,7 @@
 ﻿namespace GarageManagerLib.Models;
 
 [Table("pecas", Schema = "oficina")]
-public class Peca
+public class Peca : IEntidade
 {
     [Key]
     public int Id { get; set; }
@@ -9,4 +9,6 @@ public class Peca
     public string? Marca { get; set; }
     public decimal Quantidade { get; set; }
     public decimal Valor { get; set; }
+    [NotMapped]
+    public string? Nome { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 }

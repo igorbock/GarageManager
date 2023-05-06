@@ -6,13 +6,16 @@ public class MarcaController : AbstractController, IMarca
 {
     public MarcaController(HttpClient p_httpClient, Context.Modelo p_modelo) : base(p_httpClient, p_modelo) { }
 
-    [HttpPost("create")]
-    public  ActionResult CreateMarca(Marca p_marca)
+    [HttpPost]
+    public ActionResult CreateMarca(Marca p_marca)
     {
         try
         {
-            _modelo.Marcas?.Add(p_marca);
-            return Ok(_modelo.SaveChanges());
+            if (p_marca.Id == 0)
+                _modelo?.Marcas?.Add(p_marca);
+            else
+                _modelo?.Marcas?.Update(p_marca);
+            return Ok(_modelo?.SaveChanges());
         }
         catch (Exception ex)
         {
@@ -20,15 +23,15 @@ public class MarcaController : AbstractController, IMarca
         }
     }
 
-    [HttpGet("read")]
-    public  ActionResult ReadMarca(int? p_marca)
+    [HttpGet]
+    public ActionResult ReadMarca(int? p_marca)
     {
         try
         {
             if (p_marca is null)
-                return Json(_modelo.Marcas, _options);
+                return Json(_modelo?.Marcas, _options);
 
-            return Json(_modelo.Marcas?.Find(p_marca), _options);
+            return Json(_modelo?.Marcas?.Find(p_marca), _options);
         }
         catch (Exception ex)
         {
@@ -36,13 +39,13 @@ public class MarcaController : AbstractController, IMarca
         }
     }
 
-    [HttpPut("update")]
-    public  ActionResult UpdateMarca(Marca p_marca)
+    [HttpPut]
+    public ActionResult UpdateMarca(Marca p_marca)
     {
         try
         {
-            _modelo.Marcas?.Update(p_marca);
-            return Ok(_modelo.SaveChanges());
+            _modelo?.Marcas?.Update(p_marca);
+            return Ok(_modelo?.SaveChanges());
         }
         catch (Exception ex)
         {
@@ -50,13 +53,14 @@ public class MarcaController : AbstractController, IMarca
         }
     }
 
-    [HttpDelete("delete")]
-    public  ActionResult DeleteMarca(Marca p_marca)
+    [HttpDelete]
+    public ActionResult DeleteMarca(int p_codigo)
     {
         try
         {
-            _modelo.Marcas?.Remove(p_marca);
-            return Ok(_modelo.SaveChanges());
+            var m_marca = _modelo?.Marcas?.Find(p_codigo) ?? throw new ArgumentNullException();
+            _modelo?.Marcas?.Remove(m_marca);
+            return Ok(_modelo?.SaveChanges());
         }
         catch (Exception ex)
         {

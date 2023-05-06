@@ -1,7 +1,7 @@
 ﻿namespace GarageManagerLib.Models;
 
 [Table("veiculos", Schema = "oficina")]
-public class Veiculo
+public class Veiculo : IEntidade
 {
     [Key]
     public int Id { get; set; }
@@ -15,4 +15,6 @@ public class Veiculo
     [ForeignKey(nameof(Modelo))]
     public int IdModelo { get; set; }
     public virtual Modelo? Modelo { get; set; }
+    [NotMapped]
+    public string? Nome { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 }

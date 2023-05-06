@@ -1,0 +1,27 @@
+﻿@page "/marcas"
+
+<h3>Marcas</h3>
+
+<QuickGrid Items="IQueryableMarcas">
+    <PropertyColumn Property="@(c => c.Id)" />
+    <PropertyColumn Property="@(c => c.Nome)" />
+    <TemplateColumn Title="Ação">
+        <button onclick="@(() => Editar(context))">Editar</button>
+        <button onclick="@(async () => await Apagar(context))">Apagar</button>
+    </TemplateColumn>
+</QuickGrid>
+
+<InputText @bind-Value="@MarcaAtual!.Nome"/>
+<button onclick="@(async () => await Salvar())">Salvar</button>
+
+@*<ErrorBoundary @ref="Error">
+    <ChildContent>
+        <GMGrid EntidadeAtual="@MarcaAtual" TipoT="Marca" IQueryable="IQueryableMarcas" Service="MarcaService" />
+    </ChildContent>
+    <ErrorContent>
+        <div class="alert alert-danger">Um erro aconteceu</div>
+        <button onclick="@TratarErro()">Voltar</button>
+    </ErrorContent>
+</ErrorBoundary>*@
+
+

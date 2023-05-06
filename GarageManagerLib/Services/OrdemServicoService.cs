@@ -1,6 +1,6 @@
 ﻿namespace GarageManagerLib.Services;
 
-public class OrdemServicoService : ServiceAbstract, IService<OrdemServico>
+public class OrdemServicoService : ServiceAbstract<OrdemServico>
 {
     public OrdemServicoService(HttpClient p_httpClient, string p_endpoint) : base(p_httpClient, p_endpoint) { }
 
@@ -10,5 +10,5 @@ public class OrdemServicoService : ServiceAbstract, IService<OrdemServico>
 
     public async Task<int> Excluir(OrdemServico p_entidade) => await EnviarParaWS(_endpoint, p_entidade, HttpMethod.Delete);
 
-    public async Task<IEnumerable<OrdemServico>> Ler(int? p_codigo) => await EnviarParaWS<OrdemServico>(_endpoint, p_codigo);
+    public async Task<IEnumerable<OrdemServico>> Ler(int? p_codigo) => await EnviarParaWS(_endpoint, p_codigo);
 }

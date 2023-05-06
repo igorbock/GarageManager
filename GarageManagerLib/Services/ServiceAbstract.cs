@@ -1,6 +1,6 @@
 ﻿namespace GarageManagerLib.Services;
 
-public abstract class ServiceAbstract
+public abstract class ServiceAbstract<TipoT> where TipoT : IEntidade/* : IService<TipoT>*/
 {
     protected readonly HttpClient _httpClient;
     protected readonly string _endpoint;
@@ -11,7 +11,15 @@ public abstract class ServiceAbstract
         _endpoint = p_endpoint;
     }
 
-    protected async Task<int> EnviarParaWS<TipoT>(string p_endereco, TipoT p_entidade, HttpMethod p_metodo)
+    public virtual Task<int> Atualizar(TipoT p_entidade) => throw new NotImplementedException();
+
+    public virtual Task<int> Criar(TipoT p_entidade) => throw new NotImplementedException();
+
+    public virtual Task<int> Excluir(int p_codigo) => throw new NotImplementedException();
+
+    public virtual Task<IEnumerable<TipoT>> Ler(int? p_codigo) => throw new NotImplementedException();
+
+    protected async Task<int> EnviarParaWS(string p_endereco, TipoT p_entidade, HttpMethod p_metodo)
     {
         HttpResponseMessage? response;
         switch (p_metodo.Method)
@@ -32,7 +40,22 @@ public abstract class ServiceAbstract
         throw new Exception(resposta);
     }
 
-    protected async Task<IEnumerable<TipoT>> EnviarParaWS<TipoT>(string p_endereco, int? p_codigo)
+    protected async Task<int> EnviarParaWS(string p_endereco, int p_codigo)
+    {
+        HttpResponseMessage? response;
+        response = await _httpClient.DeleteAsync($"{p_endereco}?p_codigo={p_codigo}");
+
+        if (response is null)
+            throw new Exception();
+
+        var resposta = await response.Content.ReadAsStringAsync();
+        if (int.TryParse(resposta, out int value))
+            return value;
+
+        throw new Exception(resposta);
+    }
+
+    protected async Task<IEnumerable<TipoT>> EnviarParaWS(string p_endereco, int? p_codigo)
     {
         HttpResponseMessage? response;
         var m_url = $"{p_endereco}?p_ordemServico={p_codigo}";

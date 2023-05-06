@@ -1,7 +1,7 @@
 ﻿namespace GarageManagerLib.Models;
 
 [Table("clientes", Schema = "oficina")]
-public class Cliente
+public class Cliente : IEntidade
 {
     [Key]
     public int Id { get; set; }
