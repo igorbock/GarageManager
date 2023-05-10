@@ -1,11 +1,12 @@
-﻿using GarageManagerLib.Models;
+﻿using GarageManagerLib.Interfaces;
+using GarageManagerLib.Models;
 using GarageManagerLib.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
 namespace GarageManageWASM.Pages;
 
-public partial class Marcas
+public partial class Marcas : IPage<Marca>
 {
     [Inject]
     public ServiceAbstract<Marca>? MarcaService { get; set; }
@@ -23,7 +24,7 @@ public partial class Marcas
         MarcaAtual = new Marca();
     }
 
-    protected async Task Salvar()
+    public async Task Salvar()
     {
         if (MarcaService is null) throw new ArgumentNullException();
         if (MarcaAtual is null) throw new ArgumentNullException();
@@ -33,24 +34,24 @@ public partial class Marcas
         await OnInitializedAsync();
     }
 
-    protected async Task Editar(Marca p_marca)
+    public async Task Editar(Marca entidade)
     {
         if (MarcaService is null) throw new ArgumentNullException();
-        if (p_marca is null) throw new ArgumentNullException();
-        if (string.IsNullOrWhiteSpace(p_marca.Nome)) throw new ArgumentException();
+        if (entidade is null) throw new ArgumentNullException();
+        if (string.IsNullOrWhiteSpace(entidade.Nome)) throw new ArgumentException();
 
-        MarcaAtual = p_marca;
+        MarcaAtual = entidade;
         await InvokeAsync(() => StateHasChanged());
     }
 
-    protected async Task Apagar(Marca p_marca)
+    public async Task Apagar(Marca entidade)
     {
         if (MarcaService is null) throw new ArgumentNullException();
-        if (p_marca is null) throw new ArgumentNullException();
-        if (string.IsNullOrWhiteSpace(p_marca.Nome)) throw new ArgumentException();
+        if (entidade is null) throw new ArgumentNullException();
+        if (string.IsNullOrWhiteSpace(entidade.Nome)) throw new ArgumentException();
 
-        MarcaAtual = p_marca;
-        await MarcaService.Excluir(p_marca.Id);
+        MarcaAtual = entidade;
+        await MarcaService.Excluir(entidade.Id);
         await OnInitializedAsync();
         await InvokeAsync(() => StateHasChanged());
     }

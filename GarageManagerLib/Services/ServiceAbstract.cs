@@ -69,8 +69,8 @@ public abstract class ServiceAbstract<TipoT> where TipoT : IEntidade/* : IServic
             throw new Exception();
 
         var resposta = await response.Content.ReadAsStringAsync();
-        if(string.IsNullOrWhiteSpace(resposta))
-            throw new Exception();
+        if (string.IsNullOrWhiteSpace(resposta))
+            return new List<TipoT>().AsEnumerable();
 
         var enumerable = JsonSerializer.Deserialize<IEnumerable<TipoT>>(resposta);
         if (enumerable is null)

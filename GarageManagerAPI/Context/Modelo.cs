@@ -4,7 +4,7 @@ public class Modelo : DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Server=localhost;Port=5433;Database=postgres;User Id=postgres;Password=teste");
+        optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=teste");
 
         base.OnConfiguring(optionsBuilder);
     }
