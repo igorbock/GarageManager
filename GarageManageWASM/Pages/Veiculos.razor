@@ -1,0 +1,28 @@
+﻿@page "/veiculos"
+
+<h3>Veículos</h3>
+
+<QuickGrid Items="IQueryableVeiculos">
+    <PropertyColumn Property="@(c => c.Id)" />
+    <PropertyColumn Property="@(c => c.IdModelo)" />
+    <PropertyColumn Property="@(c => c.Km)" />
+    <PropertyColumn Property="@(c => c.Placa)" />
+    <PropertyColumn Property="@(c => c.Ano)" />
+    <PropertyColumn Property="@(c => c.Cor)" />
+    <TemplateColumn Title="Ação">
+        <button onclick="@(() => Editar(context))">Editar</button>
+        <button onclick="@(async () => await Apagar(context))">Apagar</button>
+    </TemplateColumn>
+</QuickGrid>
+
+<p>Km</p>
+<InputNumber @bind-Value="@VeiculoAtual!.Km" DisplayName="Km" /><br />
+<p>Id Modelo</p>
+<InputNumber @bind-Value="@VeiculoAtual!.IdModelo" DisplayName="Id Modelo" /><br />
+<p>Ano</p>
+<InputNumber @bind-Value="@VeiculoAtual!.Ano" DisplayName="Ano" /><br />
+<p>Placa</p>
+<InputText @bind-Value="@VeiculoAtual!.Placa" DisplayName="Placa" /><br />
+<p>Cor</p>
+<InputText @bind-Value="@VeiculoAtual!.Cor" DisplayName="Cor" /><br />
+<button onclick="@(async () => await Salvar())">Salvar</button>

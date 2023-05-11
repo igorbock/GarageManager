@@ -1,0 +1,23 @@
+﻿@page "/clientes"
+
+<h3>Clientes</h3>
+
+<QuickGrid Items="IQueryableCliente">
+    <PropertyColumn Property="@(c => c.Id)" />
+    <PropertyColumn Property="@(c => c.Nome)" />
+    <PropertyColumn Property="@(c => c.CPF)" />
+    <PropertyColumn Property="@(c => c.Telefone)" />
+    <TemplateColumn Title="Ação">
+        <button onclick="@(() => Editar(context))">Editar</button>
+        <button onclick="@(async () => await Apagar(context))">Apagar</button>
+    </TemplateColumn>
+</QuickGrid>
+
+<span>Nome</span>
+<InputText @bind-Value="@ClienteAtual!.Nome" DisplayName="Nome" /> <br /><br />
+<span>CPF</span>
+<InputText @bind-Value="@ClienteAtual!.CPF" DisplayName="CPF" /> <br /><br />
+<span>Telefone</span>
+<InputText @bind-Value="@ClienteAtual!.Telefone" DisplayName="Telefone" /><br /><br />
+<button onclick="@(async () => await Salvar())">Salvar</button>
+

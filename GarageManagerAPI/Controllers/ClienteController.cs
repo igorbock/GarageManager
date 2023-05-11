@@ -6,13 +6,13 @@ public class ClienteController : AbstractController, ICliente
 {
     public ClienteController(HttpClient p_httpClient, Context.Modelo p_modelo) : base(p_httpClient, p_modelo) { }
 
-    [HttpPost("create")]
-    public  ActionResult CreateCliente(Cliente p_cliente)
+    [HttpPost]
+    public ActionResult CreateCliente(Cliente p_cliente)
     {
         try
         {
-            _modelo.Clientes?.Add(p_cliente);
-            return Ok(_modelo.SaveChanges());
+            _modelo!.Clientes?.Add(p_cliente);
+            return Ok(_modelo!.SaveChanges());
         }
         catch (Exception ex)
         {
@@ -20,15 +20,15 @@ public class ClienteController : AbstractController, ICliente
         }
     }
 
-    [HttpGet("read")]
-    public  ActionResult ReadCliente(int? p_cliente)
+    [HttpGet]
+    public ActionResult ReadCliente(int? p_cliente)
     {
         try
         {
             if (p_cliente is null)
-                return Json(_modelo.Clientes, _options);
+                return Json(_modelo!.Clientes, _options);
 
-            return Json(_modelo.Clientes?.Find(p_cliente), _options);
+            return Json(_modelo!.Clientes?.Find(p_cliente), _options);
         }
         catch (Exception ex)
         {
@@ -36,12 +36,12 @@ public class ClienteController : AbstractController, ICliente
         }
     }
 
-    [HttpPut("update")]
-    public  ActionResult UpdateCliente(Cliente p_cliente)
+    [HttpPut]
+    public ActionResult UpdateCliente(Cliente p_cliente)
     {
         try
         {
-            _modelo.Clientes?.Update(p_cliente);
+            _modelo!.Clientes?.Update(p_cliente);
             return Ok(_modelo.SaveChanges());
         }
         catch (Exception ex)
@@ -50,12 +50,12 @@ public class ClienteController : AbstractController, ICliente
         }
     }
 
-    [HttpDelete("delete")]
-    public  ActionResult DeleteCliente(Cliente p_cliente)
+    [HttpDelete]
+    public ActionResult DeleteCliente(Cliente p_cliente)
     {
         try
         {
-            _modelo.Clientes?.Remove(p_cliente);
+            _modelo!.Clientes?.Remove(p_cliente);
             return Ok(_modelo.SaveChanges());
         }
         catch (Exception ex)
