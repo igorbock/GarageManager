@@ -7,65 +7,65 @@ public class OrdemServicoController : AbstractController, IOrdemServico
     public OrdemServicoController(HttpClient? p_httpClient, Context.Modelo? p_modelo) : base(p_httpClient, p_modelo) { }
 
     [HttpPost]
-    public ActionResult CreateOrdemServico(OrdemServico p_ordemServico)
+    public IGMActionResult CreateOrdemServico(OrdemServico p_ordemServico)
     {
         try
         {
             _modelo?.OrdensServico?.Add(p_ordemServico);
-            return Ok(_modelo?.SaveChanges());
+            return new GMOk(_modelo?.SaveChanges());
         }
         catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            return new GMBadRequest(ex.Message);
         }
     }
 
     [HttpGet]
-    public ActionResult ReadOrdemServico(int? p_ordemServico)
+    public IGMActionResult ReadOrdemServico(int? p_ordemServico)
     {
         try
         {
             if (p_ordemServico is null)
-                return Json(_modelo?.OrdensServico, _options);
+                return new GMJson(_modelo?.OrdensServico, _options);
 
             var ordem = _modelo?.OrdensServico?.FirstOrDefault(a => a.Id == p_ordemServico);
             var lista = new List<OrdemServico>
             {
                 ordem ?? throw new Exception()
             };
-            return Json(lista, _options);
+            return new GMJson(lista, _options);
         }
         catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            return new GMBadRequest(ex.Message);
         }
     }
 
     [HttpPut]
-    public ActionResult UpdateOrdemServico(OrdemServico p_ordemServico)
+    public IGMActionResult UpdateOrdemServico(OrdemServico p_ordemServico)
     {
         try
         {
             _modelo?.OrdensServico?.Update(p_ordemServico);
-            return Ok(_modelo?.SaveChanges());
+            return new GMOk(_modelo?.SaveChanges());
         }
         catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            return new GMBadRequest(ex.Message);
         }
     }
 
     [HttpDelete]
-    public ActionResult DeleteOrdemServico(OrdemServico p_ordemServico)
+    public IGMActionResult DeleteOrdemServico(OrdemServico p_ordemServico)
     {
         try
         {
             _modelo?.OrdensServico?.Remove(p_ordemServico);
-            return Ok(_modelo?.SaveChanges());
+            return new GMOk(_modelo?.SaveChanges());
         }
         catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            return new GMBadRequest(ex.Message);
         }
     }
 }

@@ -7,21 +7,21 @@ public class ModeloController : AbstractController, IModelo
     public ModeloController(HttpClient p_httpClient, Context.Modelo p_modelo) : base(p_httpClient, p_modelo) { }
 
     [HttpPost]
-    public ActionResult CreateModelo(Modelo p_modelo)
+    public IGMActionResult CreateModelo(Modelo p_modelo)
     {
         try
         {
             _modelo!.Modelos?.Add(p_modelo);
-            return Ok(_modelo.SaveChanges());
+            return new GMOk(_modelo.SaveChanges());
         }
         catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            return new GMBadRequest(ex.Message);
         }
     }
 
     [HttpGet]
-    public ActionResult ReadModelo(int? p_modelo)
+    public IGMActionResult ReadModelo(int? p_modelo)
     {
         try
         {
@@ -35,43 +35,43 @@ public class ModeloController : AbstractController, IModelo
                                     Nome = modelo.Nome,
                                     IdMarca = modelo.IdMarca
                                 };
-                return Json(m_modelos, _options);
+                return new GMJson(m_modelos, _options);
             }
 
-            return Json(_modelo!.Modelos?.Find(p_modelo), _options);
+            return new GMJson(_modelo!.Modelos?.Find(p_modelo), _options);
         }
         catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            return new GMBadRequest(ex.Message);
         }
     }
 
     [HttpPut]
-    public ActionResult UpdateModelo(Modelo p_modelo)
+    public IGMActionResult UpdateModelo(Modelo p_modelo)
     {
         try
         {
             _modelo!.Modelos?.Update(p_modelo);
-            return Ok(_modelo.SaveChanges());
+            return new GMOk(_modelo.SaveChanges());
         }
         catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            return new GMBadRequest(ex.Message);
         }
     }
 
     [HttpDelete]
-    public ActionResult DeleteModelo(int p_codigo)
+    public IGMActionResult DeleteModelo(int p_codigo)
     {
         try
         {
             var m_modelo = _modelo?.Modelos?.Find(p_codigo) ?? throw new ArgumentNullException();
             _modelo!.Modelos?.Remove(m_modelo);
-            return Ok(_modelo.SaveChanges());
+            return new GMOk(_modelo.SaveChanges());
         }
         catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            return new GMBadRequest(ex.Message);
         }
     }
 }

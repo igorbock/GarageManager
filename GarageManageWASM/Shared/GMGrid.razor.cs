@@ -1,5 +1,5 @@
-﻿using GarageManagerLib.Interfaces;
-using GarageManagerLib.Services;
+﻿using GarageManagerRazorLib.Interfaces;
+using GarageManagerRazorLib.Services;
 using Microsoft.AspNetCore.Components;
 
 namespace GarageManageWASM.Shared;

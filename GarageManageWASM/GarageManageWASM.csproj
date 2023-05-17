@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GarageManagerLib\GarageManagerLib.csproj" />
+    <ProjectReference Include="..\GarageManagerRazorLib\GarageManagerRazorLib.csproj" />
   </ItemGroup>
 
 </Project>

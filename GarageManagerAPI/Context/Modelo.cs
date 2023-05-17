@@ -15,7 +15,7 @@ public class Modelo : DbContext
         modelBuilder.Entity<Peca>().ToTable("pecas", "oficina");
         modelBuilder.Entity<Veiculo>().ToTable("veiculos", "oficina");
         modelBuilder.Entity<Marca>().ToTable("marcas", "oficina");
-        modelBuilder.Entity<GarageManagerLib.Models.Modelo>().ToTable("modelos", "oficina");
+        modelBuilder.Entity<GarageManagerRazorLib.Models.Modelo>().ToTable("modelos", "oficina");
         modelBuilder.Entity<Cliente>().ToTable("clientes", "oficina");
         modelBuilder.Entity<OrdemServicoPecas>().ToTable("ordens_pecas", "oficina");
 
@@ -26,7 +26,7 @@ public class Modelo : DbContext
     public DbSet<Peca>? Pecas { get; set; }
     public DbSet<Veiculo>? Veiculos { get; set; }
     public DbSet<Marca>? Marcas { get; set; }
-    public DbSet<GarageManagerLib.Models.Modelo>? Modelos { get; set; }
+    public DbSet<GarageManagerRazorLib.Models.Modelo>? Modelos { get; set; }
     public DbSet<Cliente>? Clientes { get; set; }
     public DbSet<OrdemServicoPecas>? OrdensServicoPecas { get; set; }
 }

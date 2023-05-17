@@ -17,7 +17,7 @@ namespace GarageManagerAPI.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("GarageManagerLib.Models.Cliente", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,7 +41,7 @@ namespace GarageManagerAPI.Migrations
                     b.ToTable("clientes", "oficina");
                 });
 
-            modelBuilder.Entity("GarageManagerLib.Models.Marca", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.Marca", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,7 +58,7 @@ namespace GarageManagerAPI.Migrations
                     b.ToTable("marcas", "oficina");
                 });
 
-            modelBuilder.Entity("GarageManagerLib.Models.Modelo", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.Modelo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,7 +80,7 @@ namespace GarageManagerAPI.Migrations
                     b.ToTable("modelos", "oficina");
                 });
 
-            modelBuilder.Entity("GarageManagerLib.Models.OrdemServico", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.OrdemServico", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -131,7 +131,7 @@ namespace GarageManagerAPI.Migrations
                     b.ToTable("ordem_servico", "oficina");
                 });
 
-            modelBuilder.Entity("GarageManagerLib.Models.OrdemServicoPecas", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.OrdemServicoPecas", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,7 +154,7 @@ namespace GarageManagerAPI.Migrations
                     b.ToTable("ordens_pecas", "oficina");
                 });
 
-            modelBuilder.Entity("GarageManagerLib.Models.Peca", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.Peca", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -179,7 +179,7 @@ namespace GarageManagerAPI.Migrations
                     b.ToTable("pecas", "oficina");
                 });
 
-            modelBuilder.Entity("GarageManagerLib.Models.Veiculo", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.Veiculo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -212,9 +212,9 @@ namespace GarageManagerAPI.Migrations
                     b.ToTable("veiculos", "oficina");
                 });
 
-            modelBuilder.Entity("GarageManagerLib.Models.Modelo", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.Modelo", b =>
                 {
-                    b.HasOne("GarageManagerLib.Models.Marca", "Marca")
+                    b.HasOne("GarageManagerRazorLib.Models.Marca", "Marca")
                         .WithMany()
                         .HasForeignKey("IdMarca")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -223,15 +223,15 @@ namespace GarageManagerAPI.Migrations
                     b.Navigation("Marca");
                 });
 
-            modelBuilder.Entity("GarageManagerLib.Models.OrdemServico", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.OrdemServico", b =>
                 {
-                    b.HasOne("GarageManagerLib.Models.Cliente", "Cliente")
+                    b.HasOne("GarageManagerRazorLib.Models.Cliente", "Cliente")
                         .WithMany()
                         .HasForeignKey("IdCliente")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GarageManagerLib.Models.Veiculo", "Veiculo")
+                    b.HasOne("GarageManagerRazorLib.Models.Veiculo", "Veiculo")
                         .WithMany()
                         .HasForeignKey("IdVeiculo")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -242,15 +242,15 @@ namespace GarageManagerAPI.Migrations
                     b.Navigation("Veiculo");
                 });
 
-            modelBuilder.Entity("GarageManagerLib.Models.OrdemServicoPecas", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.OrdemServicoPecas", b =>
                 {
-                    b.HasOne("GarageManagerLib.Models.OrdemServico", "OrdemServico")
+                    b.HasOne("GarageManagerRazorLib.Models.OrdemServico", "OrdemServico")
                         .WithMany()
                         .HasForeignKey("IdOrdemServico")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GarageManagerLib.Models.Peca", "Peca")
+                    b.HasOne("GarageManagerRazorLib.Models.Peca", "Peca")
                         .WithMany()
                         .HasForeignKey("IdPeca")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -261,9 +261,9 @@ namespace GarageManagerAPI.Migrations
                     b.Navigation("Peca");
                 });
 
-            modelBuilder.Entity("GarageManagerLib.Models.Veiculo", b =>
+            modelBuilder.Entity("GarageManagerRazorLib.Models.Veiculo", b =>
                 {
-                    b.HasOne("GarageManagerLib.Models.Modelo", "Modelo")
+                    b.HasOne("GarageManagerRazorLib.Models.Modelo", "Modelo")
                         .WithMany()
                         .HasForeignKey("IdModelo")
                         .OnDelete(DeleteBehavior.Cascade)

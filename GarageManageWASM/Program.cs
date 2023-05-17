@@ -1,5 +1,5 @@
-using GarageManagerLib.Models;
-using GarageManagerLib.Services;
+using GarageManagerRazorLib.Models;
+using GarageManagerRazorLib.Services;
 using GarageManageWASM;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
