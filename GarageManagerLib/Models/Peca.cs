@@ -10,5 +10,5 @@ public class Peca : IEntidade
     public decimal Quantidade { get; set; }
     public decimal Valor { get; set; }
     [NotMapped]
-    public string? Nome { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public string? Nome { get; set; }
 }

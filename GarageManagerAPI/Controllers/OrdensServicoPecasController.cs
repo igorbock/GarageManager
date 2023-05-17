@@ -4,7 +4,7 @@ public class OrdensServicoPecasController : AbstractController
 {
     public OrdensServicoPecasController(HttpClient p_httpClient, Context.Modelo p_modelo) : base(p_httpClient, p_modelo) { }
 
-    [HttpPost("create")]
+    [HttpPost]
     public ActionResult CreateOrdensServicoPecas(OrdemServicoPecas p_ordemServico)
     {
         try
@@ -18,7 +18,7 @@ public class OrdensServicoPecasController : AbstractController
         }
     }
 
-    [HttpGet("read")]
+    [HttpGet]
     public ActionResult ReadOrdensServicoPecas(int? p_ordemServico)
     {
         try
@@ -34,7 +34,7 @@ public class OrdensServicoPecasController : AbstractController
         }
     }
 
-    [HttpPut("update")]
+    [HttpPut]
     public ActionResult UpdateOrdensServicoPecas(OrdemServicoPecas p_ordemServico)
     {
         try
@@ -48,7 +48,7 @@ public class OrdensServicoPecasController : AbstractController
         }
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete]
     public ActionResult DeleteOrdensServicoPecas(OrdemServicoPecas p_ordemServico)
     {
         try

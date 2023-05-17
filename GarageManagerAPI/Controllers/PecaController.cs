@@ -6,7 +6,7 @@ public class PecaController : AbstractController, IPeca
 {
     public PecaController(HttpClient p_httpClient, Context.Modelo p_modelo) : base(p_httpClient, p_modelo) { }
 
-    [HttpPost("create")]
+    [HttpPost]
     public ActionResult CreatePeca(Peca p_peca)
     {
         try
@@ -20,7 +20,7 @@ public class PecaController : AbstractController, IPeca
         }
     }
 
-    [HttpGet("read")]
+    [HttpGet]
     public ActionResult ReadPeca(int? p_peca)
     {
         try
@@ -36,7 +36,7 @@ public class PecaController : AbstractController, IPeca
         }
     }
 
-    [HttpPut("update")]
+    [HttpPut]
     public ActionResult UpdatePeca(Peca p_peca)
     {
         try
@@ -50,7 +50,7 @@ public class PecaController : AbstractController, IPeca
         }
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete]
     public ActionResult DeletePeca(Peca p_peca)
     {
         try

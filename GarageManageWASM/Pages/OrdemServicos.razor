@@ -1,0 +1,78 @@
+﻿@page "/ordemservicos"
+
+<h3>Ordens de Serviços</h3>
+
+<QuickGrid Items="IQueryableOrdemServicos">
+    <PropertyColumn Property="@(c => c.Id)" />
+    <PropertyColumn Property="@(c => c.Inicio)" />
+    <PropertyColumn Property="@(c => c.Fim)" />
+    <PropertyColumn Property="@(c => c.Esperados)" />
+    <PropertyColumn Property="@(c => c.Realizados)" />
+    <PropertyColumn Property="@(c => c.Mecanico)" />
+    <PropertyColumn Property="@(c => c.Status)" />
+    <PropertyColumn Property="@(c => c.Lavacao)" />
+    <PropertyColumn Property="@(c => c.Pagamento)" />
+    <PropertyColumn Property="@(c => c.IdVeiculo)" />
+    <PropertyColumn Property="@(c => c.IdCliente)" />
+    <TemplateColumn Title="Ação">
+        <button onclick="@(() => Editar(context))">Editar</button>
+        <button onclick="@(async () => await Apagar(context))">Apagar</button>
+    </TemplateColumn>
+</QuickGrid>
+
+<table>
+    <tbody>
+        <tr>
+            <td><span>Id</span></td>
+            <td><InputNumber @bind-Value="@OrdemServicoAtual!.Id" disabled /></td>
+        </tr>
+        <tr>
+            <td><span>Ínicio</span></td>
+            <td><InputDate @bind-Value="@OrdemServicoAtual!.Inicio" /></td>
+        </tr>
+        <tr>
+            <td><span>Fim</span></td>
+            <td><InputDate @bind-Value="@OrdemServicoAtual!.Fim" /></td>
+        </tr>
+        <tr>
+            <td><span>Esperados</span></td>
+            <td><InputTextArea @bind-Value="@OrdemServicoAtual!.Esperados" /></td>
+        </tr>
+        <tr>
+            <td><span>Realizados</span></td>
+            <td><InputTextArea @bind-Value="@OrdemServicoAtual!.Realizados" /></td>
+        </tr>
+        <tr>
+            <td><span>Mecânico</span></td>
+            <td><InputText @bind-Value="@OrdemServicoAtual!.Mecanico" /></td>
+        </tr>
+        <tr>
+            <td><span>Status</span></td>
+            <td><InputNumber @bind-Value="@OrdemServicoAtual!.Status" /></td>
+        </tr>
+        <tr>
+            <td><span>Lavação</span></td>
+            <td><InputCheckbox @bind-Value="@OrdemServicoAtual!.Lavacao" /></td>
+        </tr>
+        <tr>
+            <td><span>Pagamento</span></td>
+            <td><InputText @bind-Value="@OrdemServicoAtual!.Pagamento" /></td>
+        </tr>
+        <tr>
+            <td><span>Id Veículo</span></td>
+            <td><InputNumber @bind-Value="@OrdemServicoAtual!.IdVeiculo" /></td>
+        </tr>
+        <tr>
+            <td><span>Id Cliente</span></td>
+            <td><InputNumber @bind-Value="@OrdemServicoAtual!.IdCliente" /></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">
+                <button onclick="@(async () => await Salvar())">Salvar</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+

@@ -1,6 +1,6 @@
 ﻿namespace GarageManagerLib.Services;
 
-public abstract class ServiceAbstract<TipoT> where TipoT : IEntidade/* : IService<TipoT>*/
+public abstract class ServiceAbstract<TipoT> where TipoT : IEntidade
 {
     protected readonly HttpClient _httpClient;
     protected readonly string _endpoint;

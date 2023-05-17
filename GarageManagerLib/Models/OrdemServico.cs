@@ -13,8 +13,14 @@ public class OrdemServico : IEntidade
     public string? Realizados { get; set; }
     [MaxLength(50)]
     public string? Mecanico { get; set; }
-    public E_STATUS Status { get; set; }
-    public bool? Lavacao { get; set; }
+    [NotMapped]
+    public E_STATUS StatusEnum
+    {
+        get => Enum.Parse<E_STATUS>(Status.ToString());
+        set => Status = (int)value;
+    }
+    public int Status { get; set; }
+    public bool Lavacao { get; set; }
     [MaxLength(500)]
     public string? Pagamento { get; set; }
     [ForeignKey(nameof(Veiculo))]
@@ -24,5 +30,5 @@ public class OrdemServico : IEntidade
     public virtual Veiculo? Veiculo { get; set; }
     public virtual Cliente? Cliente { get; set; }
     [NotMapped]
-    public string? Nome { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public string? Nome { get; set; }
 }
