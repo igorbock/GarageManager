@@ -8,7 +8,8 @@
             "timeout": 30000,
             "url": "https://localhost:7020",
             "webRoot": "${workspaceFolder}",
-            "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}"
+            "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+            "runtimeExecutable": "/usr/bin/brave-browser-stable"
         }
     ]
 }
