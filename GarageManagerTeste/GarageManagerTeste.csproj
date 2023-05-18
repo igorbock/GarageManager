@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GarageManagerAPI\GarageManagerAPI.csproj" />
-    <ProjectReference Include="..\GarageManagerLib\GarageManagerLib.csproj" />
   </ItemGroup>
 
 </Project>

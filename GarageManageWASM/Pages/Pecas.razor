@@ -1,0 +1,48 @@
+﻿@page "/pecas"
+
+<h3>Peças</h3>
+
+<QuickGrid Items="IQueryablePecas">
+    <PropertyColumn Property="@(c => c.Id)" />
+    <PropertyColumn Property="@(c => c.Descricao)" />
+    <PropertyColumn Property="@(c => c.Marca)" />
+    <PropertyColumn Property="@(c => c.Quantidade)" />
+    <PropertyColumn Property="@(c => c.Valor)" />
+    <TemplateColumn Title="Ação">
+        <button onclick="@(() => Editar(context))">Editar</button>
+        <button onclick="@(async () => await Apagar(context))">Apagar</button>
+    </TemplateColumn>
+</QuickGrid>
+
+<table>
+    <tbody>
+        <tr>
+            <td><span>Id</span></td>
+            <td><InputNumber @bind-Value="@PecaAtual!.Id" disabled /></td>
+        </tr>
+        <tr>
+            <td><span>Descrição</span></td>
+            <td><InputText @bind-Value="@PecaAtual!.Descricao" /></td>
+        </tr>
+        <tr>
+            <td><span>Marca</span></td>
+            <td><InputText @bind-Value="@PecaAtual!.Marca" /></td>
+        </tr>
+        <tr>
+            <td><span>Quantidade</span></td>
+            <td><InputNumber @bind-Value="@PecaAtual!.Quantidade" /></td>
+        </tr>
+        <tr>
+            <td><span>Valor</span></td>
+            <td><InputNumber @bind-Value="@PecaAtual!.Valor" /></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">
+                <button onclick="@(async () => await Salvar())">Salvar</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+

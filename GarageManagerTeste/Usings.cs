@@ -2,7 +2,7 @@ global using Xunit;
 global using Moq;
 
 global using GarageManagerAPI.Controllers;
-global using GarageManagerLib.Models;
+global using GarageManagerRazorLib.Models;
 
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;

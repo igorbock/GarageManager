@@ -12,5 +12,5 @@ public class OrdemServicoPecas : IEntidade
     public virtual OrdemServico? OrdemServico { get; set; }
     public virtual Peca? Peca { get; set; }
     [NotMapped]
-    public string? Nome { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public string? Nome { get; set; }
 }
