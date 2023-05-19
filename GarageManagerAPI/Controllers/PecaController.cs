@@ -2,16 +2,19 @@
 
 [ApiController]
 [Route("api/[controller]")]
-public class PecaController : AbstractController, IPeca
+public class PecaController : AbstractController, IControllerCRUD<Peca>
 {
     public PecaController(HttpClient p_httpClient, Context.Modelo p_modelo) : base(p_httpClient, p_modelo) { }
 
     [HttpPost]
-    public IGMActionResult CreatePeca(Peca p_peca)
+    public IGMActionResult Save(Peca entidade)
     {
         try
         {
-            _modelo!.Pecas?.Add(p_peca);
+            if (entidade.Id == 0)
+                _modelo!.Pecas?.Add(entidade);
+            else
+                _modelo!.Pecas?.Update(entidade);
             return new GMOk(_modelo.SaveChanges());
         }
         catch (Exception ex)
@@ -21,28 +24,14 @@ public class PecaController : AbstractController, IPeca
     }
 
     [HttpGet]
-    public IGMActionResult ReadPeca(int? p_peca)
+    public IGMActionResult Read(int? codigo)
     {
         try
         {
-            if (p_peca is null)
+            if (codigo is null)
                 return new GMJson(_modelo!.Pecas, _options);
 
-            return new GMJson(_modelo!.Pecas?.Find(p_peca), _options);
-        }
-        catch (Exception ex)
-        {
-            return new GMBadRequest(ex.Message);
-        }
-    }
-
-    [HttpPut]
-    public IGMActionResult UpdatePeca(Peca p_peca)
-    {
-        try
-        {
-            _modelo!.Pecas?.Update(p_peca);
-            return new GMOk(_modelo.SaveChanges());
+            return new GMJson(_modelo!.Pecas?.Find(codigo), _options);
         }
         catch (Exception ex)
         {
@@ -51,11 +40,12 @@ public class PecaController : AbstractController, IPeca
     }
 
     [HttpDelete]
-    public IGMActionResult DeletePeca(Peca p_peca)
+    public IGMActionResult Delete(int codigo)
     {
         try
         {
-            _modelo!.Pecas?.Remove(p_peca);
+            var entidade = _modelo?.Pecas?.Find(codigo) ?? throw new ArgumentNullException();
+            _modelo!.Pecas?.Remove(entidade);
             return new GMOk(_modelo.SaveChanges());
         }
         catch (Exception ex)

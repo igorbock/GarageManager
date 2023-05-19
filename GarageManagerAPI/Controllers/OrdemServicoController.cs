@@ -2,16 +2,19 @@
 
 [ApiController]
 [Route("api/[controller]")]
-public class OrdemServicoController : AbstractController, IOrdemServico
+public class OrdemServicoController : AbstractController, IControllerCRUD<OrdemServico>
 {
     public OrdemServicoController(HttpClient? p_httpClient, Context.Modelo? p_modelo) : base(p_httpClient, p_modelo) { }
 
     [HttpPost]
-    public IGMActionResult CreateOrdemServico(OrdemServico p_ordemServico)
+    public IGMActionResult Save(OrdemServico entidade)
     {
         try
         {
-            _modelo?.OrdensServico?.Add(p_ordemServico);
+            if (entidade.Id == 0)
+                _modelo!.OrdensServico?.Add(entidade);
+            else
+                _modelo!.OrdensServico?.Update(entidade);
             return new GMOk(_modelo?.SaveChanges());
         }
         catch (Exception ex)
@@ -21,14 +24,14 @@ public class OrdemServicoController : AbstractController, IOrdemServico
     }
 
     [HttpGet]
-    public IGMActionResult ReadOrdemServico(int? p_ordemServico)
+    public IGMActionResult Read(int? codigo)
     {
         try
         {
-            if (p_ordemServico is null)
+            if (codigo is null)
                 return new GMJson(_modelo?.OrdensServico, _options);
 
-            var ordem = _modelo?.OrdensServico?.FirstOrDefault(a => a.Id == p_ordemServico);
+            var ordem = _modelo?.OrdensServico?.FirstOrDefault(a => a.Id == codigo);
             var lista = new List<OrdemServico>
             {
                 ordem ?? throw new Exception()
@@ -41,26 +44,13 @@ public class OrdemServicoController : AbstractController, IOrdemServico
         }
     }
 
-    [HttpPut]
-    public IGMActionResult UpdateOrdemServico(OrdemServico p_ordemServico)
-    {
-        try
-        {
-            _modelo?.OrdensServico?.Update(p_ordemServico);
-            return new GMOk(_modelo?.SaveChanges());
-        }
-        catch (Exception ex)
-        {
-            return new GMBadRequest(ex.Message);
-        }
-    }
-
     [HttpDelete]
-    public IGMActionResult DeleteOrdemServico(OrdemServico p_ordemServico)
+    public IGMActionResult Delete(int codigo)
     {
         try
         {
-            _modelo?.OrdensServico?.Remove(p_ordemServico);
+            var entidade = _modelo?.OrdensServico?.Find(codigo) ?? throw new ArgumentNullException();
+            _modelo?.OrdensServico?.Remove(entidade);
             return new GMOk(_modelo?.SaveChanges());
         }
         catch (Exception ex)

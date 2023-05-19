@@ -9,7 +9,7 @@ public partial class GMGrid<TipoT> where TipoT : IEntidade
     [Parameter]
     public IQueryable<TipoT>? IQueryable { get; set; }
     [Parameter]
-    public ServiceAbstract<TipoT>? Service { get; set; }
+    public ServiceAbstract<TipoT, TipoT>? Service { get; set; }
 
     private IEntidade? _entidade;
     [Parameter]
@@ -52,7 +52,7 @@ public partial class GMGrid<TipoT> where TipoT : IEntidade
         if (EntidadeAtual is null) throw new ArgumentNullException();
         if (string.IsNullOrWhiteSpace(EntidadeAtual.Nome)) throw new ArgumentException();
 
-        await Service.Criar(EntidadeAtual);
+        await Service.Salvar(EntidadeAtual);
         await InvokeAsync(() => StateHasChanged());
     }
 

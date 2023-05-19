@@ -8,7 +8,7 @@ namespace GarageManageWASM.Pages;
 public partial class Veiculos : IPage<Veiculo>
 {
     [Inject]
-    public ServiceAbstract<Veiculo>? VeiculoService { get; set; }
+    public ServiceAbstract<Veiculo, Veiculo>? VeiculoService { get; set; }
 
     public IQueryable<Veiculo>? IQueryableVeiculos { get; set; } = new List<Veiculo>().AsQueryable();
     protected Veiculo VeiculoAtual { get; set; } = new Veiculo();
@@ -48,7 +48,7 @@ public partial class Veiculos : IPage<Veiculo>
         if (VeiculoService is null) throw new ArgumentNullException();
         if (VeiculoAtual is null) throw new ArgumentNullException();
 
-        await VeiculoService.Criar(VeiculoAtual);
+        await VeiculoService.Salvar(VeiculoAtual);
         await OnInitializedAsync();
     }
 }

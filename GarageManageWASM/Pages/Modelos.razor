@@ -5,14 +5,50 @@
 <QuickGrid Items="IQueryableModelos">
     <PropertyColumn Property="@(c => c.Id)" />
     <PropertyColumn Property="@(c => c.Nome)" />
-    <PropertyColumn Property="@(c => c.IdMarca)" />
+    <PropertyColumn Property="@(c => c.Marca)" />
     <TemplateColumn Title="Ação">
         <button onclick="@(() => Editar(context))">Editar</button>
         <button onclick="@(async () => await Apagar(context))">Apagar</button>
     </TemplateColumn>
 </QuickGrid>
 
-<InputText @bind-Value="@ModeloAtual!.Nome" DisplayName="Nome" />
-<InputNumber @bind-Value="@ModeloAtual!.IdMarca" DisplayName="Id Marca" />
-<button onclick="@(async () => await Salvar())">Salvar</button>
+
+<table>
+    <tbody>
+        <tr>
+            <td><span>Id</span></td>
+            <td><InputNumber @bind-Value="@ModeloAtual!.Id" disabled /></td>
+        </tr>
+        <tr>
+            <td><span>Nome</span></td>
+            <td><InputText @bind-Value="@ModeloAtual!.Nome" /></td>
+        </tr>
+        <tr>
+            <td><span>Id Marca</span></td>
+            <td><InputNumber @bind-Value="@MarcaAtual!.Id" disabled /></td>
+        </tr>
+        <tr>
+            <td><span>Marca</span></td>
+            <td>
+                <InputSelect @bind-Value="@MarcaAtual.Id">
+                    <option value=""></option>
+                    @foreach(var valor in IQueryableMarcas!)
+                    {
+                        <option value="@valor.Id">@valor.Nome</option>
+                    }
+                </InputSelect>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                <button onclick="@(async () => await Salvar())">Salvar</button>
+            </td>
+            <td>
+                <button onclick="@(() => Novo())">Novo</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
 

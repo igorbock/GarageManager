@@ -139,12 +139,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\Dominio\Dominio.csproj">
-      <Project>{f12882ec-0693-4685-a06f-e748b31d8a68}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\202001180221365_InitialCreate.resx">
       <DependentUpon>202001180221365_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>

@@ -157,7 +157,7 @@ public class OrdemServicoControllerTest
         var instanciaService = new OrdemServicoService(httpClient, "https://localhost:7134/api/OrdemServico");
 
         // ACT - Chama o service com o método para usar o HttpClient
-        var resultado = await instanciaService.Criar(ordemServico);
+        var resultado = await instanciaService.Salvar(ordemServico);
 
         // ASSERT
         Assert.True(resultado == 1);

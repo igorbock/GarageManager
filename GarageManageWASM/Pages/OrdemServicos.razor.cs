@@ -9,7 +9,7 @@ namespace GarageManageWASM.Pages;
 public partial class OrdemServicos : IPage<OrdemServico>
 {
     [Inject]
-    public ServiceAbstract<OrdemServico>? OrdemServicoService { get; set; }
+    public ServiceAbstract<OrdemServico, OrdemServico>? OrdemServicoService { get; set; }
 
     public IQueryable<OrdemServico>? IQueryableOrdemServicos { get; set; } = new List<OrdemServico>().AsQueryable();
     protected OrdemServico OrdemServicoAtual { get; set; } = new OrdemServico();
@@ -49,7 +49,7 @@ public partial class OrdemServicos : IPage<OrdemServico>
         if (OrdemServicoService is null) throw new ArgumentNullException();
         if (OrdemServicoAtual is null) throw new ArgumentNullException();
 
-        await OrdemServicoService.Criar(OrdemServicoAtual);
+        await OrdemServicoService.Salvar(OrdemServicoAtual);
         await OnInitializedAsync();
     }
 }
