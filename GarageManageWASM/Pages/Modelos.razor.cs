@@ -64,6 +64,7 @@ public partial class Modelos : IPage<ModeloDTO>
         VerificaNullable(ModeloService, ModeloAtual);
 
         ModeloAtual.IdMarca = MarcaAtual.Id;
+        ModeloAtual.Marca = null;
         await ModeloService!.Salvar(ModeloAtual);
         await OnInitializedAsync();
     }

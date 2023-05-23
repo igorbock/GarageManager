@@ -1,7 +1,4 @@
-﻿using GarageManagerRazorLib.Enums;
-using GarageManagerRazorLib.Interfaces;
-
-namespace GarageManagerRazorLib.Models;
+﻿namespace GarageManagerRazorLib.Models;
 
 [Table("ordem_servico", Schema = "oficina")]
 public class OrdemServico : IEntidade

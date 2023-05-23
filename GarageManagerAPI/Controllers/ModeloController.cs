@@ -28,22 +28,21 @@ public class ModeloController : AbstractController, IControllerCRUD<Modelo>
     {
         try
         {
-            if (codigo is null)
-            {
-                var m_modelos = from modelo in _modelo!.Modelos
-                                join marca in _modelo!.Marcas! on modelo.IdMarca equals marca.Id
-                                orderby modelo.Id
-                                select new
-                                {
-                                    Id = modelo.Id,
-                                    Nome = modelo.Nome,
-                                    IdMarca = marca.Id,
-                                    Marca = marca.Nome
-                                };
-                return new GMJson(m_modelos, _options);
-            }
+            if (codigo is not null)
+                return new GMJson(_modelo!.Modelos?.Find(codigo), _options);
 
-            return new GMJson(_modelo!.Modelos?.Find(codigo), _options);
+            var m_modelos = from modelo in _modelo!.Modelos
+                            join marca in _modelo!.Marcas! on modelo.IdMarca equals marca.Id
+                            orderby modelo.Id descending
+                            select new
+                            {
+                                Id = modelo.Id,
+                                Nome = modelo.Nome,
+                                IdMarca = marca.Id,
+                                Marca = marca.Nome
+                            };
+
+            return new GMJson(m_modelos, _options);
         }
         catch (Exception ex)
         {

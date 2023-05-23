@@ -28,10 +28,26 @@ public class VeiculoController : AbstractController, IControllerCRUD<Veiculo>
     {
         try
         {
-            if (codigo is null)
-                return new GMJson(_modelo!.Veiculos, _options);
+            if (codigo is not null)
+                return new GMJson(_modelo!.Veiculos?.Find(codigo), _options);
 
-            return new GMJson(_modelo!.Veiculos?.Find(codigo), _options);
+            var veiculo = from veic in _modelo!.Veiculos
+                          join modelo in _modelo!.Modelos! on veic.IdModelo equals modelo.Id
+                          join marca in _modelo!.Marcas! on modelo.IdMarca equals marca.Id
+                          orderby veic.Id descending
+                          select new
+                          {
+                              Id = veic.Id,
+                              Placa = veic.Placa,
+                              Cor = veic.Cor,
+                              Ano = veic.Ano,
+                              Km = veic.Km,
+                              IdModelo = modelo.Id,
+                              Modelo = modelo.Nome,
+                              IdMarca = marca.Id,
+                              Marca = marca.Nome
+                          };
+            return new GMJson(veiculo, _options);            
         }
         catch (Exception ex)
         {

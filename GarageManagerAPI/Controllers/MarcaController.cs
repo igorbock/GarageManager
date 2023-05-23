@@ -29,7 +29,7 @@ public class MarcaController : AbstractController, IControllerCRUD<Marca>
         try
         {
             if (codigo is null)
-                return new GMJson(_modelo?.Marcas!, _options);
+                return new GMJson(_modelo?.Marcas!.OrderByDescending(a => a.Id), _options);
 
             return new GMJson(_modelo?.Marcas?.Find(codigo), _options);
         }

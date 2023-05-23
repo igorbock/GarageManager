@@ -64,7 +64,7 @@ public class OrdemServicoControllerTest
                 ControllerContext = _controllerContextGET ?? throw new Exception($"{nameof(_controllerContextGET)} é null")
             };
 
-            var resultado = _ordemServicoControllerMock.ReadOrdemServico(null);
+            var resultado = _ordemServicoControllerMock.Read(null);
             var jsonResult = resultado as JsonResult;
             if (jsonResult is null)
                 Assert.Fail("JsonResult é null");
@@ -97,7 +97,7 @@ public class OrdemServicoControllerTest
                 ControllerContext = _controllerContextGET ?? throw new Exception($"{nameof(_controllerContextGET)} é null")
             };
 
-            var resultado = _ordemServicoControllerMock.ReadOrdemServico(1);
+            var resultado = _ordemServicoControllerMock.Read(1);
             var jsonResult = resultado as JsonResult;
             if (jsonResult is null)
                 Assert.Fail("JsonResult é null");

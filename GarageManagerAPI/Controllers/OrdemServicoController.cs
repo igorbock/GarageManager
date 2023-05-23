@@ -1,4 +1,6 @@
-﻿namespace GarageManagerAPI.Controllers;
+﻿using GarageManagerRazorLib.DTOs;
+
+namespace GarageManagerAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -11,6 +13,9 @@ public class OrdemServicoController : AbstractController, IControllerCRUD<OrdemS
     {
         try
         {
+            entidade.Inicio = DateTime.SpecifyKind(entidade.Inicio!.Value, DateTimeKind.Utc);
+            entidade.Fim = DateTime.SpecifyKind(entidade.Fim!.Value, DateTimeKind.Utc);
+
             if (entidade.Id == 0)
                 _modelo!.OrdensServico?.Add(entidade);
             else
@@ -28,15 +33,32 @@ public class OrdemServicoController : AbstractController, IControllerCRUD<OrdemS
     {
         try
         {
-            if (codigo is null)
-                return new GMJson(_modelo?.OrdensServico, _options);
+            if (codigo is not null)
+                return new GMJson(_modelo?.OrdensServico!.Find(codigo), _options);
 
-            var ordem = _modelo?.OrdensServico?.FirstOrDefault(a => a.Id == codigo);
-            var lista = new List<OrdemServico>
-            {
-                ordem ?? throw new Exception()
-            };
-            return new GMJson(lista, _options);
+
+            var ordens = from ordem in _modelo!.OrdensServico!.AsNoTracking()
+                            join cliente in _modelo!.Clientes!.AsNoTracking() on ordem.IdCliente equals cliente.Id
+                            join veiculo in _modelo!.Veiculos!.AsNoTracking() on ordem.IdVeiculo equals veiculo.Id
+                            orderby ordem.Id descending
+                            select new OrdemServicoDTO
+                            {
+                                Id = ordem.Id,
+                                Inicio = ordem.Inicio,
+                                Fim = ordem.Fim,
+                                Esperados = ordem.Esperados,
+                                Realizados = ordem.Realizados,
+                                Mecanico = ordem.Mecanico,
+                                Status = ordem.Status,
+                                Lavacao = ordem.Lavacao,
+                                Pagamento = ordem.Pagamento,
+                                IdVeiculo = veiculo.Id,
+                                Veiculo = $"{veiculo!.Modelo!.Nome} - {veiculo!.Modelo!.Marca!.Nome}", 
+                                IdCliente = cliente.Id,
+                                Cliente = cliente.Nome,
+                                Telefone = cliente.Telefone
+                            };
+            return new GMJson(ordens, _options);
         }
         catch (Exception ex)
         {
