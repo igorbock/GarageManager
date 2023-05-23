@@ -34,6 +34,9 @@ public partial class OrdemServicos : IPage<OrdemServicoDTO>
         if (ClienteService is null) throw new ArgumentNullException();
 
         IQueryableOrdemServicos = (await OrdemServicoService.Ler(null)).AsQueryable();
+        foreach (var os in IQueryableOrdemServicos)
+            os.StatusEnum = Enum.Parse<E_STATUS>(os.Status.ToString());
+
         IQueryableVeiculos = (await VeiculoService.Ler(null)).AsQueryable();
         IQueryableClientes = (await ClienteService.Ler(null)).AsQueryable();
         OrdemServicoAtual = new OrdemServico();

@@ -13,8 +13,10 @@ public class OrdemServicoController : AbstractController, IControllerCRUD<OrdemS
     {
         try
         {
-            entidade.Inicio = DateTime.SpecifyKind(entidade.Inicio!.Value, DateTimeKind.Utc);
-            entidade.Fim = DateTime.SpecifyKind(entidade.Fim!.Value, DateTimeKind.Utc);
+            if(entidade.Inicio.HasValue)
+                entidade.Inicio = DateTime.SpecifyKind(entidade.Inicio!.Value, DateTimeKind.Utc);
+            if(entidade.Fim.HasValue)
+                entidade.Fim = DateTime.SpecifyKind(entidade.Fim!.Value, DateTimeKind.Utc);
 
             if (entidade.Id == 0)
                 _modelo!.OrdensServico?.Add(entidade);

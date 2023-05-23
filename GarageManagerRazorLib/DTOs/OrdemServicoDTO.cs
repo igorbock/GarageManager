@@ -8,6 +8,7 @@ public class OrdemServicoDTO
     public string? Esperados { get; set; }
     public string? Realizados { get; set; }
     public string? Mecanico { get; set; }
+    public E_STATUS StatusEnum { get; set; }
     public int Status { get; set; }
     public bool Lavacao { get; set; }
     public string? Pagamento { get; set; }
