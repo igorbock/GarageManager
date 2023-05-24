@@ -2,26 +2,62 @@
 
 <h3>Marcas</h3>
 
-<QuickGrid Items="IQueryableMarcas">
-    <PropertyColumn Property="@(c => c.Id)" />
-    <PropertyColumn Property="@(c => c.Nome)" />
-    <TemplateColumn Title="Ação">
-        <button onclick="@(() => Editar(context))">Editar</button>
-        <button onclick="@(async () => await Apagar(context))">Apagar</button>
-    </TemplateColumn>
-</QuickGrid>
+<DataGrid TItem="Marca"
+          Data="IQueryableMarcas"
+@bind-SelectedRow="MarcaAtual"
+          Editable
+          Responsive
+          ShowPager
+          CommandMode="DataGridCommandMode.ButtonRow">
+    <DataGridColumns>
+        <DataGridColumn Field="@nameof(Marca.Id)" Caption="Id" Sortable="true" Editable />
+        <DataGridColumn Field="@nameof(Marca.Nome)" Caption="Marca" Sortable="true" Editable />
+    </DataGridColumns>
+    <ButtonRowTemplate>
+        <Button Color="Color.Success" Clicked="Novo">Novo</Button>
+        <Button Color="Color.Primary" Disabled="(MarcaAtual?.Nome is null)" Clicked="ShowModal">Editar</Button>
+        <Button Color="Color.Danger" Disabled="(MarcaAtual?.Nome is null)" Clicked="ShowModalApagar">Apagar</Button>
+    </ButtonRowTemplate>
+</DataGrid>
 
-<InputText @bind-Value="@MarcaAtual!.Nome"/>
-<button onclick="@(async () => await Salvar())">Salvar</button>
+<Modal @ref="ModalCRUD">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Marca</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Id</FieldLabel>
+                <NumericEdit Placeholder="Id..." @bind-Value="MarcaAtual!.Id" />
+            </Field>
+            <Field>
+                <FieldLabel>Marca</FieldLabel>
+                <TextEdit Placeholder="Marca..." @bind-Text="MarcaAtual!.Nome" />
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@Cancelar">Cancelar</Button>
+            <Button Color="Color.Primary" Clicked="@Salvar">Salvar</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
 
-@*<ErrorBoundary @ref="Error">
-    <ChildContent>
-        <GMGrid EntidadeAtual="@MarcaAtual" TipoT="Marca" IQueryable="IQueryableMarcas" Service="MarcaService" />
-    </ChildContent>
-    <ErrorContent>
-        <div class="alert alert-danger">Um erro aconteceu</div>
-        <button onclick="@TratarErro()">Voltar</button>
-    </ErrorContent>
-</ErrorBoundary>*@
+<Modal @ref="ModalApagar">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Deseja apagar esse registro?</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalFooter>
+            <Button Color="Color.Light" Clicked="HideModalApagar">Não</Button>
+            <Button Color="Color.Danger" Clicked="@(async () => await Apagar(MarcaAtual!))">Sim</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+@*
+<InputText @bind-Value="@MarcaAtual!.Nome" />
+<button onclick="@(async () => await Salvar())">Salvar</button>*@
 
 

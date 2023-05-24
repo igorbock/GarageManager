@@ -1,8 +1,8 @@
-﻿using GarageManagerRazorLib.Interfaces;
+﻿using Blazorise;
+using GarageManagerRazorLib.Interfaces;
 using GarageManagerRazorLib.Models;
 using GarageManagerRazorLib.Services;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 
 namespace GarageManageWASM.Pages;
 
@@ -11,17 +11,36 @@ public partial class Marcas : IPage<Marca>
     [Inject]
     public ServiceAbstract<Marca, Marca>? MarcaService { get; set; }
 
-    public IQueryable<Marca>? IQueryableMarcas { get; set; } = new List<Marca>().AsQueryable();
-    protected Marca MarcaAtual { get; set; } = new Marca();
+    public List<Marca>? IQueryableMarcas { get; set; }
+    protected Marca? MarcaAtual { get; set; } = new Marca();
 
-    protected ErrorBoundary? Error { get; set; }
+    private Modal? ModalCRUD { get; set; }
+    private Task ShowModal() => ModalCRUD!.Show();
+    private Task HideModal() => ModalCRUD!.Hide();
+
+    private Modal? ModalApagar { get; set; }
+    private Task ShowModalApagar() => ModalApagar!.Show();
+    private Task HideModalApagar() => ModalApagar!.Hide();
 
     protected override async Task OnInitializedAsync()
     {
         if (MarcaService is null) throw new ArgumentNullException();
 
-        IQueryableMarcas = (await MarcaService.Ler(null)).AsQueryable();
+        IQueryableMarcas = (await MarcaService.Ler(null)).ToList();
         MarcaAtual = new Marca();
+        await base.OnInitializedAsync();
+    }
+
+    private async Task Cancelar()
+    {
+        await HideModal();
+        MarcaAtual = new Marca();
+    }
+
+    private async Task Novo()
+    {
+        MarcaAtual = new Marca();
+        await ShowModal();
     }
 
     public async Task Salvar()
@@ -32,6 +51,7 @@ public partial class Marcas : IPage<Marca>
 
         await MarcaService.Salvar(MarcaAtual);
         await OnInitializedAsync();
+        await HideModal();
     }
 
     public async Task Editar(Marca entidade)
@@ -54,13 +74,6 @@ public partial class Marcas : IPage<Marca>
         await MarcaService.Excluir(entidade.Id);
         await OnInitializedAsync();
         await InvokeAsync(() => StateHasChanged());
-    }
-
-    protected async Task TratarErro()
-    {
-        if (Error is null) return;
-
-        Error.Recover();
-        await InvokeAsync(() => StateHasChanged());
+        await HideModalApagar();
     }
 }
