@@ -29,7 +29,7 @@
         <ModalBody>
             <Field>
                 <FieldLabel>Id</FieldLabel>
-                <NumericEdit Placeholder="Id..." @bind-Value="MarcaAtual!.Id" />
+                <NumericEdit Placeholder="Id..." @bind-Value="MarcaAtual!.Id" Disabled/>
             </Field>
             <Field>
                 <FieldLabel>Marca</FieldLabel>
@@ -55,9 +55,3 @@
         </ModalFooter>
     </ModalContent>
 </Modal>
-
-@*
-<InputText @bind-Value="@MarcaAtual!.Nome" />
-<button onclick="@(async () => await Salvar())">Salvar</button>*@
-
-

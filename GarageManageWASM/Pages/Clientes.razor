@@ -2,22 +2,66 @@
 
 <h3>Clientes</h3>
 
-<QuickGrid Items="IQueryableCliente">
-    <PropertyColumn Property="@(c => c.Id)" />
-    <PropertyColumn Property="@(c => c.Nome)" />
-    <PropertyColumn Property="@(c => c.CPF)" />
-    <PropertyColumn Property="@(c => c.Telefone)" />
-    <TemplateColumn Title="Ação">
-        <button onclick="@(() => Editar(context))">Editar</button>
-        <button onclick="@(async () => await Apagar(context))">Apagar</button>
-    </TemplateColumn>
-</QuickGrid>
+<DataGrid TItem="Cliente"
+          Data="IQueryableCliente"
+@bind-SelectedRow="ClienteAtual"
+          Editable
+          Responsive
+          ShowPager
+          CommandMode="DataGridCommandMode.ButtonRow">
+    <DataGridColumns>
+        <DataGridColumn Field="@nameof(Cliente.Id)" Caption="Id" Sortable="true" />
+        <DataGridColumn Field="@nameof(Cliente.Nome)" Caption="Nome" Editable />
+        <DataGridColumn Field="@nameof(Cliente.Telefone)" Caption="Telefone" Editable />
+        <DataGridColumn Field="@nameof(Cliente.CPF)" Caption="CPF" Editable />
+    </DataGridColumns>
+    <ButtonRowTemplate>
+        <Button Color="Color.Success" Clicked="Novo">Novo</Button>
+        <Button Color="Color.Primary" Disabled="(ClienteAtual?.Nome is null)" Clicked="ShowModal">Editar</Button>
+        <Button Color="Color.Danger" Disabled="(ClienteAtual?.Nome is null)" Clicked="ShowModalApagar">Apagar</Button>
+    </ButtonRowTemplate>
+</DataGrid>
 
-<span>Nome</span>
-<InputText @bind-Value="@ClienteAtual!.Nome" DisplayName="Nome" /> <br /><br />
-<span>CPF</span>
-<InputText @bind-Value="@ClienteAtual!.CPF" DisplayName="CPF" /> <br /><br />
-<span>Telefone</span>
-<InputText @bind-Value="@ClienteAtual!.Telefone" DisplayName="Telefone" /><br /><br />
-<button onclick="@(async () => await Salvar())">Salvar</button>
+<Modal @ref="ModalCRUD">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Cliente</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Id</FieldLabel>
+                <NumericEdit Placeholder="Id..." @bind-Value="ClienteAtual!.Id" Disabled />
+            </Field>
+            <Field>
+                <FieldLabel>Nome</FieldLabel>
+                <TextEdit Placeholder="Nome..." @bind-Text="ClienteAtual!.Nome" />
+            </Field>
+            <Field>
+                <FieldLabel>Telefone</FieldLabel>
+                <TextEdit Placeholder="Telefone..." @bind-Text="ClienteAtual!.Telefone" />
+            </Field>
+            <Field>
+                <FieldLabel>CPF</FieldLabel>
+                <TextEdit Placeholder="CPF..." @bind-Text="ClienteAtual!.CPF" />
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@Cancelar">Cancelar</Button>
+            <Button Color="Color.Primary" Clicked="@Salvar">Salvar</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
 
+<Modal @ref="ModalApagar">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Deseja apagar esse registro?</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalFooter>
+            <Button Color="Color.Light" Clicked="HideModalApagar">Não</Button>
+            <Button Color="Color.Danger" Clicked="@(async () => await Apagar(ClienteAtual!))">Sim</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>

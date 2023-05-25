@@ -1,4 +1,5 @@
-﻿using GarageManagerRazorLib.DTOs;
+﻿using Blazorise;
+using GarageManagerRazorLib.DTOs;
 using GarageManagerRazorLib.Interfaces;
 using GarageManagerRazorLib.Models;
 using GarageManagerRazorLib.Services;
@@ -15,8 +16,22 @@ public partial class Modelos : IPage<ModeloDTO>
 
     public IQueryable<ModeloDTO>? IQueryableModelos { get; set; } = new List<ModeloDTO>().AsQueryable();
     public IQueryable<Marca>? IQueryableMarcas { get; set; } = new List<Marca>().AsQueryable();
-    protected Modelo ModeloAtual { get; set; } = new Modelo();
+    protected ModeloDTO ModeloDTOAtual { get; set; } = new ModeloDTO();
     protected Marca MarcaAtual { get; set; } = new Marca();
+
+    private Modal? ModalCRUD { get; set; }
+    private Task ShowModal() => ModalCRUD!.Show();
+    private Task HideModal() => ModalCRUD!.Hide();
+
+    private Modal? ModalApagar { get; set; }
+    private Task ShowModalApagar() => ModalApagar!.Show();
+    private Task HideModalApagar() => ModalApagar!.Hide();
+
+    private async Task Cancelar()
+    {
+        await HideModal();
+        ModeloDTOAtual = new ModeloDTO();
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -25,7 +40,7 @@ public partial class Modelos : IPage<ModeloDTO>
 
         IQueryableModelos = (await ModeloService.Ler(null)).AsQueryable();
         IQueryableMarcas = (await MarcaService.Ler(null)).AsQueryable();
-        ModeloAtual = new Modelo();
+        ModeloDTOAtual = new ModeloDTO();
         MarcaAtual = new Marca();
     }
 
@@ -35,7 +50,7 @@ public partial class Modelos : IPage<ModeloDTO>
         if (entidade is null) throw new ArgumentNullException();
         if (string.IsNullOrWhiteSpace(entidade.Nome)) throw new ArgumentException();
 
-        ModeloAtual = new Modelo { Id = entidade.Id, Nome = entidade.Nome, IdMarca = entidade.IdMarca, Marca = new Marca { Id = entidade.Id, Nome = entidade.Marca } };
+        ModeloDTOAtual = entidade;
         await ModeloService.Excluir(entidade.Id);
         await OnInitializedAsync();
         await InvokeAsync(() => StateHasChanged());
@@ -47,12 +62,12 @@ public partial class Modelos : IPage<ModeloDTO>
         if (entidade is null) throw new ArgumentNullException();
         if (string.IsNullOrWhiteSpace(entidade.Nome)) throw new ArgumentException();
 
-        ModeloAtual = new Modelo { Id = entidade.Id, Nome = entidade.Nome, IdMarca = entidade.IdMarca, Marca = new Marca { Id = entidade.IdMarca, Nome = entidade.Marca } };
-        MarcaAtual = ModeloAtual.Marca;
+        ModeloDTOAtual = entidade;
+        MarcaAtual = new Marca { Id = entidade.IdMarca, Nome = entidade.Marca };
         await InvokeAsync(() => StateHasChanged());
     }
 
-    private void VerificaNullable(ServiceAbstract<Modelo, ModeloDTO>? service, Modelo? entidade)
+    private void VerificaNullable(ServiceAbstract<Modelo, ModeloDTO>? service, ModeloDTO? entidade)
     {
         if (service is null) throw new ArgumentNullException();
         if (entidade is null) throw new ArgumentNullException();
@@ -61,20 +76,22 @@ public partial class Modelos : IPage<ModeloDTO>
 
     public async Task Salvar()
     {
-        VerificaNullable(ModeloService, ModeloAtual);
+        VerificaNullable(ModeloService, ModeloDTOAtual);
 
-        ModeloAtual.IdMarca = MarcaAtual.Id;
-        ModeloAtual.Marca = null;
+        ModeloDTOAtual.IdMarca = MarcaAtual.Id;
+        ModeloDTOAtual.Marca = null;
+        var ModeloAtual = new Modelo { Id = ModeloDTOAtual.Id, Nome = ModeloDTOAtual.Nome, IdMarca = ModeloDTOAtual.IdMarca, Marca = new Marca { Id = ModeloDTOAtual.IdMarca, Nome = ModeloDTOAtual.Marca } };
         await ModeloService!.Salvar(ModeloAtual);
         await OnInitializedAsync();
+        await HideModal();
     }
 
-    public Task Novo()
+    public async Task Novo()
     {
-        ModeloAtual = new Modelo();
+        ModeloDTOAtual = new ModeloDTO();
         MarcaAtual = new Marca();
 
-        return Task.CompletedTask;
+        await ShowModal();
     }
 }
 

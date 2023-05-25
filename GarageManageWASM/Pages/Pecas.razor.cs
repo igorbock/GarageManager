@@ -1,4 +1,5 @@
-﻿using GarageManagerRazorLib.Interfaces;
+﻿using Blazorise;
+using GarageManagerRazorLib.Interfaces;
 using GarageManagerRazorLib.Models;
 using GarageManagerRazorLib.Services;
 using Microsoft.AspNetCore.Components;
@@ -15,6 +16,14 @@ public partial class Pecas : IPage<Peca>
     protected Peca PecaAtual { get; set; } = new Peca();
 
     protected ErrorBoundary? Error { get; set; }
+
+    private Modal? ModalCRUD { get; set; }
+    private Task ShowModal() => ModalCRUD!.Show();
+    private Task HideModal() => ModalCRUD!.Hide();
+
+    private Modal? ModalApagar { get; set; }
+    private Task ShowModalApagar() => ModalApagar!.Show();
+    private Task HideModalApagar() => ModalApagar!.Hide();
 
     protected override async Task OnInitializedAsync()
     {
@@ -51,5 +60,19 @@ public partial class Pecas : IPage<Peca>
 
         await PecaService.Salvar(PecaAtual);
         await OnInitializedAsync();
+        await HideModal();
+    }
+
+    public async Task Novo()
+    {
+        PecaAtual = new Peca();
+
+        await ShowModal();
+    }
+
+    private async Task Cancelar()
+    {
+        await HideModal();
+        PecaAtual = new Peca();
     }
 }

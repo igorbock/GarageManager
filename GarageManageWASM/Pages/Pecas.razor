@@ -2,7 +2,80 @@
 
 <h3>Peças</h3>
 
-<QuickGrid Items="IQueryablePecas">
+<DataGrid TItem="Peca"
+          Data="IQueryablePecas"
+@bind-SelectedRow="PecaAtual"
+          Editable
+          Responsive
+          ShowPager
+          CommandMode="DataGridCommandMode.ButtonRow">
+    <DataGridColumns>
+        <DataGridColumn Field="@nameof(Peca.Id)" Caption="Id" Sortable="true" />
+        <DataGridColumn Field="@nameof(Peca.Marca)" Caption="Marca" Editable />
+        <DataGridColumn Field="@nameof(Peca.Descricao)" Caption="Descrição" Editable />
+        <DataGridColumn Field="@nameof(Peca.Quantidade)" Caption="Quantidade" Editable />
+        <DataGridColumn Field="@nameof(Peca.Valor)" Caption="Valor" Editable />
+    </DataGridColumns>
+    <ButtonRowTemplate>
+        <Button Color="Color.Success" Clicked="Novo">Novo</Button>
+        <Button Color="Color.Primary" Disabled="(PecaAtual?.Descricao is null)" Clicked="ShowModal">Editar</Button>
+        <Button Color="Color.Danger" Disabled="(PecaAtual?.Descricao is null)" Clicked="ShowModalApagar">Apagar</Button>
+    </ButtonRowTemplate>
+</DataGrid>
+
+<Modal @ref="ModalCRUD">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Peça</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Id</FieldLabel>
+                <NumericEdit Placeholder="Id..." @bind-Value="PecaAtual!.Id" Disabled />
+            </Field>
+            <Field>
+                <FieldLabel>Marca</FieldLabel>
+                <TextEdit Placeholder="Marca..." @bind-Text="PecaAtual!.Marca" />
+            </Field>
+            <Field>
+                <FieldLabel>Descrição</FieldLabel>
+                <TextEdit Placeholder="Descrição..." @bind-Text="PecaAtual!.Descricao" />
+            </Field>
+            <Field>
+                <FieldLabel>Quantidade</FieldLabel>
+                <NumericEdit Placeholder="Quantidade..." @bind-Value="PecaAtual!.Quantidade" />
+            </Field>
+            <Field>
+                <FieldLabel>Valor</FieldLabel>
+                <NumericEdit Placeholder="Valor..." @bind-Value="PecaAtual!.Valor" />
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@Cancelar">Cancelar</Button>
+            <Button Color="Color.Primary" Clicked="@Salvar">Salvar</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+<Modal @ref="ModalApagar">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Deseja apagar esse registro?</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalFooter>
+            <Button Color="Color.Light" Clicked="HideModalApagar">Não</Button>
+            <Button Color="Color.Danger" Clicked="@(async () => await Apagar(PecaAtual!))">Sim</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+
+
+
+
+@*<QuickGrid Items="IQueryablePecas">
     <PropertyColumn Property="@(c => c.Id)" />
     <PropertyColumn Property="@(c => c.Descricao)" />
     <PropertyColumn Property="@(c => c.Marca)" />
@@ -46,3 +119,4 @@
     </tfoot>
 </table>
 
+*@

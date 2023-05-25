@@ -2,53 +2,66 @@
 
 <h3>Modelos</h3>
 
-<QuickGrid Items="IQueryableModelos">
-    <PropertyColumn Property="@(c => c.Id)" />
-    <PropertyColumn Property="@(c => c.Nome)" />
-    <PropertyColumn Property="@(c => c.Marca)" />
-    <TemplateColumn Title="Ação">
-        <button onclick="@(() => Editar(context))">Editar</button>
-        <button onclick="@(async () => await Apagar(context))">Apagar</button>
-    </TemplateColumn>
-</QuickGrid>
+<DataGrid TItem="ModeloDTO"
+          Data="IQueryableModelos"
+@bind-SelectedRow="ModeloDTOAtual"
+          Editable
+          Responsive
+          ShowPager
+          CommandMode="DataGridCommandMode.ButtonRow">
+    <DataGridColumns>
+        <DataGridColumn Field="@nameof(ModeloDTO.Id)" Caption="Id" Sortable="true" Editable />
+        <DataGridColumn Field="@nameof(ModeloDTO.Nome)" Caption="Modelo" Editable />
+        <DataGridColumn Field="@nameof(ModeloDTO.Marca)" Caption="Marca" Editable />
+    </DataGridColumns>
+    <ButtonRowTemplate>
+        <Button Color="Color.Success" Clicked="Novo">Novo</Button>
+        <Button Color="Color.Primary" Disabled="(ModeloDTOAtual?.Nome is null)" Clicked="ShowModal">Editar</Button>
+        <Button Color="Color.Danger" Disabled="(ModeloDTOAtual?.Nome is null)" Clicked="ShowModalApagar">Apagar</Button>
+    </ButtonRowTemplate>
+</DataGrid>
 
-
-<table>
-    <tbody>
-        <tr>
-            <td><span>Id</span></td>
-            <td><InputNumber @bind-Value="@ModeloAtual!.Id" disabled /></td>
-        </tr>
-        <tr>
-            <td><span>Nome</span></td>
-            <td><InputText @bind-Value="@ModeloAtual!.Nome" /></td>
-        </tr>
-        <tr>
-            <td><span>Id Marca</span></td>
-            <td><InputNumber @bind-Value="@MarcaAtual!.Id" disabled /></td>
-        </tr>
-        <tr>
-            <td><span>Marca</span></td>
-            <td>
-                <InputSelect @bind-Value="@MarcaAtual.Id">
-                    <option value=""></option>
-                    @foreach(var valor in IQueryableMarcas!)
+<Modal @ref="ModalCRUD">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Modelo</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Id</FieldLabel>
+                <NumericEdit Placeholder="Id..." @bind-Value="ModeloDTOAtual!.Id" Disabled/>
+            </Field>
+            <Field>
+                <FieldLabel>Modelo</FieldLabel>
+                <TextEdit Placeholder="Modelo..." @bind-Text="ModeloDTOAtual!.Nome" />
+            </Field>
+            <Field>
+                <FieldLabel>Marca</FieldLabel>
+                <Select @bind-SelectedValue="ModeloDTOAtual.IdMarca">
+                    @foreach (var item in IQueryableMarcas!)
                     {
-                        <option value="@valor.Id">@valor.Nome</option>
+                        <SelectItem Value="item.Id">@item.Nome</SelectItem>
                     }
-                </InputSelect>
-            </td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td>
-                <button onclick="@(async () => await Salvar())">Salvar</button>
-            </td>
-            <td>
-                <button onclick="@(() => Novo())">Novo</button>
-            </td>
-        </tr>
-    </tfoot>
-</table>
+                </Select>
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@Cancelar">Cancelar</Button>
+            <Button Color="Color.Primary" Clicked="@Salvar">Salvar</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
 
+<Modal @ref="ModalApagar">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Deseja apagar esse registro?</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalFooter>
+            <Button Color="Color.Light" Clicked="HideModalApagar">Não</Button>
+            <Button Color="Color.Danger" Clicked="@(async () => await Apagar(ModeloDTOAtual!))">Sim</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>

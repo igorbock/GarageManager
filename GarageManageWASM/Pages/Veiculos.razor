@@ -2,11 +2,102 @@
 
 <h3>Veículos</h3>
 
-<QuickGrid Items="IQueryableVeiculos">
+<DataGrid TItem="VeiculoDTO"
+          Data="IQueryableVeiculos"
+@bind-SelectedRow="VeiculoDTOAtual"
+          Editable
+          Responsive
+          ShowPager
+          CommandMode="DataGridCommandMode.ButtonRow">
+    <DataGridColumns>
+        <DataGridColumn Field="@nameof(VeiculoDTO.Id)" Caption="Id" Sortable="true" Editable />
+        <DataGridColumn Field="@nameof(VeiculoDTO.Placa)" Caption="Placa" Editable />
+        <DataGridColumn Field="@nameof(VeiculoDTO.Marca)" Caption="Marca" Editable />
+        <DataGridColumn Field="@nameof(VeiculoDTO.Modelo)" Caption="Modelo" Editable />
+        <DataGridColumn Field="@nameof(VeiculoDTO.Km)" Caption="Km" Editable />
+        <DataGridColumn Field="@nameof(VeiculoDTO.Cor)" Caption="Cor" Editable />
+        <DataGridColumn Field="@nameof(VeiculoDTO.Ano)" Caption="Ano" Editable />
+    </DataGridColumns>
+    <ButtonRowTemplate>
+        <Button Color="Color.Success" Clicked="Novo">Novo</Button>
+        <Button Color="Color.Primary" Disabled="(VeiculoDTOAtual?.Placa is null)" Clicked="ShowModal">Editar</Button>
+        <Button Color="Color.Danger" Disabled="(VeiculoDTOAtual?.Placa is null)" Clicked="ShowModalApagar">Apagar</Button>
+    </ButtonRowTemplate>
+</DataGrid>
+
+<Modal @ref="ModalCRUD">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Veículo</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Id</FieldLabel>
+                <NumericEdit Placeholder="Id..." @bind-Value="VeiculoDTOAtual!.Id" Disabled />
+            </Field>
+            <Field>
+                <FieldLabel>Placa</FieldLabel>
+                <TextEdit Placeholder="Placa..." @bind-Text="VeiculoDTOAtual!.Placa" />
+            </Field>
+            <Field>
+                <FieldLabel>Marca</FieldLabel>
+                <Select @bind-SelectedValue="VeiculoDTOAtual.IdMarca">
+                    @foreach (var item in IQueryableMarcas!)
+                    {
+                        <SelectItem Value="item.Id">@item.Nome</SelectItem>
+                    }
+                </Select>
+            </Field>
+            <Field>
+                <FieldLabel>Modelo</FieldLabel>
+                <Select @bind-SelectedValue="VeiculoDTOAtual.IdModelo">
+                    @foreach (var item in IQueryableModelos!.Where(a => a.IdMarca == VeiculoDTOAtual.IdMarca))
+                    {
+                        <SelectItem Value="item.Id">@item.Nome</SelectItem>
+                    }
+                </Select>
+            </Field>
+            <Field>
+                <FieldLabel>Km</FieldLabel>
+                <NumericEdit Placeholder="Km..." @bind-Value="VeiculoDTOAtual!.Km" />
+            </Field>
+            <Field>
+                <FieldLabel>Cor</FieldLabel>
+                <TextEdit Placeholder="Cor..." @bind-Text="VeiculoDTOAtual!.Cor" />
+            </Field>
+            <Field>
+                <FieldLabel>Ano</FieldLabel>
+                <NumericEdit Placeholder="Ano..." @bind-Value="VeiculoDTOAtual!.Ano" />
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@Cancelar">Cancelar</Button>
+            <Button Color="Color.Primary" Clicked="@Salvar">Salvar</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+<Modal @ref="ModalApagar">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Deseja apagar esse registro?</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalFooter>
+            <Button Color="Color.Light" Clicked="HideModalApagar">Não</Button>
+            <Button Color="Color.Danger" Clicked="@(async () => await Apagar(VeiculoDTOAtual!))">Sim</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+
+
+
+
+@*<QuickGrid Items="IQueryableVeiculos">
     <PropertyColumn Property="@(c => c.Id)" />
-    <PropertyColumn Property="@(c => c.IdMarca)" />
     <PropertyColumn Property="@(c => c.Marca)" />
-    <PropertyColumn Property="@(c => c.IdModelo)" />
     <PropertyColumn Property="@(c => c.Modelo)" />
     <PropertyColumn Property="@(c => c.Km)" />
     <PropertyColumn Property="@(c => c.Placa)" />
@@ -27,7 +118,7 @@
         </tr>
         <tr>
             <td><span>KM</span></td>
-            <td><InputNumber @bind-Value="@VeiculoAtual!.Km"/></td>
+            <td><InputNumber @bind-Value="@VeiculoAtual!.Km" /></td>
         </tr>
         <tr>
             <td><span>Marca</span></td>
@@ -68,7 +159,7 @@
         <tr>
             <td><span>Cor</span></td>
             <td><InputText @bind-Value="@VeiculoAtual!.Cor" /></td>
-        </tr>        
+        </tr>
     </tbody>
     <tfoot>
         <tr>
@@ -81,3 +172,4 @@
         </tr>
     </tfoot>
 </table>
+*@
