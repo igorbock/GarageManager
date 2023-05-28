@@ -9,5 +9,6 @@ public class Modelo : IEntidade
     public string? Nome { get; set; }
     [ForeignKey(nameof(Marca))]
     public int IdMarca { get; set; }
+    [NotMapped]
     public virtual Marca? Marca { get; set; }
 }

@@ -11,8 +11,11 @@ public class VeiculoController : AbstractController, IControllerCRUD<Veiculo>
     {
         try
         {
+            var query_insert = $"INSERT INTO oficina.veiculos (\"Placa\", \"Cor\", \"Ano\", \"Km\", \"IdModelo\") VALUES ('{entidade.Placa}', '{entidade.Cor}', {entidade.Ano}, {entidade.Km}, {entidade.IdModelo});";
+
             if (entidade.Id == 0)
-                _modelo!.Veiculos?.Add(entidade);
+                _modelo!.Database.ExecuteSqlRaw(query_insert);
+            //_modelo!.Veiculos?.Add(entidade);
             else
                 _modelo!.Veiculos?.Update(entidade);
             return new GMOk(_modelo.SaveChanges());

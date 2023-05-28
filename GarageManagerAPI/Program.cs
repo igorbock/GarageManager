@@ -12,6 +12,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.MigrateDatabase();
+app.MigrateMarcas();
+app.MigrateModelos();
+
 app.UseCors(cors => cors
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
