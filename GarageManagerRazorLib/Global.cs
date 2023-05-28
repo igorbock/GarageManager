@@ -6,3 +6,4 @@ global using System.Text.Json;
 global using GarageManagerRazorLib.Enums;
 global using GarageManagerRazorLib.Models;
 global using GarageManagerRazorLib.Interfaces;
+global using GarageManagerRazorLib.DTOs;

@@ -8,7 +8,7 @@ namespace GarageManageWASM.Pages;
 public partial class Clientes : IPage<Cliente>
 {
     [Inject]
-    public ServiceAbstract<Cliente>? ClienteService { get; set; }
+    public ServiceAbstract<Cliente, Cliente>? ClienteService { get; set; }
 
     public IQueryable<Cliente>? IQueryableCliente { get; set; } = new List<Cliente>().AsQueryable();
     protected Cliente ClienteAtual { get; set; } = new Cliente();
@@ -49,7 +49,7 @@ public partial class Clientes : IPage<Cliente>
         if (ClienteAtual is null) throw new ArgumentNullException();
         if (string.IsNullOrWhiteSpace(ClienteAtual.Nome)) throw new ArgumentException();
 
-        await ClienteService.Criar(ClienteAtual);
+        await ClienteService.Salvar(ClienteAtual);
         await OnInitializedAsync();
     }
 }

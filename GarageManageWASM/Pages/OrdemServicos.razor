@@ -9,11 +9,14 @@
     <PropertyColumn Property="@(c => c.Esperados)" />
     <PropertyColumn Property="@(c => c.Realizados)" />
     <PropertyColumn Property="@(c => c.Mecanico)" />
-    <PropertyColumn Property="@(c => c.Status)" />
+    <PropertyColumn Property="@(c => c.StatusEnum.ToString())" />
     <PropertyColumn Property="@(c => c.Lavacao)" />
     <PropertyColumn Property="@(c => c.Pagamento)" />
     <PropertyColumn Property="@(c => c.IdVeiculo)" />
+    <PropertyColumn Property="@(c => c.Veiculo)" />
     <PropertyColumn Property="@(c => c.IdCliente)" />
+    <PropertyColumn Property="@(c => c.Cliente)" />
+    <PropertyColumn Property="@(c => c.Telefone)" />
     <TemplateColumn Title="Ação">
         <button onclick="@(() => Editar(context))">Editar</button>
         <button onclick="@(async () => await Apagar(context))">Apagar</button>
@@ -48,7 +51,15 @@
         </tr>
         <tr>
             <td><span>Status</span></td>
-            <td><InputNumber @bind-Value="@OrdemServicoAtual!.Status" /></td>
+            <td>
+                <InputSelect @bind-Value="@OrdemServicoAtual!.Status">
+                    <option value=""></option>
+                    @foreach (var valor in StatusOrdemServico!)
+                    {
+                        <option value="@valor.Key">@valor.Value</option>
+                    }
+                </InputSelect>
+            </td>
         </tr>
         <tr>
             <td><span>Lavação</span></td>
@@ -60,11 +71,39 @@
         </tr>
         <tr>
             <td><span>Id Veículo</span></td>
-            <td><InputNumber @bind-Value="@OrdemServicoAtual!.IdVeiculo" /></td>
+            <td><InputNumber @bind-Value="@VeiculoAtual!.Id" disabled /></td>
+        </tr>
+        <tr>
+            <td><span>Veículo</span></td>
+            <td>
+                <InputSelect @bind-Value="@VeiculoAtual.Id">
+                    <option value=""></option>
+                    @foreach (var valor in IQueryableVeiculos!)
+                    {
+                        <option value="@valor.Id">@valor.Modelo</option>
+                    }
+                </InputSelect>
+            </td>
         </tr>
         <tr>
             <td><span>Id Cliente</span></td>
-            <td><InputNumber @bind-Value="@OrdemServicoAtual!.IdCliente" /></td>
+            <td><InputNumber @bind-Value="@ClienteAtual!.Id" disabled /></td>
+        </tr>
+        <tr>
+            <td><span>Cliente</span></td>
+            <td>
+                <InputSelect @bind-Value="@ClienteAtual.Id">
+                    <option value=""></option>
+                    @foreach (var valor in IQueryableClientes!)
+                    {
+                        <option value="@valor.Id">@valor.Nome</option>
+                    }
+                </InputSelect>
+            </td>
+        </tr>
+        <tr>
+            <td><span>Telefone</span></td>
+            <td><InputText @bind-Value="@ClienteAtual!.Telefone" /></td>
         </tr>
     </tbody>
     <tfoot>

@@ -9,7 +9,7 @@ namespace GarageManageWASM.Pages;
 public partial class Marcas : IPage<Marca>
 {
     [Inject]
-    public ServiceAbstract<Marca>? MarcaService { get; set; }
+    public ServiceAbstract<Marca, Marca>? MarcaService { get; set; }
 
     public IQueryable<Marca>? IQueryableMarcas { get; set; } = new List<Marca>().AsQueryable();
     protected Marca MarcaAtual { get; set; } = new Marca();
@@ -30,7 +30,7 @@ public partial class Marcas : IPage<Marca>
         if (MarcaAtual is null) throw new ArgumentNullException();
         if (string.IsNullOrWhiteSpace(MarcaAtual.Nome)) throw new ArgumentException();
 
-        await MarcaService.Criar(MarcaAtual);
+        await MarcaService.Salvar(MarcaAtual);
         await OnInitializedAsync();
     }
 

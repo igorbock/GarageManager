@@ -4,7 +4,10 @@
 
 <QuickGrid Items="IQueryableVeiculos">
     <PropertyColumn Property="@(c => c.Id)" />
+    <PropertyColumn Property="@(c => c.IdMarca)" />
+    <PropertyColumn Property="@(c => c.Marca)" />
     <PropertyColumn Property="@(c => c.IdModelo)" />
+    <PropertyColumn Property="@(c => c.Modelo)" />
     <PropertyColumn Property="@(c => c.Km)" />
     <PropertyColumn Property="@(c => c.Placa)" />
     <PropertyColumn Property="@(c => c.Ano)" />
@@ -15,14 +18,66 @@
     </TemplateColumn>
 </QuickGrid>
 
-<p>Km</p>
-<InputNumber @bind-Value="@VeiculoAtual!.Km" DisplayName="Km" /><br />
-<p>Id Modelo</p>
-<InputNumber @bind-Value="@VeiculoAtual!.IdModelo" DisplayName="Id Modelo" /><br />
-<p>Ano</p>
-<InputNumber @bind-Value="@VeiculoAtual!.Ano" DisplayName="Ano" /><br />
-<p>Placa</p>
-<InputText @bind-Value="@VeiculoAtual!.Placa" DisplayName="Placa" /><br />
-<p>Cor</p>
-<InputText @bind-Value="@VeiculoAtual!.Cor" DisplayName="Cor" /><br />
-<button onclick="@(async () => await Salvar())">Salvar</button>
+
+<table>
+    <tbody>
+        <tr>
+            <td><span>Id</span></td>
+            <td><InputNumber @bind-Value="@VeiculoAtual!.Id" disabled /></td>
+        </tr>
+        <tr>
+            <td><span>KM</span></td>
+            <td><InputNumber @bind-Value="@VeiculoAtual!.Km"/></td>
+        </tr>
+        <tr>
+            <td><span>Marca</span></td>
+            <td>
+                <InputSelect @bind-Value="@MarcaAtual.Id">
+                    <option value=""></option>
+                    @foreach (var valor in IQueryableMarcas!)
+                    {
+                        <option value="@valor.Id">@valor.Nome</option>
+                    }
+                </InputSelect>
+            </td>
+        </tr>
+        <tr>
+            <td><span>Id Modelo</span></td>
+            <td><InputNumber @bind-Value="@ModeloAtual!.Id" disabled /></td>
+        </tr>
+        <tr>
+            <td><span>Modelo</span></td>
+            <td>
+                <InputSelect @bind-Value="@ModeloAtual.Id">
+                    <option value=""></option>
+                    @foreach (var valor in IQueryableModelos!.Where(a => a.IdMarca == MarcaAtual.Id))
+                    {
+                        <option value="@valor.Id">@valor.Nome</option>
+                    }
+                </InputSelect>
+            </td>
+        </tr>
+        <tr>
+            <td><span>Ano</span></td>
+            <td><InputNumber @bind-Value="@VeiculoAtual!.Ano" /></td>
+        </tr>
+        <tr>
+            <td><span>Placa</span></td>
+            <td><InputText @bind-Value="@VeiculoAtual!.Placa" /></td>
+        </tr>
+        <tr>
+            <td><span>Cor</span></td>
+            <td><InputText @bind-Value="@VeiculoAtual!.Cor" /></td>
+        </tr>        
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                <button onclick="@(async () => await Salvar())">Salvar</button>
+            </td>
+            <td>
+                <button onclick="@(() => Novo())">Novo</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>

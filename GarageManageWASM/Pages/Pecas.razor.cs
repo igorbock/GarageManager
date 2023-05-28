@@ -9,7 +9,7 @@ namespace GarageManageWASM.Pages;
 public partial class Pecas : IPage<Peca>
 {
     [Inject]
-    public ServiceAbstract<Peca>? PecaService { get; set; }
+    public ServiceAbstract<Peca, Peca>? PecaService { get; set; }
 
     public IQueryable<Peca>? IQueryablePecas { get; set; } = new List<Peca>().AsQueryable();
     protected Peca PecaAtual { get; set; } = new Peca();
@@ -49,7 +49,7 @@ public partial class Pecas : IPage<Peca>
         if (PecaService is null) throw new ArgumentNullException();
         if (PecaAtual is null) throw new ArgumentNullException();
 
-        await PecaService.Criar(PecaAtual);
+        await PecaService.Salvar(PecaAtual);
         await OnInitializedAsync();
     }
 }

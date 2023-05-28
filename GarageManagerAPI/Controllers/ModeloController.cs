@@ -2,16 +2,19 @@
 
 [ApiController]
 [Route("api/[controller]")]
-public class ModeloController : AbstractController, IModelo
+public class ModeloController : AbstractController, IControllerCRUD<Modelo>
 {
     public ModeloController(HttpClient p_httpClient, Context.Modelo p_modelo) : base(p_httpClient, p_modelo) { }
 
     [HttpPost]
-    public IGMActionResult CreateModelo(Modelo p_modelo)
+    public IGMActionResult Save(Modelo entidade)
     {
         try
         {
-            _modelo!.Modelos?.Add(p_modelo);
+            if (entidade.Id == 0)
+                _modelo!.Modelos?.Add(entidade);
+            else
+                _modelo!.Modelos?.Update(entidade);
             return new GMOk(_modelo.SaveChanges());
         }
         catch (Exception ex)
@@ -21,38 +24,25 @@ public class ModeloController : AbstractController, IModelo
     }
 
     [HttpGet]
-    public IGMActionResult ReadModelo(int? p_modelo)
+    public IGMActionResult Read(int? codigo)
     {
         try
         {
-            if (p_modelo is null)
-            {
-                var m_modelos = from modelo in _modelo!.Modelos
-                                join marca in _modelo!.Marcas! on modelo.IdMarca equals marca.Id
-                                select new
-                                {
-                                    Id = modelo.Id,
-                                    Nome = modelo.Nome,
-                                    IdMarca = modelo.IdMarca
-                                };
-                return new GMJson(m_modelos, _options);
-            }
+            if (codigo is not null)
+                return new GMJson(_modelo!.Modelos?.Find(codigo), _options);
 
-            return new GMJson(_modelo!.Modelos?.Find(p_modelo), _options);
-        }
-        catch (Exception ex)
-        {
-            return new GMBadRequest(ex.Message);
-        }
-    }
+            var m_modelos = from modelo in _modelo!.Modelos
+                            join marca in _modelo!.Marcas! on modelo.IdMarca equals marca.Id
+                            orderby modelo.Id descending
+                            select new
+                            {
+                                Id = modelo.Id,
+                                Nome = modelo.Nome,
+                                IdMarca = marca.Id,
+                                Marca = marca.Nome
+                            };
 
-    [HttpPut]
-    public IGMActionResult UpdateModelo(Modelo p_modelo)
-    {
-        try
-        {
-            _modelo!.Modelos?.Update(p_modelo);
-            return new GMOk(_modelo.SaveChanges());
+            return new GMJson(m_modelos, _options);
         }
         catch (Exception ex)
         {
@@ -61,11 +51,11 @@ public class ModeloController : AbstractController, IModelo
     }
 
     [HttpDelete]
-    public IGMActionResult DeleteModelo(int p_codigo)
+    public IGMActionResult Delete(int codigo)
     {
         try
         {
-            var m_modelo = _modelo?.Modelos?.Find(p_codigo) ?? throw new ArgumentNullException();
+            var m_modelo = _modelo?.Modelos?.Find(codigo) ?? throw new ArgumentNullException();
             _modelo!.Modelos?.Remove(m_modelo);
             return new GMOk(_modelo.SaveChanges());
         }

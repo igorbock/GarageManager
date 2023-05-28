@@ -2,16 +2,19 @@
 
 [ApiController]
 [Route("api/[controller]")]
-public class ClienteController : AbstractController, ICliente
+public class ClienteController : AbstractController, IControllerCRUD<Cliente>
 {
     public ClienteController(HttpClient p_httpClient, Context.Modelo p_modelo) : base(p_httpClient, p_modelo) { }
 
     [HttpPost]
-    public IGMActionResult CreateCliente(Cliente p_cliente)
+    public IGMActionResult Save(Cliente entidade)
     {
         try
         {
-            _modelo!.Clientes?.Add(p_cliente);
+            if (entidade.Id == 0)
+                _modelo!.Clientes?.Add(entidade);
+            else
+                _modelo!.Clientes?.Update(entidade);
             return new GMOk(_modelo!.SaveChanges());
         }
         catch (Exception ex)
@@ -21,28 +24,14 @@ public class ClienteController : AbstractController, ICliente
     }
 
     [HttpGet]
-    public IGMActionResult ReadCliente(int? p_cliente)
+    public IGMActionResult Read(int? codigo)
     {
         try
         {
-            if (p_cliente is null)
+            if (codigo is null)
                 return new GMJson(_modelo!.Clientes, _options);
 
-            return new GMJson(_modelo!.Clientes?.Find(p_cliente), _options);
-        }
-        catch (Exception ex)
-        {
-            return new GMBadRequest(ex.Message);
-        }
-    }
-
-    [HttpPut]
-    public IGMActionResult UpdateCliente(Cliente p_cliente)
-    {
-        try
-        {
-            _modelo!.Clientes?.Update(p_cliente);
-            return new GMOk(_modelo.SaveChanges());
+            return new GMJson(_modelo!.Clientes?.Find(codigo), _options);
         }
         catch (Exception ex)
         {
@@ -51,11 +40,12 @@ public class ClienteController : AbstractController, ICliente
     }
 
     [HttpDelete]
-    public IGMActionResult DeleteCliente(Cliente p_cliente)
+    public IGMActionResult Delete(int codigo)
     {
         try
         {
-            _modelo!.Clientes?.Remove(p_cliente);
+            var m_marca = _modelo?.Clientes?.Find(codigo) ?? throw new ArgumentNullException();
+            _modelo!.Clientes?.Remove(m_marca);
             return new GMOk(_modelo.SaveChanges());
         }
         catch (Exception ex)

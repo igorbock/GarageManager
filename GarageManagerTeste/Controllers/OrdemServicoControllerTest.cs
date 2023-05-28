@@ -64,7 +64,7 @@ public class OrdemServicoControllerTest
                 ControllerContext = _controllerContextGET ?? throw new Exception($"{nameof(_controllerContextGET)} é null")
             };
 
-            var resultado = _ordemServicoControllerMock.ReadOrdemServico(null);
+            var resultado = _ordemServicoControllerMock.Read(null);
             var jsonResult = resultado as JsonResult;
             if (jsonResult is null)
                 Assert.Fail("JsonResult é null");
@@ -97,7 +97,7 @@ public class OrdemServicoControllerTest
                 ControllerContext = _controllerContextGET ?? throw new Exception($"{nameof(_controllerContextGET)} é null")
             };
 
-            var resultado = _ordemServicoControllerMock.ReadOrdemServico(1);
+            var resultado = _ordemServicoControllerMock.Read(1);
             var jsonResult = resultado as JsonResult;
             if (jsonResult is null)
                 Assert.Fail("JsonResult é null");
@@ -157,7 +157,7 @@ public class OrdemServicoControllerTest
         var instanciaService = new OrdemServicoService(httpClient, "https://localhost:7134/api/OrdemServico");
 
         // ACT - Chama o service com o método para usar o HttpClient
-        var resultado = await instanciaService.Criar(ordemServico);
+        var resultado = await instanciaService.Salvar(ordemServico);
 
         // ASSERT
         Assert.True(resultado == 1);

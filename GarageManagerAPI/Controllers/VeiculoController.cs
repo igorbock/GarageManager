@@ -2,16 +2,19 @@
 
 [ApiController]
 [Route("api/[controller]")]
-public class VeiculoController : AbstractController, IVeiculo
+public class VeiculoController : AbstractController, IControllerCRUD<Veiculo>
 {
     public VeiculoController(HttpClient p_httpClient, Context.Modelo p_modelo) : base(p_httpClient, p_modelo) { }
 
     [HttpPost]
-    public IGMActionResult CreateVeiculo(Veiculo p_veiculo)
+    public IGMActionResult Save(Veiculo entidade)
     {
         try
         {
-            _modelo!.Veiculos?.Add(p_veiculo);
+            if (entidade.Id == 0)
+                _modelo!.Veiculos?.Add(entidade);
+            else
+                _modelo!.Veiculos?.Update(entidade);
             return new GMOk(_modelo.SaveChanges());
         }
         catch (Exception ex)
@@ -21,28 +24,30 @@ public class VeiculoController : AbstractController, IVeiculo
     }
 
     [HttpGet]
-    public IGMActionResult ReadVeiculo(int? p_veiculo)
+    public IGMActionResult Read(int? codigo)
     {
         try
         {
-            if (p_veiculo is null)
-                return new GMJson(_modelo!.Veiculos, _options);
+            if (codigo is not null)
+                return new GMJson(_modelo!.Veiculos?.Find(codigo), _options);
 
-            return new GMJson(_modelo!.Veiculos?.Find(p_veiculo), _options);
-        }
-        catch (Exception ex)
-        {
-            return new GMBadRequest(ex.Message);
-        }
-    }
-
-    [HttpPut]
-    public IGMActionResult UpdateVeiculo(Veiculo p_veiculo)
-    {
-        try
-        {
-            _modelo!.Veiculos?.Update(p_veiculo);
-            return new GMOk(_modelo.SaveChanges());
+            var veiculo = from veic in _modelo!.Veiculos
+                          join modelo in _modelo!.Modelos! on veic.IdModelo equals modelo.Id
+                          join marca in _modelo!.Marcas! on modelo.IdMarca equals marca.Id
+                          orderby veic.Id descending
+                          select new
+                          {
+                              Id = veic.Id,
+                              Placa = veic.Placa,
+                              Cor = veic.Cor,
+                              Ano = veic.Ano,
+                              Km = veic.Km,
+                              IdModelo = modelo.Id,
+                              Modelo = modelo.Nome,
+                              IdMarca = marca.Id,
+                              Marca = marca.Nome
+                          };
+            return new GMJson(veiculo, _options);            
         }
         catch (Exception ex)
         {
@@ -51,12 +56,12 @@ public class VeiculoController : AbstractController, IVeiculo
     }
 
     [HttpDelete]
-    public IGMActionResult DeleteVeiculo(int p_codigo)
+    public IGMActionResult Delete(int codigo)
     {
         try
         {
-            var m_veiculo = _modelo!.Veiculos?.Find(p_codigo);
-            _modelo!.Veiculos?.Remove(m_veiculo ?? throw new ArgumentNullException());
+            var entidade = _modelo!.Veiculos?.Find(codigo);
+            _modelo!.Veiculos?.Remove(entidade ?? throw new ArgumentNullException());
             return new GMOk(_modelo.SaveChanges());
         }
         catch (Exception ex)
