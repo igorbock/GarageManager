@@ -1,6 +1,4 @@
-﻿using GarageManagerRazorLib.Interfaces;
-
-namespace GarageManagerRazorLib.Models;
+﻿namespace GarageManagerRazorLib.Models;
 
 [Table("marcas", Schema = "oficina")]
 public class Marca : IEntidade

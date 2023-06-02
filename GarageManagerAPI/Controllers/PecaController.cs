@@ -1,4 +1,6 @@
-﻿namespace GarageManagerAPI.Controllers;
+﻿using GarageManagerAPI.Helpers;
+
+namespace GarageManagerAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -11,11 +13,11 @@ public class PecaController : AbstractController, IControllerCRUD<Peca>
     {
         try
         {
-            if (entidade.Id == 0)
-                _modelo!.Pecas?.Add(entidade);
-            else
-                _modelo!.Pecas?.Update(entidade);
-            return new GMOk(_modelo.SaveChanges());
+            var query_insert = SqlQueryHelper.CriarInsert("oficina.pecas", entidade) ?? throw new Exception();
+            var query_update = SqlQueryHelper.CriarUpdate("oficina.pecas", entidade) ?? throw new Exception();
+            var sql_query = entidade.Id == 0 ? query_insert : query_update;
+
+            return ExecutaQueryERetornaNumeroDeLinhasAfetadas(sql_query);
         }
         catch (Exception ex)
         {

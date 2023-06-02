@@ -1,6 +1,4 @@
-﻿using GarageManagerRazorLib.Interfaces;
-
-namespace GarageManagerRazorLib.Models;
+﻿namespace GarageManagerRazorLib.Models;
 
 [Table("ordens_pecas", Schema = "oficina")]
 public class OrdemServicoPecas : IEntidade
@@ -13,6 +11,4 @@ public class OrdemServicoPecas : IEntidade
     public int IdPeca { get; set; }
     public virtual OrdemServico? OrdemServico { get; set; }
     public virtual Peca? Peca { get; set; }
-    [NotMapped]
-    public string? Nome { get; set; }
 }

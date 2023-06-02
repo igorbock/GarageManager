@@ -1,6 +1,4 @@
-﻿using GarageManagerRazorLib.Interfaces;
-
-namespace GarageManagerRazorLib.Models;
+﻿namespace GarageManagerRazorLib.Models;
 
 [Table("pecas", Schema = "oficina")]
 public class Peca : IEntidade
@@ -11,6 +9,4 @@ public class Peca : IEntidade
     public string? Marca { get; set; }
     public decimal Quantidade { get; set; }
     public decimal Valor { get; set; }
-    [NotMapped]
-    public string? Nome { get; set; }
 }

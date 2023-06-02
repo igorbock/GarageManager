@@ -12,13 +12,15 @@ public class VeiculoController : AbstractController, IControllerCRUD<Veiculo>
         try
         {
             var query_insert = $"INSERT INTO oficina.veiculos (\"Placa\", \"Cor\", \"Ano\", \"Km\", \"IdModelo\") VALUES ('{entidade.Placa}', '{entidade.Cor}', {entidade.Ano}, {entidade.Km}, {entidade.IdModelo});";
+            var query_update = $"UPDATE oficina.veiculos SET \"Placa\" = '{entidade.Placa}', \"Cor\" = '{entidade.Cor}', \"Ano\" = {entidade.Ano}, \"Km\" = {entidade.Km}, \"IdModelo\" = {entidade.IdModelo} WHERE \"Id\" = {entidade.Id};";
+            int rows = 0;
 
             if (entidade.Id == 0)
-                _modelo!.Database.ExecuteSqlRaw(query_insert);
-            //_modelo!.Veiculos?.Add(entidade);
+                rows = _modelo!.Database.ExecuteSqlRaw(query_insert);
             else
-                _modelo!.Veiculos?.Update(entidade);
-            return new GMOk(_modelo.SaveChanges());
+                rows = _modelo!.Database.ExecuteSqlRaw(query_update);
+
+            return new GMOk(rows);
         }
         catch (Exception ex)
         {

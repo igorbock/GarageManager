@@ -29,6 +29,4 @@ public class OrdemServico : IEntidade
     public int IdCliente { get; set; }
     public virtual Veiculo? Veiculo { get; set; }
     public virtual Cliente? Cliente { get; set; }
-    [NotMapped]
-    public string? Nome { get; set; }
 }

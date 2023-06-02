@@ -12,4 +12,7 @@ public abstract class AbstractController : Controller
         _modelo = p_modelo;
         _options = new JsonSerializerOptions { Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) };
     }
+
+    [NonAction]
+    public IGMActionResult ExecutaQueryERetornaNumeroDeLinhasAfetadas(string sql) => new GMOk(_modelo!.Database.ExecuteSqlRaw(sql));
 }

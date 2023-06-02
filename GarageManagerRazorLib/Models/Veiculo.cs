@@ -1,6 +1,4 @@
-﻿using GarageManagerRazorLib.Interfaces;
-
-namespace GarageManagerRazorLib.Models;
+﻿namespace GarageManagerRazorLib.Models;
 
 [Table("veiculos", Schema = "oficina")]
 public class Veiculo : IEntidade
@@ -17,6 +15,4 @@ public class Veiculo : IEntidade
     [ForeignKey(nameof(Modelo))]
     public int IdModelo { get; set; }
     public virtual Modelo? Modelo { get; set; }
-    [NotMapped]
-    public string? Nome { get; set; }
 }
