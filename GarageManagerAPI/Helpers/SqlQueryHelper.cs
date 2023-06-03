@@ -1,5 +1,4 @@
-﻿using GarageManagerRazorLib.Interfaces;
-using System.Text;
+﻿using System.Text;
 
 namespace GarageManagerAPI.Helpers;
 
@@ -35,7 +34,5 @@ public static class SqlQueryHelper
         query.Append($" WHERE \"Id\" = {entidade.Id});");
 
         return query.ToString();
-
-        //var query_update = $"UPDATE oficina.veiculos SET \"Descricao\" = '{entidade.Descricao}', \"Marca\" = '{entidade.Marca}', \"Quantidade\" = {entidade.Quantidade}, \"Valor\" = {entidade.Valor} WHERE \"Id\" = {entidade.Id};";
     }
 }

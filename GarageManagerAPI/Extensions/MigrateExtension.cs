@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-
-namespace GarageManagerAPI.Extensions;
+﻿namespace GarageManagerAPI.Extensions;
 
 public static class MigrateExtension
 {

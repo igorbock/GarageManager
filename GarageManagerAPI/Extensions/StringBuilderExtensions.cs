@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace GarageManagerAPI.Extensions;
+﻿namespace GarageManagerAPI.Extensions;
 
 public static class StringBuilderExtensions
 {
