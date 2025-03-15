@@ -2,7 +2,7 @@
 
 <h3>GMGrid</h3>
 
-<QuickGrid Items="IQueryable">
+@* <QuickGrid Items="IQueryable">
     <PropertyColumn Property="@(c => c.Id)" />
     <PropertyColumn Property="@(c => c.Nome)" />
     <TemplateColumn Title="Ação">
@@ -12,4 +12,4 @@
 </QuickGrid>
 
 <InputText @bind-Value="@EntidadeAtual!.Nome" @oninput="ValueChanged" />
-<button onclick="@(async () => await Salvar())">Salvar</button>
+<button onclick="@(async () => await Salvar())">Salvar</button> *@

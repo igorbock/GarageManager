@@ -50,7 +50,7 @@ public partial class GMGrid<TipoT> where TipoT : IEntidade
     {
         if (Service is null) throw new ArgumentNullException();
         if (EntidadeAtual is null) throw new ArgumentNullException();
-        if (string.IsNullOrWhiteSpace(EntidadeAtual.Nome)) throw new ArgumentException();
+        //if (string.IsNullOrWhiteSpace(EntidadeAtual.Nome)) throw new ArgumentException();
 
         await Service.Salvar(EntidadeAtual);
         await InvokeAsync(() => StateHasChanged());
