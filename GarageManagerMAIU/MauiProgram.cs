@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GarageManagerMAIU.Pages;
+using Microsoft.Extensions.Logging;
 
 namespace GarageManagerMAIU;
 
@@ -19,6 +20,12 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
+		builder.Services.AddTransient<MainPage>();
+		builder.Services.AddTransient<OrdemServicoPage>();
+		builder.Services.AddTransient<LoginPage>();
+
+		builder.Services.AddScoped<LoginViewModel>();
+
+        return builder.Build();
 	}
 }

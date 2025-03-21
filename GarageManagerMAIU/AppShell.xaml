@@ -4,12 +4,20 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:GarageManagerMAIU"
-    Shell.FlyoutBehavior="Flyout"
+    xmlns:pages="clr-namespace:GarageManagerMAIU.Pages"
+    Shell.FlyoutBehavior="Disabled"
     Title="GarageManagerMAIU">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate pages:LoginPage}"
         Route="MainPage" />
 
+    <TabBar>
+        <Tab Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Ordem de Serviço">
+            <ShellContent ContentTemplate="{DataTemplate pages:OrdemServicoPage}" />
+        </Tab>
+    </TabBar>
 </Shell>
