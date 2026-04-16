@@ -192,6 +192,37 @@
     <Compile Include="Controller\PecasMaoObra.Designer.cs">
       <DependentUpon>PecasMaoObra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Database\DatabaseManager.cs" />
+    <Compile Include="Forms\Cadastro\FrmCadEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastro\FrmCadEmpresa.Designer.cs">
+      <DependentUpon>FrmCadEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Cadastro\FrmCadMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cadastro\FrmCadMarca.Designer.cs">
+      <DependentUpon>FrmCadMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDetalhesOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDetalhesOS.Designer.cs">
+      <DependentUpon>FrmDetalhesOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmGM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmGM.Designer.cs">
+      <DependentUpon>FrmGM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmListaOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmListaOS.Designer.cs">
+      <DependentUpon>FrmListaOS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controller\Dialogo.resx">
@@ -208,6 +239,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controller\PecasMaoObra.resx">
       <DependentUpon>PecasMaoObra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cadastro\FrmCadEmpresa.resx">
+      <DependentUpon>FrmCadEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cadastro\FrmCadMarca.resx">
+      <DependentUpon>FrmCadMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmGM.resx">
+      <DependentUpon>FrmGM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmListaOS.resx">
+      <DependentUpon>FrmListaOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -257,6 +300,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="carmechanic_89096.ico" />
+    <None Include="readme.md" />
+    <None Include="Resources\inserir.png" />
+    <None Include="Resources\salvar.png" />
+    <None Include="Resources\excluir.png" />
+    <None Include="Resources\cancelar.png" />
+    <None Include="Resources\fechar.png" />
+    <None Include="Resources\editar.png" />
     <None Include="Resources\print.png" />
     <None Include="Resources\loupe.png" />
     <None Include="Resources\printer.png" />

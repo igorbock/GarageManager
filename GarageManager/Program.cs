@@ -1,4 +1,6 @@
 ﻿using GarageManager;
+using GarageManager.Forms;
+using GarageManager.Forms.Cadastro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,7 @@ namespace Data
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FrmCadEmpresa());
         }
     }
 }
