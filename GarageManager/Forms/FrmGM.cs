@@ -16,6 +16,7 @@ namespace GarageManager.Forms
             _kernel = kernel;
             // Atribui a chamada para cada item do menu
             MIMarca.Click += AbrirFormulario;
+            MIModelo.Click += AbrirFormulario;
         }
 
         private void AbrirFormulario(object sender, EventArgs e)

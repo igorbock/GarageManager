@@ -73,6 +73,7 @@
             // 
             this.MIModelo.Name = "MIModelo";
             this.MIModelo.Size = new System.Drawing.Size(180, 22);
+            this.MIModelo.Tag = "FrmCadModelo";
             this.MIModelo.Text = "Modelo";
             // 
             // MIPessoa
@@ -93,13 +94,13 @@
             // MIAbrirOS
             // 
             this.MIAbrirOS.Name = "MIAbrirOS";
-            this.MIAbrirOS.Size = new System.Drawing.Size(180, 22);
+            this.MIAbrirOS.Size = new System.Drawing.Size(149, 22);
             this.MIAbrirOS.Text = "Abrir O.S. (F2)";
             // 
             // MIListarOS
             // 
             this.MIListarOS.Name = "MIListarOS";
-            this.MIListarOS.Size = new System.Drawing.Size(180, 22);
+            this.MIListarOS.Size = new System.Drawing.Size(149, 22);
             this.MIListarOS.Text = "Listar O.S. (F3)";
             // 
             // FrmGM

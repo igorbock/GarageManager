@@ -8,7 +8,8 @@ namespace GarageManager
     {
         public override void Load()
         {
-            Bind<Form>().To<FrmCadMarca>().Named("FrmCadMarca");
+            Bind<Form>().To<FrmCadMarca>().Named(nameof(FrmCadMarca));
+            Bind<Form>().To<FrmCadModelo>().Named(nameof(FrmCadModelo));
         }
     }
 }

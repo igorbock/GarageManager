@@ -1,6 +1,6 @@
 ﻿namespace GarageManager.Forms.Cadastro
 {
-    partial class FrmCadMarca
+    partial class FrmCadModelo
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,8 @@
             this.BtnFechar = new System.Windows.Forms.Button();
             this.LNome = new System.Windows.Forms.Label();
             this.TxtNome = new System.Windows.Forms.TextBox();
+            this.LMarca = new System.Windows.Forms.Label();
+            this.CmbMarca = new System.Windows.Forms.ComboBox();
             this.TPCadastro.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +57,8 @@
             this.TPCadastro.Controls.Add(this.BtnFechar, 3, 5);
             this.TPCadastro.Controls.Add(this.LNome, 0, 2);
             this.TPCadastro.Controls.Add(this.TxtNome, 1, 2);
+            this.TPCadastro.Controls.Add(this.LMarca, 0, 3);
+            this.TPCadastro.Controls.Add(this.CmbMarca, 1, 3);
             this.TPCadastro.Dock = System.Windows.Forms.DockStyle.Top;
             this.TPCadastro.Location = new System.Drawing.Point(0, 0);
             this.TPCadastro.Margin = new System.Windows.Forms.Padding(1);
@@ -63,7 +67,7 @@
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.TPCadastro.Size = new System.Drawing.Size(400, 300);
@@ -177,7 +181,34 @@
             this.TxtNome.Size = new System.Drawing.Size(298, 18);
             this.TxtNome.TabIndex = 7;
             // 
-            // FrmCadMarca
+            // LMarca
+            // 
+            this.LMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LMarca.AutoSize = true;
+            this.LMarca.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LMarca.Location = new System.Drawing.Point(3, 61);
+            this.LMarca.Name = "LMarca";
+            this.LMarca.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LMarca.Size = new System.Drawing.Size(94, 13);
+            this.LMarca.TabIndex = 8;
+            this.LMarca.Text = ":Marca";
+            // 
+            // CmbMarca
+            // 
+            this.TPCadastro.SetColumnSpan(this.CmbMarca, 3);
+            this.CmbMarca.DisplayMember = "DESCRICAO";
+            this.CmbMarca.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CmbMarca.Enabled = false;
+            this.CmbMarca.Font = new System.Drawing.Font("Tahoma", 6.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmbMarca.FormattingEnabled = true;
+            this.CmbMarca.Location = new System.Drawing.Point(101, 60);
+            this.CmbMarca.Margin = new System.Windows.Forms.Padding(1);
+            this.CmbMarca.Name = "CmbMarca";
+            this.CmbMarca.Size = new System.Drawing.Size(298, 18);
+            this.CmbMarca.TabIndex = 9;
+            this.CmbMarca.ValueMember = "ID";
+            // 
+            // FrmCadModelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -186,9 +217,9 @@
             this.Controls.Add(this.TPCadastro);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmCadMarca";
+            this.Name = "FrmCadModelo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro de Marcas de Veículos";
+            this.Text = "Cadastro de Modelos de Veículos";
             this.TPCadastro.ResumeLayout(false);
             this.TPCadastro.PerformLayout();
             this.ResumeLayout(false);
@@ -206,5 +237,7 @@
         private System.Windows.Forms.Button BtnFechar;
         private System.Windows.Forms.Label LNome;
         private System.Windows.Forms.TextBox TxtNome;
+        private System.Windows.Forms.Label LMarca;
+        private System.Windows.Forms.ComboBox CmbMarca;
     }
 }
