@@ -21,6 +21,7 @@ namespace GarageManager.Forms.Cadastro
             // Eventos
             Load += (s, e) => CarregarEntidades();
             FormClosing += Fechar;
+            CmbEntidade.SelectedValueChanged += (s, e) => Selecionar();
             // Configurações iniciais
             InserirHandler = (s, e) => InserirEntidade();
             EditarHandler = (s, e) => EditarEntidade();
@@ -38,7 +39,33 @@ namespace GarageManager.Forms.Cadastro
             try
             {
                 DataSourceEntidade = DatabaseManager.Consultar("SELECT id as \"ID\", nome as \"DESCRICAO\" FROM marca_veiculo");
-                CmbEntidade.Items.AddRange(DataSourceEntidade.Rows.Cast<DataRow>().Select(row => new { Id = row["ID"], Nome = row["DESCRICAO"] }).ToArray());
+                //CmbEntidade.Items.AddRange(DataSourceEntidade.Rows.Cast<DataRow>().Select(row => new { Id = row["ID"], Nome = row["DESCRICAO"] }).ToArray());
+                CmbEntidade.DataSource = DataSourceEntidade;
+                CmbEntidade.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void Selecionar()
+        {
+            try
+            {
+                var idSelecionado = CmbEntidade.SelectedValue;
+                if (idSelecionado == null)
+                {
+                    LimparCampos();
+                    return;
+                }
+                var int64Id = long.Parse(idSelecionado.ToString());
+                var valor = DataSourceEntidade.AsEnumerable().FirstOrDefault(a => a.Field<long>("ID") == int64Id);
+                if (valor == null)
+                {
+                    LimparCampos();
+                    return;
+                }
+                TxtNome.Text = valor.Field<string>("DESCRICAO").ToString();
             }
             catch (Exception ex)
             {
@@ -71,7 +98,7 @@ namespace GarageManager.Forms.Cadastro
                     MessageBox.Show("Selecione um item para editar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                var selected = CmbEntidade.SelectedItem.GetType().GetProperty("ID").GetValue(CmbEntidade.SelectedItem, null);
+                var selected = CmbEntidade.SelectedValue;
                 var dataSource = DatabaseManager.Consultar($"SELECT id as \"ID\", nome as \"DESCRICAO\" FROM marca_veiculo WHERE id = {selected}");
                 if (dataSource.Rows.Count > 0)
                 {
@@ -100,6 +127,7 @@ namespace GarageManager.Forms.Cadastro
                 var selected = CmbEntidade.SelectedItem.GetType().GetProperty("ID").GetValue(CmbEntidade.SelectedItem, null);
                 DatabaseManager.Executar($"DELETE marca_veiculo WHERE id={selected}");
                 LimparCampos();
+                CarregarEntidades();
             }
             catch (Exception ex)
             {
@@ -121,11 +149,12 @@ namespace GarageManager.Forms.Cadastro
                 }
                 else
                 {
-                    var selected = CmbEntidade.SelectedItem.GetType().GetProperty("ID").GetValue(CmbEntidade.SelectedItem, null);
+                    var selected = CmbEntidade.SelectedValue;
                     DatabaseManager.Executar($"UPDATE marca_veiculo SET nome='{TxtNome.Text}' WHERE id={selected}");
                 }
                 LimparCampos();
                 AlterarBotoes(false);
+                CarregarEntidades();
             }
             catch (Exception ex)
             {

@@ -1,20 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ninject;
+using System;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace GarageManager.Forms
 {
     public partial class FrmGM : Form
     {
-        public FrmGM()
+        private readonly StandardKernel _kernel;
+
+        public FrmGM(StandardKernel kernel)
         {
             InitializeComponent();
+            // Atribui as propriedades
+            _kernel = kernel;
+            // Atribui a chamada para cada item do menu
+            MIMarca.Click += AbrirFormulario;
+        }
+
+        private void AbrirFormulario(object sender, EventArgs e)
+        {
+            try
+            {
+                // Primeiro busca o controle que chamou o evento e pega o valor de Tag
+                var nomeCompletoForm = ((ToolStripMenuItem)sender).Tag.ToString();
+                // Cria instância
+                var form = _kernel.Get<Form>(nomeCompletoForm) ?? throw new Exception("Formulário não encontrado");
+                form.MdiParent = this;
+                // Exibe
+                form.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

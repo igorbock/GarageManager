@@ -74,7 +74,6 @@
             this.CmbEntidade.DisplayMember = "DESCRICAO";
             this.CmbEntidade.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CmbEntidade.Font = new System.Drawing.Font("Tahoma", 15.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmbEntidade.FormattingEnabled = true;
             this.CmbEntidade.ItemHeight = 25;
             this.CmbEntidade.Location = new System.Drawing.Point(101, 1);
             this.CmbEntidade.Margin = new System.Windows.Forms.Padding(1);
@@ -187,6 +186,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCadMarca";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Marcas de Veículos";
             this.TPCadastro.ResumeLayout(false);
             this.TPCadastro.PerformLayout();

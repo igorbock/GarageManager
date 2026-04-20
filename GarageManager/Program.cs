@@ -1,11 +1,8 @@
 ﻿using GarageManager;
 using GarageManager.Forms;
-using GarageManager.Forms.Cadastro;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ninject;
 
 namespace Data
 {
@@ -19,7 +16,11 @@ namespace Data
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCadEmpresa());
+
+            var module_principal = new GMModule();
+            StandardKernel kernel = new StandardKernel(module_principal);
+
+            Application.Run(new FrmGM(kernel));
         }
     }
 }
