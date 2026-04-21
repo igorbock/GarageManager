@@ -10,6 +10,7 @@ namespace GarageManager
         {
             Bind<Form>().To<FrmCadMarca>().Named(nameof(FrmCadMarca));
             Bind<Form>().To<FrmCadModelo>().Named(nameof(FrmCadModelo));
+            Bind<Form>().To<FrmCadPessoa>().Named(nameof(FrmCadPessoa));
         }
     }
 }

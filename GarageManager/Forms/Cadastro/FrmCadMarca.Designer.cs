@@ -65,7 +65,7 @@
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.TPCadastro.Size = new System.Drawing.Size(400, 300);
             this.TPCadastro.TabIndex = 0;
             // 
@@ -100,10 +100,10 @@
             this.BtnInserir.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnInserir.Image = global::GarageManager.Properties.Resources.inserir;
             this.BtnInserir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnInserir.Location = new System.Drawing.Point(1, 268);
+            this.BtnInserir.Location = new System.Drawing.Point(1, 276);
             this.BtnInserir.Margin = new System.Windows.Forms.Padding(1);
             this.BtnInserir.Name = "BtnInserir";
-            this.BtnInserir.Size = new System.Drawing.Size(98, 31);
+            this.BtnInserir.Size = new System.Drawing.Size(98, 23);
             this.BtnInserir.TabIndex = 2;
             this.BtnInserir.Tag = "Salvar";
             this.BtnInserir.Text = "Inserir";
@@ -115,10 +115,10 @@
             this.BtnEditar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnEditar.Image = global::GarageManager.Properties.Resources.editar;
             this.BtnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnEditar.Location = new System.Drawing.Point(101, 268);
+            this.BtnEditar.Location = new System.Drawing.Point(101, 276);
             this.BtnEditar.Margin = new System.Windows.Forms.Padding(1);
             this.BtnEditar.Name = "BtnEditar";
-            this.BtnEditar.Size = new System.Drawing.Size(98, 31);
+            this.BtnEditar.Size = new System.Drawing.Size(98, 23);
             this.BtnEditar.TabIndex = 3;
             this.BtnEditar.Tag = "Cancelar";
             this.BtnEditar.Text = "Editar";
@@ -130,10 +130,10 @@
             this.BtnExcluir.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnExcluir.Image = global::GarageManager.Properties.Resources.excluir;
             this.BtnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnExcluir.Location = new System.Drawing.Point(201, 268);
+            this.BtnExcluir.Location = new System.Drawing.Point(201, 276);
             this.BtnExcluir.Margin = new System.Windows.Forms.Padding(1);
             this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(98, 31);
+            this.BtnExcluir.Size = new System.Drawing.Size(98, 23);
             this.BtnExcluir.TabIndex = 4;
             this.BtnExcluir.Text = "Excluir";
             this.BtnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -144,10 +144,10 @@
             this.BtnFechar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnFechar.Image = global::GarageManager.Properties.Resources.fechar;
             this.BtnFechar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnFechar.Location = new System.Drawing.Point(301, 268);
+            this.BtnFechar.Location = new System.Drawing.Point(301, 276);
             this.BtnFechar.Margin = new System.Windows.Forms.Padding(1);
             this.BtnFechar.Name = "BtnFechar";
-            this.BtnFechar.Size = new System.Drawing.Size(98, 31);
+            this.BtnFechar.Size = new System.Drawing.Size(98, 23);
             this.BtnFechar.TabIndex = 5;
             this.BtnFechar.Text = "Fechar";
             this.BtnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

@@ -1,6 +1,6 @@
 ﻿namespace GarageManager.Forms.Cadastro
 {
-    partial class FrmCadModelo
+    partial class FrmCadPessoa
     {
         /// <summary>
         /// Required designer variable.
@@ -37,8 +37,10 @@
             this.BtnFechar = new System.Windows.Forms.Button();
             this.LNome = new System.Windows.Forms.Label();
             this.TxtNome = new System.Windows.Forms.TextBox();
-            this.LMarca = new System.Windows.Forms.Label();
-            this.CmbMarca = new System.Windows.Forms.ComboBox();
+            this.LTelefone = new System.Windows.Forms.Label();
+            this.LEmail = new System.Windows.Forms.Label();
+            this.TxtTelefone = new System.Windows.Forms.TextBox();
+            this.TxtEmail = new System.Windows.Forms.TextBox();
             this.TPCadastro.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,21 +53,24 @@
             this.TPCadastro.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.TPCadastro.Controls.Add(this.CmbEntidade, 1, 0);
             this.TPCadastro.Controls.Add(this.LEntidade, 0, 0);
-            this.TPCadastro.Controls.Add(this.BtnInserir, 0, 5);
-            this.TPCadastro.Controls.Add(this.BtnEditar, 1, 5);
-            this.TPCadastro.Controls.Add(this.BtnExcluir, 2, 5);
-            this.TPCadastro.Controls.Add(this.BtnFechar, 3, 5);
+            this.TPCadastro.Controls.Add(this.BtnInserir, 0, 6);
+            this.TPCadastro.Controls.Add(this.BtnEditar, 1, 6);
+            this.TPCadastro.Controls.Add(this.BtnExcluir, 2, 6);
+            this.TPCadastro.Controls.Add(this.BtnFechar, 3, 6);
             this.TPCadastro.Controls.Add(this.LNome, 0, 2);
             this.TPCadastro.Controls.Add(this.TxtNome, 1, 2);
-            this.TPCadastro.Controls.Add(this.LMarca, 0, 3);
-            this.TPCadastro.Controls.Add(this.CmbMarca, 1, 3);
+            this.TPCadastro.Controls.Add(this.LTelefone, 0, 3);
+            this.TPCadastro.Controls.Add(this.LEmail, 0, 4);
+            this.TPCadastro.Controls.Add(this.TxtTelefone, 1, 3);
+            this.TPCadastro.Controls.Add(this.TxtEmail, 1, 4);
             this.TPCadastro.Dock = System.Windows.Forms.DockStyle.Top;
             this.TPCadastro.Location = new System.Drawing.Point(0, 0);
             this.TPCadastro.Margin = new System.Windows.Forms.Padding(1);
             this.TPCadastro.Name = "TPCadastro";
-            this.TPCadastro.RowCount = 6;
+            this.TPCadastro.RowCount = 7;
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.TPCadastro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -176,39 +181,60 @@
             this.TxtNome.Font = new System.Drawing.Font("Tahoma", 6.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNome.Location = new System.Drawing.Point(101, 42);
             this.TxtNome.Margin = new System.Windows.Forms.Padding(1);
-            this.TxtNome.MaxLength = 100;
+            this.TxtNome.MaxLength = 150;
             this.TxtNome.Name = "TxtNome";
             this.TxtNome.Size = new System.Drawing.Size(298, 18);
             this.TxtNome.TabIndex = 7;
             // 
-            // LMarca
+            // LTelefone
             // 
-            this.LMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.LMarca.AutoSize = true;
-            this.LMarca.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LMarca.Location = new System.Drawing.Point(3, 61);
-            this.LMarca.Name = "LMarca";
-            this.LMarca.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.LMarca.Size = new System.Drawing.Size(94, 13);
-            this.LMarca.TabIndex = 8;
-            this.LMarca.Text = ":Marca";
+            this.LTelefone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LTelefone.AutoSize = true;
+            this.LTelefone.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LTelefone.Location = new System.Drawing.Point(3, 61);
+            this.LTelefone.Name = "LTelefone";
+            this.LTelefone.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LTelefone.Size = new System.Drawing.Size(94, 13);
+            this.LTelefone.TabIndex = 8;
+            this.LTelefone.Text = ":Telefone";
             // 
-            // CmbMarca
+            // LEmail
             // 
-            this.TPCadastro.SetColumnSpan(this.CmbMarca, 3);
-            this.CmbMarca.DisplayMember = "DESCRICAO";
-            this.CmbMarca.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CmbMarca.Enabled = false;
-            this.CmbMarca.Font = new System.Drawing.Font("Tahoma", 6.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmbMarca.FormattingEnabled = true;
-            this.CmbMarca.Location = new System.Drawing.Point(101, 60);
-            this.CmbMarca.Margin = new System.Windows.Forms.Padding(1);
-            this.CmbMarca.Name = "CmbMarca";
-            this.CmbMarca.Size = new System.Drawing.Size(298, 18);
-            this.CmbMarca.TabIndex = 9;
-            this.CmbMarca.ValueMember = "ID";
+            this.LEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LEmail.AutoSize = true;
+            this.LEmail.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LEmail.Location = new System.Drawing.Point(3, 79);
+            this.LEmail.Name = "LEmail";
+            this.LEmail.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LEmail.Size = new System.Drawing.Size(94, 13);
+            this.LEmail.TabIndex = 9;
+            this.LEmail.Text = ":Email";
             // 
-            // FrmCadModelo
+            // TxtTelefone
+            // 
+            this.TPCadastro.SetColumnSpan(this.TxtTelefone, 3);
+            this.TxtTelefone.Enabled = false;
+            this.TxtTelefone.Font = new System.Drawing.Font("Tahoma", 6.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTelefone.Location = new System.Drawing.Point(101, 60);
+            this.TxtTelefone.Margin = new System.Windows.Forms.Padding(1);
+            this.TxtTelefone.MaxLength = 30;
+            this.TxtTelefone.Name = "TxtTelefone";
+            this.TxtTelefone.Size = new System.Drawing.Size(298, 18);
+            this.TxtTelefone.TabIndex = 10;
+            // 
+            // TxtEmail
+            // 
+            this.TPCadastro.SetColumnSpan(this.TxtEmail, 3);
+            this.TxtEmail.Enabled = false;
+            this.TxtEmail.Font = new System.Drawing.Font("Tahoma", 6.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtEmail.Location = new System.Drawing.Point(101, 78);
+            this.TxtEmail.Margin = new System.Windows.Forms.Padding(1);
+            this.TxtEmail.MaxLength = 100;
+            this.TxtEmail.Name = "TxtEmail";
+            this.TxtEmail.Size = new System.Drawing.Size(298, 18);
+            this.TxtEmail.TabIndex = 11;
+            // 
+            // FrmCadPessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -217,9 +243,9 @@
             this.Controls.Add(this.TPCadastro);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmCadModelo";
+            this.Name = "FrmCadPessoa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro de Modelos de Veículos";
+            this.Text = "Cadastro de Pessoas";
             this.TPCadastro.ResumeLayout(false);
             this.TPCadastro.PerformLayout();
             this.ResumeLayout(false);
@@ -237,7 +263,9 @@
         private System.Windows.Forms.Button BtnFechar;
         private System.Windows.Forms.Label LNome;
         private System.Windows.Forms.TextBox TxtNome;
-        private System.Windows.Forms.Label LMarca;
-        private System.Windows.Forms.ComboBox CmbMarca;
+        private System.Windows.Forms.Label LTelefone;
+        private System.Windows.Forms.Label LEmail;
+        private System.Windows.Forms.TextBox TxtTelefone;
+        private System.Windows.Forms.TextBox TxtEmail;
     }
 }

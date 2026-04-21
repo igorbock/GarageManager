@@ -1,6 +1,5 @@
 ﻿using Ninject;
 using System;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace GarageManager.Forms
@@ -17,6 +16,7 @@ namespace GarageManager.Forms
             // Atribui a chamada para cada item do menu
             MIMarca.Click += AbrirFormulario;
             MIModelo.Click += AbrirFormulario;
+            MIPessoa.Click += AbrirFormulario;
         }
 
         private void AbrirFormulario(object sender, EventArgs e)

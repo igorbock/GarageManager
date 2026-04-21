@@ -80,6 +80,7 @@
             // 
             this.MIPessoa.Name = "MIPessoa";
             this.MIPessoa.Size = new System.Drawing.Size(180, 22);
+            this.MIPessoa.Tag = "FrmCadPessoa";
             this.MIPessoa.Text = "Pessoa";
             // 
             // MServicos
