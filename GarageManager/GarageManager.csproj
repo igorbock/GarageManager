@@ -196,6 +196,12 @@
       <DependentUpon>PecasMaoObra.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\DatabaseManager.cs" />
+    <Compile Include="Forms\Base\FrmCadastroBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\FrmCadastroBase.Designer.cs">
+      <DependentUpon>FrmCadastroBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Cadastro\FrmCadEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controller\PecasMaoObra.resx">
       <DependentUpon>PecasMaoObra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\FrmCadastroBase.resx">
+      <DependentUpon>FrmCadastroBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cadastro\FrmCadEmpresa.resx">
       <DependentUpon>FrmCadEmpresa.cs</DependentUpon>
@@ -322,6 +331,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="carmechanic_89096.ico" />
+    <None Include="Resources\impressora.png" />
+    <None Include="Resources\barra_status.png" />
     <None Include="readme.md" />
     <None Include="Resources\inserir.png" />
     <None Include="Resources\salvar.png" />

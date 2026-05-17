@@ -63,6 +63,16 @@ namespace GarageManager.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap barra_status {
+            get {
+                object obj = ResourceManager.GetObject("barra_status", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cancelar {
             get {
                 object obj = ResourceManager.GetObject("cancelar", resourceCulture);
@@ -96,6 +106,16 @@ namespace GarageManager.Properties {
         internal static System.Drawing.Bitmap fechar {
             get {
                 object obj = ResourceManager.GetObject("fechar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap impressora {
+            get {
+                object obj = ResourceManager.GetObject("impressora", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

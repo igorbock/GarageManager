@@ -31,16 +31,16 @@
             this.TPCadastro = new System.Windows.Forms.TableLayoutPanel();
             this.CmbEntidade = new System.Windows.Forms.ComboBox();
             this.LEntidade = new System.Windows.Forms.Label();
-            this.BtnInserir = new System.Windows.Forms.Button();
-            this.BtnEditar = new System.Windows.Forms.Button();
-            this.BtnExcluir = new System.Windows.Forms.Button();
-            this.BtnFechar = new System.Windows.Forms.Button();
             this.LNome = new System.Windows.Forms.Label();
             this.TxtNome = new System.Windows.Forms.TextBox();
             this.LTelefone = new System.Windows.Forms.Label();
             this.LEmail = new System.Windows.Forms.Label();
             this.TxtTelefone = new System.Windows.Forms.TextBox();
             this.TxtEmail = new System.Windows.Forms.TextBox();
+            this.BtnInserir = new System.Windows.Forms.Button();
+            this.BtnEditar = new System.Windows.Forms.Button();
+            this.BtnExcluir = new System.Windows.Forms.Button();
+            this.BtnFechar = new System.Windows.Forms.Button();
             this.TPCadastro.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +83,7 @@
             this.TPCadastro.SetColumnSpan(this.CmbEntidade, 3);
             this.CmbEntidade.DisplayMember = "DESCRICAO";
             this.CmbEntidade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CmbEntidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbEntidade.Font = new System.Drawing.Font("Tahoma", 15.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmbEntidade.ItemHeight = 25;
             this.CmbEntidade.Location = new System.Drawing.Point(101, 1);
@@ -103,64 +104,6 @@
             this.LEntidade.Size = new System.Drawing.Size(94, 18);
             this.LEntidade.TabIndex = 1;
             this.LEntidade.Text = ":Entidade";
-            // 
-            // BtnInserir
-            // 
-            this.BtnInserir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnInserir.Image = global::GarageManager.Properties.Resources.inserir;
-            this.BtnInserir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnInserir.Location = new System.Drawing.Point(1, 276);
-            this.BtnInserir.Margin = new System.Windows.Forms.Padding(1);
-            this.BtnInserir.Name = "BtnInserir";
-            this.BtnInserir.Size = new System.Drawing.Size(98, 23);
-            this.BtnInserir.TabIndex = 2;
-            this.BtnInserir.Tag = "Salvar";
-            this.BtnInserir.Text = "Inserir";
-            this.BtnInserir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnInserir.UseVisualStyleBackColor = true;
-            // 
-            // BtnEditar
-            // 
-            this.BtnEditar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnEditar.Image = global::GarageManager.Properties.Resources.editar;
-            this.BtnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnEditar.Location = new System.Drawing.Point(101, 276);
-            this.BtnEditar.Margin = new System.Windows.Forms.Padding(1);
-            this.BtnEditar.Name = "BtnEditar";
-            this.BtnEditar.Size = new System.Drawing.Size(98, 23);
-            this.BtnEditar.TabIndex = 3;
-            this.BtnEditar.Tag = "Cancelar";
-            this.BtnEditar.Text = "Editar";
-            this.BtnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnEditar.UseVisualStyleBackColor = true;
-            // 
-            // BtnExcluir
-            // 
-            this.BtnExcluir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnExcluir.Image = global::GarageManager.Properties.Resources.excluir;
-            this.BtnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnExcluir.Location = new System.Drawing.Point(201, 276);
-            this.BtnExcluir.Margin = new System.Windows.Forms.Padding(1);
-            this.BtnExcluir.Name = "BtnExcluir";
-            this.BtnExcluir.Size = new System.Drawing.Size(98, 23);
-            this.BtnExcluir.TabIndex = 4;
-            this.BtnExcluir.Text = "Excluir";
-            this.BtnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnExcluir.UseVisualStyleBackColor = true;
-            // 
-            // BtnFechar
-            // 
-            this.BtnFechar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnFechar.Image = global::GarageManager.Properties.Resources.fechar;
-            this.BtnFechar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnFechar.Location = new System.Drawing.Point(301, 276);
-            this.BtnFechar.Margin = new System.Windows.Forms.Padding(1);
-            this.BtnFechar.Name = "BtnFechar";
-            this.BtnFechar.Size = new System.Drawing.Size(98, 23);
-            this.BtnFechar.TabIndex = 5;
-            this.BtnFechar.Text = "Fechar";
-            this.BtnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnFechar.UseVisualStyleBackColor = true;
             // 
             // LNome
             // 
@@ -233,6 +176,64 @@
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(298, 18);
             this.TxtEmail.TabIndex = 11;
+            // 
+            // BtnInserir
+            // 
+            this.BtnInserir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnInserir.Image = global::GarageManager.Properties.Resources.inserir;
+            this.BtnInserir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnInserir.Location = new System.Drawing.Point(1, 276);
+            this.BtnInserir.Margin = new System.Windows.Forms.Padding(1);
+            this.BtnInserir.Name = "BtnInserir";
+            this.BtnInserir.Size = new System.Drawing.Size(98, 23);
+            this.BtnInserir.TabIndex = 2;
+            this.BtnInserir.Tag = "Salvar";
+            this.BtnInserir.Text = "Inserir";
+            this.BtnInserir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnInserir.UseVisualStyleBackColor = true;
+            // 
+            // BtnEditar
+            // 
+            this.BtnEditar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnEditar.Image = global::GarageManager.Properties.Resources.editar;
+            this.BtnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnEditar.Location = new System.Drawing.Point(101, 276);
+            this.BtnEditar.Margin = new System.Windows.Forms.Padding(1);
+            this.BtnEditar.Name = "BtnEditar";
+            this.BtnEditar.Size = new System.Drawing.Size(98, 23);
+            this.BtnEditar.TabIndex = 3;
+            this.BtnEditar.Tag = "Cancelar";
+            this.BtnEditar.Text = "Editar";
+            this.BtnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnEditar.UseVisualStyleBackColor = true;
+            // 
+            // BtnExcluir
+            // 
+            this.BtnExcluir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnExcluir.Image = global::GarageManager.Properties.Resources.excluir;
+            this.BtnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnExcluir.Location = new System.Drawing.Point(201, 276);
+            this.BtnExcluir.Margin = new System.Windows.Forms.Padding(1);
+            this.BtnExcluir.Name = "BtnExcluir";
+            this.BtnExcluir.Size = new System.Drawing.Size(98, 23);
+            this.BtnExcluir.TabIndex = 4;
+            this.BtnExcluir.Text = "Excluir";
+            this.BtnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnExcluir.UseVisualStyleBackColor = true;
+            // 
+            // BtnFechar
+            // 
+            this.BtnFechar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnFechar.Image = global::GarageManager.Properties.Resources.fechar;
+            this.BtnFechar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnFechar.Location = new System.Drawing.Point(301, 276);
+            this.BtnFechar.Margin = new System.Windows.Forms.Padding(1);
+            this.BtnFechar.Name = "BtnFechar";
+            this.BtnFechar.Size = new System.Drawing.Size(98, 23);
+            this.BtnFechar.TabIndex = 5;
+            this.BtnFechar.Text = "Fechar";
+            this.BtnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnFechar.UseVisualStyleBackColor = true;
             // 
             // FrmCadPessoa
             // 

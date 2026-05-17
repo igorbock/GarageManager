@@ -31,14 +31,14 @@
             this.TPCadastro = new System.Windows.Forms.TableLayoutPanel();
             this.CmbEntidade = new System.Windows.Forms.ComboBox();
             this.LEntidade = new System.Windows.Forms.Label();
-            this.BtnInserir = new System.Windows.Forms.Button();
-            this.BtnEditar = new System.Windows.Forms.Button();
-            this.BtnExcluir = new System.Windows.Forms.Button();
-            this.BtnFechar = new System.Windows.Forms.Button();
             this.LNome = new System.Windows.Forms.Label();
             this.TxtNome = new System.Windows.Forms.TextBox();
             this.LMarca = new System.Windows.Forms.Label();
             this.CmbMarca = new System.Windows.Forms.ComboBox();
+            this.BtnInserir = new System.Windows.Forms.Button();
+            this.BtnEditar = new System.Windows.Forms.Button();
+            this.BtnExcluir = new System.Windows.Forms.Button();
+            this.BtnFechar = new System.Windows.Forms.Button();
             this.TPCadastro.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,6 +99,57 @@
             this.LEntidade.TabIndex = 1;
             this.LEntidade.Text = ":Entidade";
             // 
+            // LNome
+            // 
+            this.LNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LNome.AutoSize = true;
+            this.LNome.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LNome.Location = new System.Drawing.Point(3, 43);
+            this.LNome.Name = "LNome";
+            this.LNome.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LNome.Size = new System.Drawing.Size(94, 13);
+            this.LNome.TabIndex = 6;
+            this.LNome.Text = ":Nome";
+            // 
+            // TxtNome
+            // 
+            this.TPCadastro.SetColumnSpan(this.TxtNome, 3);
+            this.TxtNome.Enabled = false;
+            this.TxtNome.Font = new System.Drawing.Font("Tahoma", 6.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtNome.Location = new System.Drawing.Point(101, 42);
+            this.TxtNome.Margin = new System.Windows.Forms.Padding(1);
+            this.TxtNome.MaxLength = 100;
+            this.TxtNome.Name = "TxtNome";
+            this.TxtNome.Size = new System.Drawing.Size(298, 18);
+            this.TxtNome.TabIndex = 7;
+            // 
+            // LMarca
+            // 
+            this.LMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LMarca.AutoSize = true;
+            this.LMarca.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LMarca.Location = new System.Drawing.Point(3, 61);
+            this.LMarca.Name = "LMarca";
+            this.LMarca.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LMarca.Size = new System.Drawing.Size(94, 13);
+            this.LMarca.TabIndex = 8;
+            this.LMarca.Text = ":Marca";
+            // 
+            // CmbMarca
+            // 
+            this.TPCadastro.SetColumnSpan(this.CmbMarca, 3);
+            this.CmbMarca.DisplayMember = "DESCRICAO";
+            this.CmbMarca.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CmbMarca.Enabled = false;
+            this.CmbMarca.Font = new System.Drawing.Font("Tahoma", 6.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmbMarca.FormattingEnabled = true;
+            this.CmbMarca.Location = new System.Drawing.Point(101, 60);
+            this.CmbMarca.Margin = new System.Windows.Forms.Padding(1);
+            this.CmbMarca.Name = "CmbMarca";
+            this.CmbMarca.Size = new System.Drawing.Size(298, 18);
+            this.CmbMarca.TabIndex = 9;
+            this.CmbMarca.ValueMember = "ID";
+            // 
             // BtnInserir
             // 
             this.BtnInserir.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -156,57 +207,6 @@
             this.BtnFechar.Text = "Fechar";
             this.BtnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnFechar.UseVisualStyleBackColor = true;
-            // 
-            // LNome
-            // 
-            this.LNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.LNome.AutoSize = true;
-            this.LNome.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LNome.Location = new System.Drawing.Point(3, 43);
-            this.LNome.Name = "LNome";
-            this.LNome.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.LNome.Size = new System.Drawing.Size(94, 13);
-            this.LNome.TabIndex = 6;
-            this.LNome.Text = ":Nome";
-            // 
-            // TxtNome
-            // 
-            this.TPCadastro.SetColumnSpan(this.TxtNome, 3);
-            this.TxtNome.Enabled = false;
-            this.TxtNome.Font = new System.Drawing.Font("Tahoma", 6.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtNome.Location = new System.Drawing.Point(101, 42);
-            this.TxtNome.Margin = new System.Windows.Forms.Padding(1);
-            this.TxtNome.MaxLength = 100;
-            this.TxtNome.Name = "TxtNome";
-            this.TxtNome.Size = new System.Drawing.Size(298, 18);
-            this.TxtNome.TabIndex = 7;
-            // 
-            // LMarca
-            // 
-            this.LMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.LMarca.AutoSize = true;
-            this.LMarca.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LMarca.Location = new System.Drawing.Point(3, 61);
-            this.LMarca.Name = "LMarca";
-            this.LMarca.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.LMarca.Size = new System.Drawing.Size(94, 13);
-            this.LMarca.TabIndex = 8;
-            this.LMarca.Text = ":Marca";
-            // 
-            // CmbMarca
-            // 
-            this.TPCadastro.SetColumnSpan(this.CmbMarca, 3);
-            this.CmbMarca.DisplayMember = "DESCRICAO";
-            this.CmbMarca.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CmbMarca.Enabled = false;
-            this.CmbMarca.Font = new System.Drawing.Font("Tahoma", 6.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmbMarca.FormattingEnabled = true;
-            this.CmbMarca.Location = new System.Drawing.Point(101, 60);
-            this.CmbMarca.Margin = new System.Windows.Forms.Padding(1);
-            this.CmbMarca.Name = "CmbMarca";
-            this.CmbMarca.Size = new System.Drawing.Size(298, 18);
-            this.CmbMarca.TabIndex = 9;
-            this.CmbMarca.ValueMember = "ID";
             // 
             // FrmCadModelo
             // 
