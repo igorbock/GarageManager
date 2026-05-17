@@ -4,23 +4,22 @@ using System;
 using System.Windows.Forms;
 using Ninject;
 
-namespace Data
+namespace Data;
+
+static class Program
 {
-    static class Program
+    /// <summary>
+    /// Ponto de entrada principal para o aplicativo.
+    /// </summary>
+    [STAThread]
+    static void Main()
     {
-        /// <summary>
-        /// Ponto de entrada principal para o aplicativo.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
 
-            var module_principal = new GMModule();
-            StandardKernel kernel = new StandardKernel(module_principal);
+        var module_principal = new GMModule();
+        StandardKernel kernel = new StandardKernel(module_principal);
 
-            Application.Run(new FrmGM(kernel));
-        }
+        Application.Run(new FrmGM(kernel));
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace GarageManager.Controller
+﻿using Microsoft.AspNetCore.Mvc;
+namespace GarageManager.Controller
 {
     partial class PecasMaoObra
     {
