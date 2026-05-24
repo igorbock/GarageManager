@@ -10,8 +10,9 @@
 
 namespace GarageManager.Properties {
     using System;
-    
-    
+    using System.Drawing;
+
+
     /// <summary>
     ///   Uma classe de recurso de tipo de alta segurança, para pesquisar cadeias de caracteres localizadas etc.
     /// </summary>
@@ -23,7 +24,12 @@ namespace GarageManager.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
-        
+        internal static Image adicionar;
+        internal static Image edit;
+        internal static Image remover;
+        internal static Image sair;
+        internal static Image save;
+        internal static Image cancel;
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;

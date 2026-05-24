@@ -1,27 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio.Interfaces;
 
-namespace GarageManager.Forms.Base
+namespace GarageManager.Forms.Base;
+
+public partial class FrmCadastroBase : Form, IFormCadastro
 {
-    public partial class FrmCadastroBase : Form
+    public FrmCadastroBase()
     {
-        public FrmCadastroBase()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            BtnImprimirGrid.Click += (s, e) => ImprimirGrid();
-        }
+        BtnInserir.Click += (s, e) => Inserir();
+        BtnEditar.Click += (s, e) => Editar();
+        BtnExcluir.Click += (s, e) => Excluir();
+        BtnFechar.Click += (s, e) => Fechar();
+        BtnSalvar.Click += (s, e) => Salvar();
+        BtnCancelar.Click += (s, e) => Cancelar();
+        BtnImprimirGrid.Click += (s, e) => ImprimirGrid();
+    }
 
-        private void ImprimirGrid()
-        {
-            throw new NotImplementedException();
-        }
+    public void Inserir()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Editar()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Excluir()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Fechar()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Salvar()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Cancelar()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ImprimirGrid()
+    {
+        throw new NotImplementedException();
     }
 }
