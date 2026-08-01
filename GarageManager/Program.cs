@@ -3,6 +3,7 @@ using GarageManager.Forms;
 using System;
 using System.Windows.Forms;
 using Ninject;
+using GarageManager.Forms.Base;
 
 namespace Data;
 
@@ -20,6 +21,7 @@ static class Program
         var module_principal = new GMModule();
         StandardKernel kernel = new StandardKernel(module_principal);
 
-        Application.Run(new FrmGM(kernel));
+        //Application.Run(new FrmGM(kernel));
+        Application.Run(new FrmBase());
     }
 }

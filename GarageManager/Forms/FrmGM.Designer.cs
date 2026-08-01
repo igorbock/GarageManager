@@ -28,99 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MenuStrip = new System.Windows.Forms.MenuStrip();
-            this.MCadastros = new System.Windows.Forms.ToolStripMenuItem();
-            this.MIMarca = new System.Windows.Forms.ToolStripMenuItem();
-            this.MIModelo = new System.Windows.Forms.ToolStripMenuItem();
-            this.MIPessoa = new System.Windows.Forms.ToolStripMenuItem();
-            this.MServicos = new System.Windows.Forms.ToolStripMenuItem();
-            this.MIAbrirOS = new System.Windows.Forms.ToolStripMenuItem();
-            this.MIListarOS = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuStrip.SuspendLayout();
-            this.SuspendLayout();
+            MenuStrip = new System.Windows.Forms.MenuStrip();
+            MCadastros = new System.Windows.Forms.ToolStripMenuItem();
+            MIMarca = new System.Windows.Forms.ToolStripMenuItem();
+            MIModelo = new System.Windows.Forms.ToolStripMenuItem();
+            MIPessoa = new System.Windows.Forms.ToolStripMenuItem();
+            MServicos = new System.Windows.Forms.ToolStripMenuItem();
+            MIAbrirOS = new System.Windows.Forms.ToolStripMenuItem();
+            MIListarOS = new System.Windows.Forms.ToolStripMenuItem();
+            MenuStrip.SuspendLayout();
+            SuspendLayout();
             // 
             // MenuStrip
             // 
-            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MCadastros,
-            this.MServicos});
-            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Size = new System.Drawing.Size(800, 24);
-            this.MenuStrip.TabIndex = 1;
-            this.MenuStrip.Text = "Menu";
+            MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { MCadastros, MServicos });
+            MenuStrip.Location = new System.Drawing.Point(0, 0);
+            MenuStrip.Name = "MenuStrip";
+            MenuStrip.Size = new System.Drawing.Size(800, 24);
+            MenuStrip.TabIndex = 1;
+            MenuStrip.Text = "Menu";
             // 
             // MCadastros
             // 
-            this.MCadastros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MIMarca,
-            this.MIModelo,
-            this.MIPessoa});
-            this.MCadastros.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.MCadastros.ForeColor = System.Drawing.Color.Black;
-            this.MCadastros.Name = "MCadastros";
-            this.MCadastros.Size = new System.Drawing.Size(71, 20);
-            this.MCadastros.Text = "&Cadastros";
+            MCadastros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { MIMarca, MIModelo, MIPessoa });
+            MCadastros.Font = new System.Drawing.Font("Tahoma", 9F);
+            MCadastros.ForeColor = System.Drawing.Color.Black;
+            MCadastros.Name = "MCadastros";
+            MCadastros.Size = new System.Drawing.Size(71, 20);
+            MCadastros.Text = "&Cadastros";
             // 
             // MIMarca
             // 
-            this.MIMarca.Name = "MIMarca";
-            this.MIMarca.Size = new System.Drawing.Size(180, 22);
-            this.MIMarca.Tag = "FrmCadMarca";
-            this.MIMarca.Text = "Marca";
+            MIMarca.Name = "MIMarca";
+            MIMarca.Size = new System.Drawing.Size(180, 22);
+            MIMarca.Tag = "FrmCadMarca2";
+            MIMarca.Text = "Marca";
             // 
             // MIModelo
             // 
-            this.MIModelo.Name = "MIModelo";
-            this.MIModelo.Size = new System.Drawing.Size(180, 22);
-            this.MIModelo.Tag = "FrmCadModelo";
-            this.MIModelo.Text = "Modelo";
+            MIModelo.Name = "MIModelo";
+            MIModelo.Size = new System.Drawing.Size(180, 22);
+            MIModelo.Tag = "FrmCadModelo";
+            MIModelo.Text = "Modelo";
             // 
             // MIPessoa
             // 
-            this.MIPessoa.Name = "MIPessoa";
-            this.MIPessoa.Size = new System.Drawing.Size(180, 22);
-            this.MIPessoa.Tag = "FrmCadPessoa";
-            this.MIPessoa.Text = "Pessoa";
+            MIPessoa.Name = "MIPessoa";
+            MIPessoa.Size = new System.Drawing.Size(180, 22);
+            MIPessoa.Tag = "FrmCadPessoa";
+            MIPessoa.Text = "Pessoa";
             // 
             // MServicos
             // 
-            this.MServicos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MIAbrirOS,
-            this.MIListarOS});
-            this.MServicos.Name = "MServicos";
-            this.MServicos.Size = new System.Drawing.Size(62, 20);
-            this.MServicos.Text = "&Servicos";
+            MServicos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { MIAbrirOS, MIListarOS });
+            MServicos.Name = "MServicos";
+            MServicos.Size = new System.Drawing.Size(62, 20);
+            MServicos.Text = "&Servicos";
             // 
             // MIAbrirOS
             // 
-            this.MIAbrirOS.Name = "MIAbrirOS";
-            this.MIAbrirOS.Size = new System.Drawing.Size(149, 22);
-            this.MIAbrirOS.Text = "Abrir O.S. (F2)";
+            MIAbrirOS.Name = "MIAbrirOS";
+            MIAbrirOS.Size = new System.Drawing.Size(149, 22);
+            MIAbrirOS.Text = "Abrir O.S. (F2)";
             // 
             // MIListarOS
             // 
-            this.MIListarOS.Name = "MIListarOS";
-            this.MIListarOS.Size = new System.Drawing.Size(149, 22);
-            this.MIListarOS.Text = "Listar O.S. (F3)";
+            MIListarOS.Name = "MIListarOS";
+            MIListarOS.Size = new System.Drawing.Size(149, 22);
+            MIListarOS.Text = "Listar O.S. (F3)";
             // 
             // FrmGM
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.MenuStrip);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IsMdiContainer = true;
-            this.MainMenuStrip = this.MenuStrip;
-            this.MaximizeBox = false;
-            this.Name = "FrmGM";
-            this.Text = "Garage Manager";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.MenuStrip.ResumeLayout(false);
-            this.MenuStrip.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(800, 450);
+            Controls.Add(MenuStrip);
+            Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            IsMdiContainer = true;
+            MainMenuStrip = MenuStrip;
+            MaximizeBox = false;
+            Name = "FrmGM";
+            Text = "Garage Manager";
+            WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            MenuStrip.ResumeLayout(false);
+            MenuStrip.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
