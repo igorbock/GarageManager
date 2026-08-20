@@ -1,23 +1,22 @@
-﻿using GarageManager;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using GarageManager.Data;
+using GarageManager.Forms;
 
-namespace Data
+namespace GarageManager
 {
-    static class Program
+    internal static class Program
     {
-        /// <summary>
-        /// Ponto de entrada principal para o aplicativo.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            ApplicationConfiguration.Initialize();
+
+            AppDomain.CurrentDomain.SetData("DataDirectory", AppContext.BaseDirectory);
+
+            GarageDb.EnsureCreated();
+
+            Application.Run(new Home());
         }
     }
 }
