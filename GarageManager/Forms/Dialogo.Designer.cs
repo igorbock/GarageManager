@@ -87,7 +87,9 @@
             this.Controls.Add(this.button_cancelar);
             this.Controls.Add(this.label_produto);
             this.Controls.Add(this.label_mensagem);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Dialogo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Atenção";

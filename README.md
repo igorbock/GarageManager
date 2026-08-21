@@ -14,7 +14,12 @@ GarageManager/
 ├── Program.cs          # Ponto de entrada (cria o banco e abre a tela principal)
 ├── App.config          # Connection string do SQLite
 ├── Forms/              # Telas (code-behind + Designer)
-│   ├── Home.cs         # Tela principal (abrir OS, consultas abertas/encerradas/histórico)
+│   ├── Home.cs         # Janela principal MDI (menu superior + barra de status)
+│   ├── FrmInicio.cs    # Início: título + informativos de O.S. (abertas/prontas/finalizadas)
+│   ├── FrmAbrirOS.cs   # Abrir nova ordem de serviço
+│   ├── FrmConsultarAbertas.cs # Consulta de O.S. abertas
+│   ├── FrmConsultarProntas.cs  # Consulta de O.S. prontas
+│   ├── FrmHistorico.cs # Histórico de O.S. encerradas
 │   ├── OS_Info.cs      # Detalhes/edição da ordem de serviço
 │   ├── PecasMaoObra.cs # Inclusão de peças e mão de obra
 │   ├── Pagamento.cs    # Forma de pagamento
@@ -27,6 +32,11 @@ GarageManager/
 └── Data/               # Acesso a dados
     └── GarageDb.cs     # Conexão SQLite + criação automática do schema
 ```
+
+A tela principal é um contêiner **MDI**: as demais telas abrem como janelas filhas
+(selecionadas no menu **Ordem de Serviço** no topo), sempre sem maximizar/minimizar —
+somente abrir ou fechar. O item **Início** exibe os informativos das ordens de serviço
+(em serviço, aguardando, prontas e finalizadas), atualizados a cada vez que a janela é ativada.
 
 ### Tecnologias
 

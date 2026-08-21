@@ -5,7 +5,21 @@ namespace GarageManager.Data
 {
     public static class GarageDb
     {
-        private static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["GarageDb"].ConnectionString;
+        private static readonly string ConnectionString;
+
+        static GarageDb()
+        {
+            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["GarageDb"];
+
+            if (settings != null && !string.IsNullOrWhiteSpace(settings.ConnectionString))
+            {
+                ConnectionString = settings.ConnectionString;
+            }
+            else
+            {
+                ConnectionString = "Data Source=|DataDirectory|garage.db";
+            }
+        }
 
         public static SqliteConnection OpenConnection()
         {

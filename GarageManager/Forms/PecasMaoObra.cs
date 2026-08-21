@@ -118,8 +118,7 @@ namespace GarageManager.Forms
                 }
 
                 form.Close();
-                form = new OS_Info(id_ordem) { MainForm = MainForm };
-                form.Show();
+                MainForm.AbrirOSInfo(id_ordem);
 
                 Close();
             }
@@ -152,8 +151,7 @@ namespace GarageManager.Forms
                 }
 
                 form.Close();
-                form = new OS_Info(id_ordem) { MainForm = MainForm };
-                form.Show();
+                MainForm.AbrirOSInfo(id_ordem);
 
                 Close();
             }

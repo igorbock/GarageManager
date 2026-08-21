@@ -25,8 +25,7 @@ namespace GarageManager.Forms
             }
 
             form.Close();
-            form = new OS_Info(form.id_os) { MainForm = MainForm };
-            form.Show();
+            MainForm.AbrirOSInfo(form.id_os);
 
             Close();
         }

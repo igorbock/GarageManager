@@ -170,7 +170,7 @@ namespace GarageManager.Forms
 
         private void Button_adicionar_Click(object sender, EventArgs e)
         {
-            PecasMaoObra novas = new PecasMaoObra() { id_ordem = id_os, form = this, MainForm = MainForm };
+            PecasMaoObra novas = new PecasMaoObra() { id_ordem = id_os, form = this, MainForm = MainForm, MdiParent = this.MdiParent };
             novas.Show();
         }
 
@@ -178,7 +178,7 @@ namespace GarageManager.Forms
         {
             if (e.KeyCode == Keys.F7 && dataGridView_pecas_ordem.Rows.Count > 0 && ordemServico.Status != "Finalizada" && ordemServico.Status != "Pronta")
             {
-                Dialogo dialogo = new Dialogo() { identificador = Convert.ToInt32(dataGridView_pecas_ordem.CurrentRow.Cells["Id"].Value), form = this };
+                Dialogo dialogo = new Dialogo() { identificador = Convert.ToInt32(dataGridView_pecas_ordem.CurrentRow.Cells["Id"].Value), form = this, MainForm = MainForm, MdiParent = this.MdiParent };
                 dialogo.Show();
 
                 dataGridView_pecas_ordem.Update();
@@ -322,7 +322,7 @@ namespace GarageManager.Forms
                 ordemServico.Status = "Em serviço";
                 MessageBox.Show("A ordem de serviço está ativa novamente.", "Ordem de serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                MainForm.tabControl1.SelectedTab = MainForm.tabPage_home;
+                MainForm.AbrirInicio();
             }
         }
 
@@ -355,7 +355,7 @@ namespace GarageManager.Forms
                             MessageBox.Show("A ordem de serviço foi finalizada!\nPara realizar uma consulta procure pela placa no histórico.", "Ordem de serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Close();
 
-                            MainForm.tabControl1.SelectedTab = MainForm.tabPage_home;
+                            MainForm.AbrirInicio();
                         }
 
                         break;
@@ -428,7 +428,7 @@ namespace GarageManager.Forms
 
             if (button_alterar.Text == "Forma Pagamento" && ordemServico.Status == "Finalizada")
             {
-                Pagamento parcela = new Pagamento() { id_os = id_os };
+                Pagamento parcela = new Pagamento() { id_os = id_os, MdiParent = this.MdiParent };
                 parcela.Show();
             }
         }
