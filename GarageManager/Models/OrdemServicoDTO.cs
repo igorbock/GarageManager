@@ -10,5 +10,6 @@ namespace GarageManager.Models
         public string Cor_veiculo { get; set; }
         public string Ano_veiculo { get; set; }
         public string Status { get; set; }
+        public string DataFim { get; set; }
     }
 }
