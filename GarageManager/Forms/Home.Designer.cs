@@ -32,15 +32,12 @@
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuInicio = new System.Windows.Forms.ToolStripMenuItem();
             menuOrdemServico = new System.Windows.Forms.ToolStripMenuItem();
-            menuAbrirOS = new System.Windows.Forms.ToolStripMenuItem();
-            menuConsultarAbertas = new System.Windows.Forms.ToolStripMenuItem();
-            menuConsultarProntas = new System.Windows.Forms.ToolStripMenuItem();
-            menuHistorico = new System.Windows.Forms.ToolStripMenuItem();
             menuAjuda = new System.Windows.Forms.ToolStripMenuItem();
-            menuSobre = new System.Windows.Forms.ToolStripMenuItem();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabel_versao = new System.Windows.Forms.ToolStripStatusLabel();
             panel1 = new System.Windows.Forms.Panel();
+            btnMinimizar = new System.Windows.Forms.Button();
+            btnFechar = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -49,71 +46,45 @@
             // 
             // menuStrip1
             // 
+            menuStrip1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             menuStrip1.AutoSize = false;
             menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { menuInicio, menuOrdemServico, menuAjuda });
             menuStrip1.Location = new System.Drawing.Point(0, 33);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            menuStrip1.Size = new System.Drawing.Size(647, 99);
+            menuStrip1.Size = new System.Drawing.Size(647, 61);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // menuInicio
             // 
+            menuInicio.Image = Properties.Resources.inicio;
+            menuInicio.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             menuInicio.Name = "menuInicio";
-            menuInicio.Size = new System.Drawing.Size(48, 95);
+            menuInicio.Size = new System.Drawing.Size(48, 57);
             menuInicio.Text = "Início";
+            menuInicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             menuInicio.Click += MenuInicio_Click;
             // 
             // menuOrdemServico
             // 
-            menuOrdemServico.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { menuAbrirOS, menuConsultarAbertas, menuConsultarProntas, menuHistorico });
+            menuOrdemServico.Image = Properties.Resources.ordem_servico;
+            menuOrdemServico.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             menuOrdemServico.Name = "menuOrdemServico";
-            menuOrdemServico.Size = new System.Drawing.Size(113, 95);
+            menuOrdemServico.Size = new System.Drawing.Size(113, 57);
             menuOrdemServico.Text = "Ordem de Serviço";
-            // 
-            // menuAbrirOS
-            // 
-            menuAbrirOS.Name = "menuAbrirOS";
-            menuAbrirOS.Size = new System.Drawing.Size(192, 22);
-            menuAbrirOS.Text = "Abrir Nova O.S.";
-            menuAbrirOS.Click += MenuAbrirOS_Click;
-            // 
-            // menuConsultarAbertas
-            // 
-            menuConsultarAbertas.Name = "menuConsultarAbertas";
-            menuConsultarAbertas.Size = new System.Drawing.Size(192, 22);
-            menuConsultarAbertas.Text = "Consultar O.S. Abertas";
-            menuConsultarAbertas.Click += MenuConsultarAbertas_Click;
-            // 
-            // menuConsultarProntas
-            // 
-            menuConsultarProntas.Name = "menuConsultarProntas";
-            menuConsultarProntas.Size = new System.Drawing.Size(192, 22);
-            menuConsultarProntas.Text = "Consultar O.S. Prontas";
-            menuConsultarProntas.Click += MenuConsultarProntas_Click;
-            // 
-            // menuHistorico
-            // 
-            menuHistorico.Name = "menuHistorico";
-            menuHistorico.Size = new System.Drawing.Size(192, 22);
-            menuHistorico.Text = "Histórico de O.S.";
-            menuHistorico.Click += MenuHistorico_Click;
+            menuOrdemServico.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            menuOrdemServico.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // menuAjuda
             // 
-            menuAjuda.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { menuSobre });
+            menuAjuda.Image = Properties.Resources.sobre;
+            menuAjuda.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             menuAjuda.Name = "menuAjuda";
-            menuAjuda.Size = new System.Drawing.Size(50, 95);
+            menuAjuda.Size = new System.Drawing.Size(50, 57);
             menuAjuda.Text = "Ajuda";
-            // 
-            // menuSobre
-            // 
-            menuSobre.Name = "menuSobre";
-            menuSobre.Size = new System.Drawing.Size(104, 22);
-            menuSobre.Text = "Sobre";
-            menuSobre.Click += MenuSobre_Click;
+            menuAjuda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // statusStrip1
             // 
@@ -135,6 +106,8 @@
             // panel1
             // 
             panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            panel1.Controls.Add(btnMinimizar);
+            panel1.Controls.Add(btnFechar);
             panel1.Controls.Add(label1);
             panel1.Dock = System.Windows.Forms.DockStyle.Top;
             panel1.Location = new System.Drawing.Point(0, 0);
@@ -142,6 +115,37 @@
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(647, 32);
             panel1.TabIndex = 3;
+            // 
+            // btnMinimizar
+            // 
+            btnMinimizar.Dock = System.Windows.Forms.DockStyle.Right;
+            btnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            btnMinimizar.FlatAppearance.BorderSize = 0;
+            btnMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow;
+            btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnMinimizar.Image = Properties.Resources.circulo_minimizar;
+            btnMinimizar.Location = new System.Drawing.Point(595, 0);
+            btnMinimizar.Name = "btnMinimizar";
+            btnMinimizar.Size = new System.Drawing.Size(26, 32);
+            btnMinimizar.TabIndex = 6;
+            btnMinimizar.UseVisualStyleBackColor = true;
+            // 
+            // btnFechar
+            // 
+            btnFechar.Dock = System.Windows.Forms.DockStyle.Right;
+            btnFechar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            btnFechar.FlatAppearance.BorderSize = 0;
+            btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnFechar.Image = Properties.Resources.circulo_fechar;
+            btnFechar.Location = new System.Drawing.Point(621, 0);
+            btnFechar.Margin = new System.Windows.Forms.Padding(1);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Size = new System.Drawing.Size(26, 32);
+            btnFechar.TabIndex = 5;
+            btnFechar.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -170,6 +174,7 @@
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "Home";
             Text = "Garage Manager";
+            WindowState = System.Windows.Forms.FormWindowState.Maximized;
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -187,15 +192,12 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuInicio;
         private System.Windows.Forms.ToolStripMenuItem menuOrdemServico;
-        private System.Windows.Forms.ToolStripMenuItem menuAbrirOS;
-        private System.Windows.Forms.ToolStripMenuItem menuConsultarAbertas;
-        private System.Windows.Forms.ToolStripMenuItem menuConsultarProntas;
-        private System.Windows.Forms.ToolStripMenuItem menuHistorico;
         private System.Windows.Forms.ToolStripMenuItem menuAjuda;
-        private System.Windows.Forms.ToolStripMenuItem menuSobre;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_versao;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnFechar;
+        private System.Windows.Forms.Button btnMinimizar;
     }
 }

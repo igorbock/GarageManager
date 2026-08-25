@@ -1,22 +1,50 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace GarageManager.Forms
 {
     public partial class Home : Form
     {
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+
         public Home()
         {
             InitializeComponent();
 
             toolStripStatusLabel_versao.Text = "Garage Manager - Versão " + Application.ProductVersion;
+            btnFechar.Click += Fechar;
+            btnMinimizar.Click += Minimizar;
+            panel1.MouseMove += MovimentarJanela;
+            menuInicio.Click += (s, e) => AbrirInicio();
+            menuOrdemServico.Click += (s, e) => AbrirConsultarAbertas();
+            menuAjuda.Click += (s, e) => AbrirSobre();
+        }
+
+        private void Fechar(object sender, EventArgs e) => Close();
+        private void Minimizar(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
+        private void MovimentarJanela(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            ReleaseCapture();
+            SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             AbrirInicio();
         }
+
+
 
         private void MenuInicio_Click(object sender, EventArgs e)
         {
