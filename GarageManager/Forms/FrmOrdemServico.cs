@@ -7,19 +7,19 @@ using GarageManager.Models;
 
 namespace GarageManager.Forms
 {
-    public partial class FrmAbrirOS : Form
+    public partial class FrmOrdemServico : Form
     {
-        public FrmAbrirOS()
+        public FrmOrdemServico()
         {
             InitializeComponent();
         }
 
-        private void FrmAbrirOS_Load(object sender, EventArgs e)
+        private void FrmOrdemServico_Load(object sender, EventArgs e)
         {
             ResetarFormulario();
         }
 
-        private void FrmAbrirOS_Activated(object sender, EventArgs e)
+        private void FrmOrdemServico_Activated(object sender, EventArgs e)
         {
             AtualizarIdEData();
         }

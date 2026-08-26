@@ -16,10 +16,8 @@ GarageManager/
 ├── Forms/              # Telas (code-behind + Designer)
 │   ├── Home.cs         # Janela principal MDI (menu superior + barra de status)
 │   ├── FrmInicio.cs    # Início: título + informativos de O.S. (abertas/prontas/finalizadas)
-│   ├── FrmAbrirOS.cs   # Abrir nova ordem de serviço
-│   ├── FrmConsultarAbertas.cs # Consulta de O.S. abertas
-│   ├── FrmConsultarProntas.cs  # Consulta de O.S. prontas
-│   ├── FrmHistorico.cs # Histórico de O.S. encerradas
+│   ├── FrmOrdemServico.cs      # Cadastro/edição de ordem de serviço (INSERT/UPDATE)
+│   ├── FrmOrdemServicoGerencia.cs # Gerenciamento de O.S. (listagem, filtros, exclusão)
 │   ├── OS_Info.cs      # Detalhes/edição da ordem de serviço
 │   ├── PecasMaoObra.cs # Inclusão de peças e mão de obra
 │   ├── Pagamento.cs    # Forma de pagamento

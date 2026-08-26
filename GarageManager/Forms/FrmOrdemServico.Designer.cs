@@ -1,6 +1,6 @@
 namespace GarageManager.Forms
 {
-    partial class FrmAbrirOS
+    partial class FrmOrdemServico
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -302,7 +302,7 @@ namespace GarageManager.Forms
             this.label_id.TabIndex = 0;
             this.label_id.Text = "#id";
             // 
-            // FrmAbrirOS
+            // FrmOrdemServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -314,10 +314,10 @@ namespace GarageManager.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmAbrirOS";
+            this.Name = "FrmOrdemServico";
             this.Text = "Abrir Nova Ordem de Serviço";
-            this.Activated += new System.EventHandler(this.FrmAbrirOS_Activated);
-            this.Load += new System.EventHandler(this.FrmAbrirOS_Load);
+            this.Activated += new System.EventHandler(this.FrmOrdemServico_Activated);
+            this.Load += new System.EventHandler(this.FrmOrdemServico_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);

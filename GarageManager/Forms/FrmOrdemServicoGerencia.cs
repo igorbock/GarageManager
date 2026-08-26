@@ -8,11 +8,11 @@ using GarageManager.Models;
 
 namespace GarageManager.Forms
 {
-    public partial class FrmConsultarAbertas : Form
+    public partial class FrmOrdemServicoGerencia : Form
     {
         public Home MainForm;
 
-        public FrmConsultarAbertas(Home main)
+        public FrmOrdemServicoGerencia(Home main)
         {
             InitializeComponent();
             MainForm = main;
@@ -22,7 +22,7 @@ namespace GarageManager.Forms
             dateTimePicker_ate.Checked = true;
         }
 
-        private void FrmConsultarAbertas_Activated(object sender, EventArgs e)
+        private void FrmOrdemServicoGerencia_Activated(object sender, EventArgs e)
         {
             CarregarGrid();
         }
@@ -202,7 +202,7 @@ namespace GarageManager.Forms
 
         private void Button_adicionar_Click(object sender, EventArgs e)
         {
-            MainForm.AbrirAbrirOS();
+            MainForm.AbrirOrdemServico();
         }
 
         private void Button_excluir_Click(object sender, EventArgs e)

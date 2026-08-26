@@ -26,7 +26,7 @@ namespace GarageManager.Forms
             btnMinimizar.Click += Minimizar;
             panel1.MouseMove += MovimentarJanela;
             menuInicio.Click += (s, e) => AbrirInicio();
-            menuOrdemServico.Click += (s, e) => AbrirConsultarAbertas();
+            menuOrdemServico.Click += (s, e) => AbrirOrdemServicoGerencia();
             menuAjuda.Click += (s, e) => AbrirSobre();
         }
 
@@ -41,34 +41,25 @@ namespace GarageManager.Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            MaximizarNaAreaDeTrabalho();
             AbrirInicio();
         }
 
-
+        private void MaximizarNaAreaDeTrabalho()
+        {
+            var area = Screen.PrimaryScreen.WorkingArea;
+            this.Location = new System.Drawing.Point(area.X, area.Y);
+            this.Size = new System.Drawing.Size(area.Width, area.Height);
+        }
 
         private void MenuInicio_Click(object sender, EventArgs e)
         {
             AbrirInicio();
         }
 
-        private void MenuAbrirOS_Click(object sender, EventArgs e)
+        private void MenuOrdemServico_Click(object sender, EventArgs e)
         {
-            AbrirAbrirOS();
-        }
-
-        private void MenuConsultarAbertas_Click(object sender, EventArgs e)
-        {
-            AbrirConsultarAbertas();
-        }
-
-        private void MenuConsultarProntas_Click(object sender, EventArgs e)
-        {
-            AbrirConsultarProntas();
-        }
-
-        private void MenuHistorico_Click(object sender, EventArgs e)
-        {
-            AbrirHistorico();
+            AbrirOrdemServicoGerencia();
         }
 
         private void MenuSobre_Click(object sender, EventArgs e)
@@ -89,56 +80,30 @@ namespace GarageManager.Forms
             inicio.Activate();
         }
 
-        public void AbrirAbrirOS()
+        public void AbrirOrdemServico()
         {
-            FrmAbrirOS abrirOS = (FrmAbrirOS)ObterFilho(typeof(FrmAbrirOS));
+            FrmOrdemServico frm = (FrmOrdemServico)ObterFilho(typeof(FrmOrdemServico));
 
-            if (abrirOS == null)
+            if (frm == null)
             {
-                abrirOS = new FrmAbrirOS { MdiParent = this };
-                abrirOS.Show();
+                frm = new FrmOrdemServico { MdiParent = this };
+                frm.Show();
             }
 
-            abrirOS.Activate();
+            frm.Activate();
         }
 
-        public void AbrirConsultarAbertas()
+        public void AbrirOrdemServicoGerencia()
         {
-            FrmConsultarAbertas consulta = (FrmConsultarAbertas)ObterFilho(typeof(FrmConsultarAbertas));
+            FrmOrdemServicoGerencia frm = (FrmOrdemServicoGerencia)ObterFilho(typeof(FrmOrdemServicoGerencia));
 
-            if (consulta == null)
+            if (frm == null)
             {
-                consulta = new FrmConsultarAbertas(this) { MdiParent = this };
-                consulta.Show();
+                frm = new FrmOrdemServicoGerencia(this) { MdiParent = this };
+                frm.Show();
             }
 
-            consulta.Activate();
-        }
-
-        public void AbrirConsultarProntas()
-        {
-            FrmConsultarProntas consulta = (FrmConsultarProntas)ObterFilho(typeof(FrmConsultarProntas));
-
-            if (consulta == null)
-            {
-                consulta = new FrmConsultarProntas(this) { MdiParent = this };
-                consulta.Show();
-            }
-
-            consulta.Activate();
-        }
-
-        public void AbrirHistorico()
-        {
-            FrmHistorico historico = (FrmHistorico)ObterFilho(typeof(FrmHistorico));
-
-            if (historico == null)
-            {
-                historico = new FrmHistorico(this) { MdiParent = this };
-                historico.Show();
-            }
-
-            historico.Activate();
+            frm.Activate();
         }
 
         public void AbrirOSInfo(int id)

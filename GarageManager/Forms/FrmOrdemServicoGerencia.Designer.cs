@@ -1,6 +1,6 @@
 namespace GarageManager.Forms
 {
-    partial class FrmConsultarAbertas
+    partial class FrmOrdemServicoGerencia
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -365,7 +365,7 @@ namespace GarageManager.Forms
             // 
             toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // FrmConsultarAbertas
+            // FrmOrdemServicoGerencia
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -380,9 +380,9 @@ namespace GarageManager.Forms
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "FrmConsultarAbertas";
-            Text = "Consultar O.S. Abertas";
-            Activated += FrmConsultarAbertas_Activated;
+            Name = "FrmOrdemServicoGerencia";
+            Text = "Ordens de Serviço";
+            Activated += FrmOrdemServicoGerencia_Activated;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
