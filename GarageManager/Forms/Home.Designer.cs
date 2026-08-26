@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuInicio = new System.Windows.Forms.ToolStripMenuItem();
             menuOrdemServico = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,10 +35,10 @@
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabel_versao = new System.Windows.Forms.ToolStripStatusLabel();
             panel1 = new System.Windows.Forms.Panel();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            label1 = new System.Windows.Forms.Label();
             btnMinimizar = new System.Windows.Forms.Button();
             btnFechar = new System.Windows.Forms.Button();
-            label1 = new System.Windows.Forms.Label();
-            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             panel1.SuspendLayout();
@@ -116,6 +115,37 @@
             panel1.Size = new System.Drawing.Size(647, 93);
             panel1.TabIndex = 3;
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Highlight;
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnMinimizar, 1, 0);
+            tableLayoutPanel1.Controls.Add(btnFechar, 2, 0);
+            tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(647, 35);
+            tableLayoutPanel1.TabIndex = 7;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            label1.Font = new System.Drawing.Font("Oswald SemiBold", 14F);
+            label1.ForeColor = System.Drawing.Color.Gold;
+            label1.Location = new System.Drawing.Point(1, 1);
+            label1.Margin = new System.Windows.Forms.Padding(1);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(593, 33);
+            label1.TabIndex = 4;
+            label1.Text = "Garage Manager";
+            // 
             // btnMinimizar
             // 
             btnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.White;
@@ -145,37 +175,6 @@
             btnFechar.TabIndex = 5;
             btnFechar.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            label1.Font = new System.Drawing.Font("Oswald SemiBold", 14F);
-            label1.ForeColor = System.Drawing.Color.Black;
-            label1.Location = new System.Drawing.Point(1, 1);
-            label1.Margin = new System.Windows.Forms.Padding(1);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(593, 33);
-            label1.TabIndex = 4;
-            label1.Text = "Garage Manager";
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Highlight;
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            tableLayoutPanel1.Controls.Add(label1, 0, 0);
-            tableLayoutPanel1.Controls.Add(btnMinimizar, 1, 0);
-            tableLayoutPanel1.Controls.Add(btnFechar, 2, 0);
-            tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(647, 35);
-            tableLayoutPanel1.TabIndex = 7;
-            // 
             // Home
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -185,11 +184,10 @@
             Controls.Add(statusStrip1);
             Controls.Add(panel1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "Home";
-            Text = "Garage Manager";
+            Text = "<b>";
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

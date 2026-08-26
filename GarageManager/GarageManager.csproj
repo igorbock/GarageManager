@@ -10,7 +10,7 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <RootNamespace>GarageManager</RootNamespace>
     <AssemblyName>GarageManager</AssemblyName>
-    <ApplicationIcon>carmechanic_89096.ico</ApplicationIcon>
+    <ApplicationIcon>ordem_servico.ico</ApplicationIcon>
     <Version>2.0.0</Version>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
@@ -22,6 +22,10 @@
     <LangVersion>latest</LangVersion>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="ordem_servico.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.79" />
