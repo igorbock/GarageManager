@@ -1,7 +1,7 @@
 using GarageManager.Data;
 using GarageManager.Models;
 
-namespace GarageManager.Forms
+namespace GarageManager.Forms.Cadastros
 {
     public class FrmCadMecanico : FrmCadBase<Mecanico>
     {

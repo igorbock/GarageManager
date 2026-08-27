@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using GarageManager.Data;
 using GarageManager.Models;
 
-namespace GarageManager.Forms
+namespace GarageManager.Forms.Cadastros
 {
     public class FrmCadBase<T> : Form where T : ICadastro, new()
     {
