@@ -31,6 +31,10 @@
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuInicio = new System.Windows.Forms.ToolStripMenuItem();
             menuOrdemServico = new System.Windows.Forms.ToolStripMenuItem();
+            cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            mecânicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            servicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuAjuda = new System.Windows.Forms.ToolStripMenuItem();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabel_versao = new System.Windows.Forms.ToolStripStatusLabel();
@@ -49,7 +53,8 @@
             // 
             menuStrip1.AutoSize = false;
             menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { menuInicio, menuOrdemServico, menuAjuda });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { menuInicio, menuOrdemServico, cadastrosToolStripMenuItem, menuAjuda });
+            menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             menuStrip1.Location = new System.Drawing.Point(0, 32);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -63,7 +68,7 @@
             menuInicio.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             menuInicio.Name = "menuInicio";
             menuInicio.Size = new System.Drawing.Size(48, 57);
-            menuInicio.Text = "Início";
+            menuInicio.Text = "Inicio";
             menuInicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             menuInicio.Click += MenuInicio_Click;
             // 
@@ -73,9 +78,41 @@
             menuOrdemServico.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             menuOrdemServico.Name = "menuOrdemServico";
             menuOrdemServico.Size = new System.Drawing.Size(113, 57);
-            menuOrdemServico.Text = "Ordem de Serviço";
+            menuOrdemServico.Text = "Ordem de Servico";
             menuOrdemServico.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             menuOrdemServico.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // cadastrosToolStripMenuItem
+            // 
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mecânicoToolStripMenuItem, clienteToolStripMenuItem, servicoToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
+            cadastrosToolStripMenuItem.Image = Properties.Resources.cadastros;
+            cadastrosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
+            cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 57);
+            cadastrosToolStripMenuItem.Text = "Cadastros";
+            cadastrosToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // mecânicoToolStripMenuItem
+            // 
+            mecânicoToolStripMenuItem.Name = "mecânicoToolStripMenuItem";
+            mecânicoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            mecânicoToolStripMenuItem.Text = "Mecânico";
+            mecânicoToolStripMenuItem.Click += mecânicoToolStripMenuItem_Click;
+            // 
+            // clienteToolStripMenuItem
+            // 
+            clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
+            clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            clienteToolStripMenuItem.Text = "Cliente";
+            clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
+            // 
+            // servicoToolStripMenuItem
+            // 
+            servicoToolStripMenuItem.Name = "servicoToolStripMenuItem";
+            servicoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            servicoToolStripMenuItem.Text = "Serviço";
+            servicoToolStripMenuItem.Click += servicoToolStripMenuItem_Click;
             // 
             // menuAjuda
             // 
@@ -187,7 +224,7 @@
             IsMdiContainer = true;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "Home";
-            Text = "<b>";
+            Text = "Garage Manager";
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -214,5 +251,9 @@
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mecânicoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem servicoToolStripMenuItem;
     }
 }

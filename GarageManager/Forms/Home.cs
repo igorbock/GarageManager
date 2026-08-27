@@ -67,6 +67,24 @@ namespace GarageManager.Forms
             AbrirSobre();
         }
 
+        private void MenuCadMecanico_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadMecanico();
+            frm.ShowDialog();
+        }
+
+        private void MenuCadCliente_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadCliente();
+            frm.ShowDialog();
+        }
+
+        private void MenuCadServico_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadServico();
+            frm.ShowDialog();
+        }
+
         public void AbrirInicio()
         {
             FrmInicio inicio = (FrmInicio)ObterFilho(typeof(FrmInicio));
@@ -125,6 +143,24 @@ namespace GarageManager.Forms
                 "--> Regras para inserção de produtos incrementada nas ordens de serviço\n\n" +
                 "***Reparos***\n" +
                 "--> O.S. pode ser encerrada somente quando estiver pronta", "Garage Manager", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadCliente frmCadCliente = new FrmCadCliente() { MdiParent = this };
+            frmCadCliente.Show();
+        }
+
+        private void servicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadServico frmCadServico = new FrmCadServico() { MdiParent = this };
+            frmCadServico.Show();
+        }
+
+        private void mecânicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadMecanico frmCadMecanico = new FrmCadMecanico() { MdiParent = this };
+            frmCadMecanico.Show();
         }
     }
 }

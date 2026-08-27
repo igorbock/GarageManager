@@ -68,6 +68,29 @@ namespace GarageManager.Data
                         );
 
                         CREATE INDEX IF NOT EXISTS IX_Pecas_OrdemServicoId ON Pecas(OrdemServicoId);
+
+                        CREATE TABLE IF NOT EXISTS Mecanicos (
+                            Id              INTEGER PRIMARY KEY AUTOINCREMENT,
+                            Nome            TEXT NOT NULL,
+                            Especialidade   TEXT,
+                            Telefone        TEXT,
+                            Ativo           INTEGER NOT NULL DEFAULT 1
+                        );
+
+                        CREATE TABLE IF NOT EXISTS Clientes (
+                            Id              INTEGER PRIMARY KEY AUTOINCREMENT,
+                            Nome            TEXT NOT NULL,
+                            Telefone        TEXT,
+                            Email           TEXT,
+                            Endereco        TEXT
+                        );
+
+                        CREATE TABLE IF NOT EXISTS Servicos (
+                            Id              INTEGER PRIMARY KEY AUTOINCREMENT,
+                            Descricao       TEXT NOT NULL,
+                            ValorBase       NUMERIC NOT NULL DEFAULT 0,
+                            TempoEstimado   INTEGER NOT NULL DEFAULT 0
+                        );
                     ";
                     command.ExecuteNonQuery();
                 }
