@@ -51,6 +51,7 @@ namespace GarageManager.Data
                             Servicos_esperados TEXT,
                             Servicos_realizados TEXT,
                             Mecanico           TEXT,
+                            Mecanico_id        INTEGER,
                             Status             TEXT,
                             Lavacao            INTEGER NOT NULL DEFAULT 0,
                             Pagamento          TEXT
@@ -93,6 +94,34 @@ namespace GarageManager.Data
                         );
                     ";
                     command.ExecuteNonQuery();
+                }
+
+                using (SqliteCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = @"
+                        PRAGMA table_info(OrdemServico);
+                    ";
+                    using (var reader = command.ExecuteReader())
+                    {
+                        bool hasMecanicoId = false;
+                        while (reader.Read())
+                        {
+                            if (reader["name"].ToString() == "Mecanico_id")
+                            {
+                                hasMecanicoId = true;
+                                break;
+                            }
+                        }
+
+                        if (!hasMecanicoId)
+                        {
+                            using (var alterCmd = connection.CreateCommand())
+                            {
+                                alterCmd.CommandText = "ALTER TABLE OrdemServico ADD COLUMN Mecanico_id INTEGER";
+                                alterCmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -28,302 +28,321 @@ namespace GarageManager.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.button_salvar = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox_telefone = new System.Windows.Forms.TextBox();
-            this.textBox_nome = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton_servico = new System.Windows.Forms.RadioButton();
-            this.radioButton_aguardo = new System.Windows.Forms.RadioButton();
-            this.label_status = new System.Windows.Forms.Label();
-            this.textBox_servicos = new System.Windows.Forms.TextBox();
-            this.textBox_km = new System.Windows.Forms.TextBox();
-            this.textBox_ano = new System.Windows.Forms.TextBox();
-            this.textBox_cor = new System.Windows.Forms.TextBox();
-            this.textBox_modelo = new System.Windows.Forms.TextBox();
-            this.textBox_placa = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label_horaInicio = new System.Windows.Forms.Label();
-            this.label_dataInicio = new System.Windows.Forms.Label();
-            this.label_id = new System.Windows.Forms.Label();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.SuspendLayout();
+            button_salvar = new System.Windows.Forms.Button();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            textBox_telefone = new System.Windows.Forms.TextBox();
+            textBox_nome = new System.Windows.Forms.TextBox();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            radioButton_servico = new System.Windows.Forms.RadioButton();
+            radioButton_aguardo = new System.Windows.Forms.RadioButton();
+            label_status = new System.Windows.Forms.Label();
+            textBox_servicos = new System.Windows.Forms.TextBox();
+            textBox_km = new System.Windows.Forms.TextBox();
+            textBox_ano = new System.Windows.Forms.TextBox();
+            textBox_cor = new System.Windows.Forms.TextBox();
+            textBox_modelo = new System.Windows.Forms.TextBox();
+            textBox_placa = new System.Windows.Forms.TextBox();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            label_horaInicio = new System.Windows.Forms.Label();
+            label_dataInicio = new System.Windows.Forms.Label();
+            label_id = new System.Windows.Forms.Label();
+            entityComboBox_mecanico = new GarageManager.Controls.EntityComboBox();
+            groupBox4.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox2.SuspendLayout();
+            SuspendLayout();
             // 
             // button_salvar
             // 
-            this.button_salvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_salvar.Font = new System.Drawing.Font("Candara Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_salvar.Location = new System.Drawing.Point(6, 312);
-            this.button_salvar.Name = "button_salvar";
-            this.button_salvar.Size = new System.Drawing.Size(75, 37);
-            this.button_salvar.TabIndex = 9;
-            this.button_salvar.Text = "Salvar";
-            this.button_salvar.UseVisualStyleBackColor = true;
-            this.button_salvar.Click += new System.EventHandler(this.Button_salvar_Click);
+            button_salvar.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            button_salvar.Font = new System.Drawing.Font("Candara Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            button_salvar.Location = new System.Drawing.Point(7, 415);
+            button_salvar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button_salvar.Name = "button_salvar";
+            button_salvar.Size = new System.Drawing.Size(88, 43);
+            button_salvar.TabIndex = 9;
+            button_salvar.Text = "Salvar";
+            button_salvar.UseVisualStyleBackColor = true;
+            button_salvar.Click += Button_salvar_Click;
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.textBox_telefone);
-            this.groupBox4.Controls.Add(this.textBox_nome);
-            this.groupBox4.Font = new System.Drawing.Font("Candara", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(6, 251);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(688, 55);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Cliente";
+            groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            groupBox4.Controls.Add(textBox_telefone);
+            groupBox4.Controls.Add(textBox_nome);
+            groupBox4.Font = new System.Drawing.Font("Candara", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, 0);
+            groupBox4.Location = new System.Drawing.Point(7, 345);
+            groupBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Size = new System.Drawing.Size(803, 63);
+            groupBox4.TabIndex = 2;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Cliente";
             // 
             // textBox_telefone
             // 
-            this.textBox_telefone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_telefone.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_telefone.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox_telefone.Location = new System.Drawing.Point(382, 19);
-            this.textBox_telefone.MaxLength = 30;
-            this.textBox_telefone.Name = "textBox_telefone";
-            this.textBox_telefone.Size = new System.Drawing.Size(300, 27);
-            this.textBox_telefone.TabIndex = 8;
-            this.textBox_telefone.Text = "Telefone";
-            this.textBox_telefone.Enter += new System.EventHandler(this.TextBox_telefone_Enter);
-            this.textBox_telefone.Leave += new System.EventHandler(this.TextBox_telefone_Leave);
+            textBox_telefone.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            textBox_telefone.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            textBox_telefone.ForeColor = System.Drawing.SystemColors.GrayText;
+            textBox_telefone.Location = new System.Drawing.Point(446, 22);
+            textBox_telefone.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_telefone.MaxLength = 30;
+            textBox_telefone.Name = "textBox_telefone";
+            textBox_telefone.Size = new System.Drawing.Size(349, 27);
+            textBox_telefone.TabIndex = 8;
+            textBox_telefone.Text = "Telefone";
+            textBox_telefone.Enter += TextBox_telefone_Enter;
+            textBox_telefone.Leave += TextBox_telefone_Leave;
             // 
             // textBox_nome
             // 
-            this.textBox_nome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_nome.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_nome.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox_nome.Location = new System.Drawing.Point(9, 19);
-            this.textBox_nome.MaxLength = 100;
-            this.textBox_nome.Name = "textBox_nome";
-            this.textBox_nome.Size = new System.Drawing.Size(367, 27);
-            this.textBox_nome.TabIndex = 7;
-            this.textBox_nome.Text = "Nome";
-            this.textBox_nome.Enter += new System.EventHandler(this.TextBox_nome_Enter);
-            this.textBox_nome.Leave += new System.EventHandler(this.TextBox_nome_Leave);
+            textBox_nome.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            textBox_nome.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            textBox_nome.ForeColor = System.Drawing.SystemColors.GrayText;
+            textBox_nome.Location = new System.Drawing.Point(10, 22);
+            textBox_nome.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_nome.MaxLength = 100;
+            textBox_nome.Name = "textBox_nome";
+            textBox_nome.Size = new System.Drawing.Size(428, 27);
+            textBox_nome.TabIndex = 7;
+            textBox_nome.Text = "Nome";
+            textBox_nome.Enter += TextBox_nome_Enter;
+            textBox_nome.Leave += TextBox_nome_Leave;
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.radioButton_servico);
-            this.groupBox3.Controls.Add(this.radioButton_aguardo);
-            this.groupBox3.Controls.Add(this.label_status);
-            this.groupBox3.Controls.Add(this.textBox_servicos);
-            this.groupBox3.Controls.Add(this.textBox_km);
-            this.groupBox3.Controls.Add(this.textBox_ano);
-            this.groupBox3.Controls.Add(this.textBox_cor);
-            this.groupBox3.Controls.Add(this.textBox_modelo);
-            this.groupBox3.Controls.Add(this.textBox_placa);
-            this.groupBox3.Font = new System.Drawing.Font("Candara", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(6, 56);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(688, 189);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Veículo";
+            groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            groupBox3.Controls.Add(radioButton_servico);
+            groupBox3.Controls.Add(radioButton_aguardo);
+            groupBox3.Controls.Add(label_status);
+            groupBox3.Controls.Add(textBox_servicos);
+            groupBox3.Controls.Add(textBox_km);
+            groupBox3.Controls.Add(textBox_ano);
+            groupBox3.Controls.Add(textBox_cor);
+            groupBox3.Controls.Add(textBox_modelo);
+            groupBox3.Controls.Add(textBox_placa);
+            groupBox3.Font = new System.Drawing.Font("Candara", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, 0);
+            groupBox3.Location = new System.Drawing.Point(7, 65);
+            groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Size = new System.Drawing.Size(803, 218);
+            groupBox3.TabIndex = 1;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Veículo";
             // 
             // radioButton_servico
             // 
-            this.radioButton_servico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton_servico.Font = new System.Drawing.Font("Candara Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_servico.Location = new System.Drawing.Point(592, 22);
-            this.radioButton_servico.Name = "radioButton_servico";
-            this.radioButton_servico.Size = new System.Drawing.Size(90, 17);
-            this.radioButton_servico.TabIndex = 2;
-            this.radioButton_servico.TabStop = true;
-            this.radioButton_servico.Text = "Em serviço";
-            this.radioButton_servico.UseVisualStyleBackColor = true;
+            radioButton_servico.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            radioButton_servico.Font = new System.Drawing.Font("Candara Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            radioButton_servico.Location = new System.Drawing.Point(691, 25);
+            radioButton_servico.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radioButton_servico.Name = "radioButton_servico";
+            radioButton_servico.Size = new System.Drawing.Size(105, 20);
+            radioButton_servico.TabIndex = 2;
+            radioButton_servico.TabStop = true;
+            radioButton_servico.Text = "Em serviço";
+            radioButton_servico.UseVisualStyleBackColor = true;
             // 
             // radioButton_aguardo
             // 
-            this.radioButton_aguardo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton_aguardo.Font = new System.Drawing.Font("Candara Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_aguardo.Location = new System.Drawing.Point(446, 22);
-            this.radioButton_aguardo.Name = "radioButton_aguardo";
-            this.radioButton_aguardo.Size = new System.Drawing.Size(140, 17);
-            this.radioButton_aguardo.TabIndex = 1;
-            this.radioButton_aguardo.TabStop = true;
-            this.radioButton_aguardo.Text = "Aguardando serviço";
-            this.radioButton_aguardo.UseVisualStyleBackColor = true;
+            radioButton_aguardo.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            radioButton_aguardo.Font = new System.Drawing.Font("Candara Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            radioButton_aguardo.Location = new System.Drawing.Point(520, 25);
+            radioButton_aguardo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radioButton_aguardo.Name = "radioButton_aguardo";
+            radioButton_aguardo.Size = new System.Drawing.Size(163, 20);
+            radioButton_aguardo.TabIndex = 1;
+            radioButton_aguardo.TabStop = true;
+            radioButton_aguardo.Text = "Aguardando serviço";
+            radioButton_aguardo.UseVisualStyleBackColor = true;
             // 
             // label_status
             // 
-            this.label_status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_status.Font = new System.Drawing.Font("Candara", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_status.Location = new System.Drawing.Point(330, 24);
-            this.label_status.Name = "label_status";
-            this.label_status.Size = new System.Drawing.Size(110, 13);
-            this.label_status.TabIndex = 6;
-            this.label_status.Text = "Status do veículo:";
+            label_status.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            label_status.Font = new System.Drawing.Font("Candara", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label_status.Location = new System.Drawing.Point(385, 28);
+            label_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label_status.Name = "label_status";
+            label_status.Size = new System.Drawing.Size(128, 15);
+            label_status.TabIndex = 6;
+            label_status.Text = "Status do veículo:";
             // 
             // textBox_servicos
             // 
-            this.textBox_servicos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_servicos.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_servicos.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox_servicos.Location = new System.Drawing.Point(9, 94);
-            this.textBox_servicos.MaxLength = 500;
-            this.textBox_servicos.Multiline = true;
-            this.textBox_servicos.Name = "textBox_servicos";
-            this.textBox_servicos.Size = new System.Drawing.Size(673, 89);
-            this.textBox_servicos.TabIndex = 6;
-            this.textBox_servicos.Text = "Serviços esperados";
-            this.textBox_servicos.Enter += new System.EventHandler(this.TextBox_servicos_Enter);
-            this.textBox_servicos.Leave += new System.EventHandler(this.TextBox_servicos_Leave);
+            textBox_servicos.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            textBox_servicos.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            textBox_servicos.ForeColor = System.Drawing.SystemColors.GrayText;
+            textBox_servicos.Location = new System.Drawing.Point(10, 108);
+            textBox_servicos.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_servicos.MaxLength = 500;
+            textBox_servicos.Multiline = true;
+            textBox_servicos.Name = "textBox_servicos";
+            textBox_servicos.Size = new System.Drawing.Size(784, 102);
+            textBox_servicos.TabIndex = 6;
+            textBox_servicos.Text = "Serviços esperados";
+            textBox_servicos.Enter += TextBox_servicos_Enter;
+            textBox_servicos.Leave += TextBox_servicos_Leave;
             // 
             // textBox_km
             // 
-            this.textBox_km.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_km.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_km.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox_km.Location = new System.Drawing.Point(532, 58);
-            this.textBox_km.MaxLength = 10;
-            this.textBox_km.Name = "textBox_km";
-            this.textBox_km.Size = new System.Drawing.Size(150, 27);
-            this.textBox_km.TabIndex = 5;
-            this.textBox_km.Text = "Km";
-            this.textBox_km.Enter += new System.EventHandler(this.TextBox_km_Enter);
-            this.textBox_km.Leave += new System.EventHandler(this.TextBox_km_Leave);
+            textBox_km.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            textBox_km.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            textBox_km.ForeColor = System.Drawing.SystemColors.GrayText;
+            textBox_km.Location = new System.Drawing.Point(621, 67);
+            textBox_km.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_km.MaxLength = 10;
+            textBox_km.Name = "textBox_km";
+            textBox_km.Size = new System.Drawing.Size(174, 27);
+            textBox_km.TabIndex = 5;
+            textBox_km.Text = "Km";
+            textBox_km.Enter += TextBox_km_Enter;
+            textBox_km.Leave += TextBox_km_Leave;
             // 
             // textBox_ano
             // 
-            this.textBox_ano.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_ano.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_ano.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox_ano.Location = new System.Drawing.Point(376, 58);
-            this.textBox_ano.MaxLength = 7;
-            this.textBox_ano.Name = "textBox_ano";
-            this.textBox_ano.Size = new System.Drawing.Size(150, 27);
-            this.textBox_ano.TabIndex = 4;
-            this.textBox_ano.Text = "Ano";
-            this.textBox_ano.Enter += new System.EventHandler(this.TextBox_ano_Enter);
-            this.textBox_ano.Leave += new System.EventHandler(this.TextBox_ano_Leave);
+            textBox_ano.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            textBox_ano.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            textBox_ano.ForeColor = System.Drawing.SystemColors.GrayText;
+            textBox_ano.Location = new System.Drawing.Point(439, 67);
+            textBox_ano.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_ano.MaxLength = 7;
+            textBox_ano.Name = "textBox_ano";
+            textBox_ano.Size = new System.Drawing.Size(174, 27);
+            textBox_ano.TabIndex = 4;
+            textBox_ano.Text = "Ano";
+            textBox_ano.Enter += TextBox_ano_Enter;
+            textBox_ano.Leave += TextBox_ano_Leave;
             // 
             // textBox_cor
             // 
-            this.textBox_cor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_cor.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_cor.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox_cor.Location = new System.Drawing.Point(222, 58);
-            this.textBox_cor.MaxLength = 30;
-            this.textBox_cor.Name = "textBox_cor";
-            this.textBox_cor.Size = new System.Drawing.Size(150, 27);
-            this.textBox_cor.TabIndex = 3;
-            this.textBox_cor.Text = "Cor";
-            this.textBox_cor.Enter += new System.EventHandler(this.TextBox_cor_Enter);
-            this.textBox_cor.Leave += new System.EventHandler(this.TextBox_cor_Leave);
+            textBox_cor.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            textBox_cor.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            textBox_cor.ForeColor = System.Drawing.SystemColors.GrayText;
+            textBox_cor.Location = new System.Drawing.Point(259, 67);
+            textBox_cor.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_cor.MaxLength = 30;
+            textBox_cor.Name = "textBox_cor";
+            textBox_cor.Size = new System.Drawing.Size(174, 27);
+            textBox_cor.TabIndex = 3;
+            textBox_cor.Text = "Cor";
+            textBox_cor.Enter += TextBox_cor_Enter;
+            textBox_cor.Leave += TextBox_cor_Leave;
             // 
             // textBox_modelo
             // 
-            this.textBox_modelo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_modelo.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_modelo.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox_modelo.Location = new System.Drawing.Point(9, 58);
-            this.textBox_modelo.MaxLength = 100;
-            this.textBox_modelo.Name = "textBox_modelo";
-            this.textBox_modelo.Size = new System.Drawing.Size(207, 27);
-            this.textBox_modelo.TabIndex = 2;
-            this.textBox_modelo.Text = "Modelo do veículo";
-            this.textBox_modelo.Enter += new System.EventHandler(this.TextBox_modelo_Enter);
-            this.textBox_modelo.Leave += new System.EventHandler(this.TextBox_modelo_Leave);
+            textBox_modelo.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            textBox_modelo.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            textBox_modelo.ForeColor = System.Drawing.SystemColors.GrayText;
+            textBox_modelo.Location = new System.Drawing.Point(10, 67);
+            textBox_modelo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_modelo.MaxLength = 100;
+            textBox_modelo.Name = "textBox_modelo";
+            textBox_modelo.Size = new System.Drawing.Size(241, 27);
+            textBox_modelo.TabIndex = 2;
+            textBox_modelo.Text = "Modelo do veículo";
+            textBox_modelo.Enter += TextBox_modelo_Enter;
+            textBox_modelo.Leave += TextBox_modelo_Leave;
             // 
             // textBox_placa
             // 
-            this.textBox_placa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_placa.Font = new System.Drawing.Font("Candara", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_placa.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox_placa.Location = new System.Drawing.Point(9, 19);
-            this.textBox_placa.MaxLength = 7;
-            this.textBox_placa.Name = "textBox_placa";
-            this.textBox_placa.Size = new System.Drawing.Size(207, 33);
-            this.textBox_placa.TabIndex = 1;
-            this.textBox_placa.Text = "Placa";
-            this.textBox_placa.TextChanged += new System.EventHandler(this.TextBox_placa_TextChanged);
-            this.textBox_placa.Enter += new System.EventHandler(this.TextBox_placa_Enter);
-            this.textBox_placa.Leave += new System.EventHandler(this.TextBox_placa_Leave);
+            textBox_placa.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            textBox_placa.Font = new System.Drawing.Font("Candara", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            textBox_placa.ForeColor = System.Drawing.SystemColors.GrayText;
+            textBox_placa.Location = new System.Drawing.Point(10, 22);
+            textBox_placa.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_placa.MaxLength = 7;
+            textBox_placa.Name = "textBox_placa";
+            textBox_placa.Size = new System.Drawing.Size(241, 33);
+            textBox_placa.TabIndex = 1;
+            textBox_placa.Text = "Placa";
+            textBox_placa.TextChanged += TextBox_placa_TextChanged;
+            textBox_placa.Enter += TextBox_placa_Enter;
+            textBox_placa.Leave += TextBox_placa_Leave;
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.label_horaInicio);
-            this.groupBox2.Controls.Add(this.label_dataInicio);
-            this.groupBox2.Controls.Add(this.label_id);
-            this.groupBox2.Font = new System.Drawing.Font("Candara", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(688, 45);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ordem de Serviço";
+            groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            groupBox2.Controls.Add(label_horaInicio);
+            groupBox2.Controls.Add(label_dataInicio);
+            groupBox2.Controls.Add(label_id);
+            groupBox2.Font = new System.Drawing.Font("Candara", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, 0);
+            groupBox2.Location = new System.Drawing.Point(7, 7);
+            groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Size = new System.Drawing.Size(803, 52);
+            groupBox2.TabIndex = 0;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Ordem de Serviço";
             // 
             // label_horaInicio
             // 
-            this.label_horaInicio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_horaInicio.Font = new System.Drawing.Font("Candara", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_horaInicio.Location = new System.Drawing.Point(612, 16);
-            this.label_horaInicio.Margin = new System.Windows.Forms.Padding(0);
-            this.label_horaInicio.Name = "label_horaInicio";
-            this.label_horaInicio.Size = new System.Drawing.Size(70, 20);
-            this.label_horaInicio.TabIndex = 2;
-            this.label_horaInicio.Text = "#12:34:56";
+            label_horaInicio.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            label_horaInicio.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, 0);
+            label_horaInicio.Location = new System.Drawing.Point(714, 18);
+            label_horaInicio.Margin = new System.Windows.Forms.Padding(0);
+            label_horaInicio.Name = "label_horaInicio";
+            label_horaInicio.Size = new System.Drawing.Size(82, 23);
+            label_horaInicio.TabIndex = 2;
+            label_horaInicio.Text = "#12:34:56";
             // 
             // label_dataInicio
             // 
-            this.label_dataInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label_dataInicio.Font = new System.Drawing.Font("Candara", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_dataInicio.Location = new System.Drawing.Point(300, 16);
-            this.label_dataInicio.Margin = new System.Windows.Forms.Padding(0);
-            this.label_dataInicio.Name = "label_dataInicio";
-            this.label_dataInicio.Size = new System.Drawing.Size(70, 20);
-            this.label_dataInicio.TabIndex = 1;
-            this.label_dataInicio.Text = "#12/34/4567";
+            label_dataInicio.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom;
+            label_dataInicio.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, 0);
+            label_dataInicio.Location = new System.Drawing.Point(350, 18);
+            label_dataInicio.Margin = new System.Windows.Forms.Padding(0);
+            label_dataInicio.Name = "label_dataInicio";
+            label_dataInicio.Size = new System.Drawing.Size(82, 23);
+            label_dataInicio.TabIndex = 1;
+            label_dataInicio.Text = "#12/34/4567";
             // 
             // label_id
             // 
-            this.label_id.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label_id.Font = new System.Drawing.Font("Candara", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_id.Location = new System.Drawing.Point(10, 16);
-            this.label_id.Margin = new System.Windows.Forms.Padding(0);
-            this.label_id.Name = "label_id";
-            this.label_id.Size = new System.Drawing.Size(60, 20);
-            this.label_id.TabIndex = 0;
-            this.label_id.Text = "#id";
+            label_id.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            label_id.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, 0);
+            label_id.Location = new System.Drawing.Point(12, 18);
+            label_id.Margin = new System.Windows.Forms.Padding(0);
+            label_id.Name = "label_id";
+            label_id.Size = new System.Drawing.Size(70, 23);
+            label_id.TabIndex = 0;
+            label_id.Text = "#id";
+            // 
+            // entityComboBox_mecanico
+            // 
+            entityComboBox_mecanico.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            entityComboBox_mecanico.Location = new System.Drawing.Point(7, 289);
+            entityComboBox_mecanico.Margin = new System.Windows.Forms.Padding(1);
+            entityComboBox_mecanico.Name = "entityComboBox_mecanico";
+            entityComboBox_mecanico.Size = new System.Drawing.Size(803, 30);
+            entityComboBox_mecanico.TabIndex = 10;
             // 
             // FrmOrdemServico
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 380);
-            this.Controls.Add(this.button_salvar);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FrmOrdemServico";
-            this.Text = "Abrir Nova Ordem de Serviço";
-            this.Activated += new System.EventHandler(this.FrmOrdemServico_Activated);
-            this.Load += new System.EventHandler(this.FrmOrdemServico_Load);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(840, 493);
+            Controls.Add(entityComboBox_mecanico);
+            Controls.Add(button_salvar);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FrmOrdemServico";
+            Text = "Abrir Nova Ordem de Serviço";
+            Activated += FrmOrdemServico_Activated;
+            Load += FrmOrdemServico_Load;
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            ResumeLayout(false);
 
         }
 
@@ -347,5 +366,6 @@ namespace GarageManager.Forms
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox textBox_nome;
         private System.Windows.Forms.TextBox textBox_telefone;
+        private Controls.EntityComboBox entityComboBox_mecanico;
     }
 }

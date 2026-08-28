@@ -32,6 +32,8 @@ namespace GarageManager.Models
 
         public string Mecanico { get; set; }
 
+        public int? Mecanico_id { get; set; }
+
         public string Status { get; set; }
 
         public bool Lavacao { get; set; }

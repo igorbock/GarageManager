@@ -2,7 +2,9 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using Dapper;
+using GarageManager.Controls;
 using GarageManager.Data;
+using GarageManager.Forms.Cadastros;
 using GarageManager.Models;
 
 namespace GarageManager.Forms
@@ -12,6 +14,22 @@ namespace GarageManager.Forms
         public FrmOrdemServico()
         {
             InitializeComponent();
+            ConfigurarEntityComboBox();
+        }
+
+        private void ConfigurarEntityComboBox()
+        {
+            var repo = new Repository<Mecanico>();
+            entityComboBox_mecanico.Reload(repo.GetAll());
+
+            entityComboBox_mecanico.ReloadAction = () =>
+            {
+                using (var frm = new FrmCadMecanico())
+                {
+                    frm.ShowDialog();
+                }
+                entityComboBox_mecanico.Reload(repo.GetAll());
+            };
         }
 
         private void FrmOrdemServico_Load(object sender, EventArgs e)
@@ -64,6 +82,8 @@ namespace GarageManager.Forms
 
             radioButton_aguardo.Checked = true;
 
+            entityComboBox_mecanico.Clear();
+
             AtualizarIdEData();
         }
 
@@ -86,10 +106,10 @@ namespace GarageManager.Forms
                     conn.Execute(
                         @"INSERT INTO OrdemServico
                             (HoraInicio, DataInicio, Placa_veiculo, Modelo_veiculo, Cor_veiculo, Ano_veiculo,
-                             Km_veiculo, Nome_cliente, Telefone_cliente, Servicos_esperados, Status)
+                             Km_veiculo, Nome_cliente, Telefone_cliente, Servicos_esperados, Mecanico_id, Status)
                           VALUES
                             (@horaInicio, @dataInicio, @placa, @modelo, @cor, @ano,
-                             @km, @nome, @telefone, @servicos, @status)",
+                             @km, @nome, @telefone, @servicos, @mecanicoId, @status)",
                         new
                         {
                             horaInicio = DateTime.Now.ToShortTimeString(),
@@ -102,6 +122,9 @@ namespace GarageManager.Forms
                             nome = textBox_nome.Text,
                             telefone = textBox_telefone.Text,
                             servicos = textBox_servicos.Text,
+                            mecanicoId = entityComboBox_mecanico.SelectedValue > 0
+                                ? entityComboBox_mecanico.SelectedValue
+                                : (object)null,
                             status
                         });
                 }
