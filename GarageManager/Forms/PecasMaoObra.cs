@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Dapper;
 using GarageManager.Data;
+using GarageManager.Models;
 
 namespace GarageManager.Forms
 {
@@ -101,21 +101,15 @@ namespace GarageManager.Forms
                 decimal valor_unitario = ((valor_produto / 100) * numericUpDown_percentual.Value) + valor_produto;
                 decimal valor_total = valor_unitario * numericUpDown_quant.Value;
 
-                using (var conn = GarageDb.OpenConnection())
+                new Repository<Peca>().Insert(new Peca
                 {
-                    conn.Execute(
-                        @"INSERT INTO Pecas (Descricao_peca, Marca_peca, Valor_peca, Quantidade_peca, Valor_total, OrdemServicoId)
-                          VALUES (@descricao, @marca, @valorUnitario, @quantidade, @valorTotal, @ordemId)",
-                        new
-                        {
-                            descricao = produto,
-                            marca,
-                            valorUnitario = valor_unitario,
-                            quantidade = numericUpDown_quant.Value,
-                            valorTotal = valor_total.ToString("N"),
-                            ordemId = id_ordem
-                        });
-                }
+                    Descricao_peca = produto,
+                    Marca_peca = marca,
+                    Valor_peca = valor_unitario,
+                    Quantidade_peca = numericUpDown_quant.Value,
+                    Valor_total = valor_total.ToString("N"),
+                    OrdemServicoId = id_ordem
+                });
 
                 form.Close();
                 MainForm.AbrirOSInfo(id_ordem);
@@ -134,21 +128,15 @@ namespace GarageManager.Forms
         {
             if(!textBox_servico.Text.Equals("Mão de obra ou serviço") && textBox_valorServico.Text.Length > 0 && numericUpDown_quantidade.Value > 0)
             {
-                using (var conn = GarageDb.OpenConnection())
+                new Repository<Peca>().Insert(new Peca
                 {
-                    conn.Execute(
-                        @"INSERT INTO Pecas (Descricao_peca, Marca_peca, Valor_peca, Quantidade_peca, Valor_total, OrdemServicoId)
-                          VALUES (@descricao, @marca, @valor, @quantidade, @valorTotal, @ordemId)",
-                        new
-                        {
-                            descricao = textBox_servico.Text,
-                            marca = "Mão-de-obra/Serviço",
-                            valor = Convert.ToDecimal(textBox_valorServico.Text),
-                            quantidade = numericUpDown_quantidade.Value,
-                            valorTotal = (Convert.ToDecimal(textBox_valorServico.Text) * numericUpDown_quantidade.Value).ToString("N"),
-                            ordemId = id_ordem
-                        });
-                }
+                    Descricao_peca = textBox_servico.Text,
+                    Marca_peca = "Mão-de-obra/Serviço",
+                    Valor_peca = Convert.ToDecimal(textBox_valorServico.Text),
+                    Quantidade_peca = numericUpDown_quantidade.Value,
+                    Valor_total = (Convert.ToDecimal(textBox_valorServico.Text) * numericUpDown_quantidade.Value).ToString("N"),
+                    OrdemServicoId = id_ordem
+                });
 
                 form.Close();
                 MainForm.AbrirOSInfo(id_ordem);

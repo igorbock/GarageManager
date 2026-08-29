@@ -89,55 +89,34 @@ namespace GarageManager.Forms
 
         private void Button_salvar_Click(object sender, EventArgs e)
         {
+            string status = null;
+            if (radioButton_aguardo.Checked) status = radioButton_aguardo.Text;
+            else if (radioButton_servico.Checked) status = radioButton_servico.Text;
+
+            var os = new OrdemServico
+            {
+                HoraInicio = DateTime.Now.ToShortTimeString(),
+                DataInicio = DateTime.Now.ToShortDateString(),
+                Placa_veiculo = textBox_placa.Text,
+                Modelo_veiculo = textBox_modelo.Text,
+                Cor_veiculo = textBox_cor.Text,
+                Ano_veiculo = textBox_ano.Text,
+                Km_veiculo = textBox_km.Text,
+                Nome_cliente = textBox_nome.Text,
+                Telefone_cliente = textBox_telefone.Text,
+                Servicos_esperados = textBox_servicos.Text,
+                Mecanico_id = entityComboBox_mecanico.SelectedValue > 0 ? entityComboBox_mecanico.SelectedValue : (int?)null,
+                Status = status
+            };
             try
             {
-                string status = null;
-                if (radioButton_aguardo.Checked)
-                {
-                    status = radioButton_aguardo.Text;
-                }
-                else if (radioButton_servico.Checked)
-                {
-                    status = radioButton_servico.Text;
-                }
-
-                using (var conn = GarageDb.OpenConnection())
-                {
-                    conn.Execute(
-                        @"INSERT INTO OrdemServico
-                            (HoraInicio, DataInicio, Placa_veiculo, Modelo_veiculo, Cor_veiculo, Ano_veiculo,
-                             Km_veiculo, Nome_cliente, Telefone_cliente, Servicos_esperados, Mecanico_id, Status)
-                          VALUES
-                            (@horaInicio, @dataInicio, @placa, @modelo, @cor, @ano,
-                             @km, @nome, @telefone, @servicos, @mecanicoId, @status)",
-                        new
-                        {
-                            horaInicio = DateTime.Now.ToShortTimeString(),
-                            dataInicio = DateTime.Now.ToShortDateString(),
-                            placa = textBox_placa.Text,
-                            modelo = textBox_modelo.Text,
-                            cor = textBox_cor.Text,
-                            ano = textBox_ano.Text,
-                            km = textBox_km.Text,
-                            nome = textBox_nome.Text,
-                            telefone = textBox_telefone.Text,
-                            servicos = textBox_servicos.Text,
-                            mecanicoId = entityComboBox_mecanico.SelectedValue > 0
-                                ? entityComboBox_mecanico.SelectedValue
-                                : (object)null,
-                            status
-                        });
-                }
+                new Repository<OrdemServico>().Insert(os);
+                MessageBox.Show("A ordem de serviço foi aberta com sucesso", "Ordem de serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetarFormulario();
             }
             catch (Exception exception)
             {
                 MessageBox.Show("Não foi possível abrir a ordem de serviço\nErro: " + exception.Message, "Ordem de serviço", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                MessageBox.Show("A ordem de serviço foi aberta com sucesso", "Ordem de serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                ResetarFormulario();
             }
         }
 

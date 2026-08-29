@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Dapper;
 using GarageManager.Data;
 using GarageManager.Models;
 
@@ -19,14 +18,9 @@ namespace GarageManager.Forms
 
         private void Button_excluir_Click(object sender, EventArgs e)
         {
-            using (var conn = GarageDb.OpenConnection())
-            {
-                conn.Execute("DELETE FROM Pecas WHERE Id = @id", new { id = identificador });
-            }
-
+            new Repository<Peca>().Delete(identificador);
             form.Close();
             MainForm.AbrirOSInfo(form.id_os);
-
             Close();
         }
 
@@ -37,15 +31,8 @@ namespace GarageManager.Forms
 
         private void Dialogo_Load(object sender, EventArgs e)
         {
-            using (var conn = GarageDb.OpenConnection())
-            {
-                Peca peca = conn.QuerySingleOrDefault<Peca>("SELECT * FROM Pecas WHERE Id = @id", new { id = identificador });
-
-                if (peca != null)
-                {
-                    label_produto.Text = peca.Descricao_peca + " - " + peca.Marca_peca;
-                }
-            }
+            Peca peca = new Repository<Peca>().GetById(identificador);
+            if (peca != null) label_produto.Text = peca.Descricao_peca + " - " + peca.Marca_peca;
         }
     }
 }

@@ -229,64 +229,31 @@ namespace GarageManager.Forms
 
         private void SalvarServicoRealizado()
         {
-            using (var conn = GarageDb.OpenConnection())
-            {
-                conn.Execute(
-                    @"UPDATE OrdemServico
-                      SET Servicos_realizados = @servicos, Mecanico = @mecanico, Lavacao = @lavacao
-                      WHERE Id = @id",
-                    new { servicos = textBox_realizados.Text, mecanico = textBox_mecanico.Text, lavacao = checkBox_lavado.Checked, id = id_os });
-            }
-
             ordemServico.Servicos_realizados = textBox_realizados.Text;
             ordemServico.Mecanico = textBox_mecanico.Text;
             ordemServico.Lavacao = checkBox_lavado.Checked;
+            new Repository<OrdemServico>().Update(ordemServico);
         }
 
         private void AlterarStatus(string status)
         {
-            using (var conn = GarageDb.OpenConnection())
-            {
-                conn.Execute(
-                    @"UPDATE OrdemServico
-                      SET Status = @status, Mecanico = @mecanico, Servicos_realizados = @servicos, Lavacao = @lavacao
-                      WHERE Id = @id",
-                    new { status, mecanico = textBox_mecanico.Text, servicos = textBox_realizados.Text, lavacao = checkBox_lavado.Checked, id = id_os });
-            }
-
             ordemServico.Status = status;
             ordemServico.Mecanico = textBox_mecanico.Text;
             ordemServico.Servicos_realizados = textBox_realizados.Text;
             ordemServico.Lavacao = checkBox_lavado.Checked;
+            new Repository<OrdemServico>().Update(ordemServico);
             label_status.Text = status;
         }
 
         private void EncerrarComoPronta()
         {
-            using (var conn = GarageDb.OpenConnection())
-            {
-                conn.Execute(
-                    @"UPDATE OrdemServico
-                      SET Status = 'Pronta', Mecanico = @mecanico, Servicos_realizados = @servicos, Lavacao = @lavacao,
-                          DataFim = @dataFim, HoraFim = @horaFim
-                      WHERE Id = @id",
-                    new
-                    {
-                        mecanico = textBox_mecanico.Text,
-                        servicos = textBox_realizados.Text,
-                        lavacao = checkBox_lavado.Checked,
-                        dataFim = DateTime.Now.ToShortDateString(),
-                        horaFim = DateTime.Now.ToShortTimeString(),
-                        id = id_os
-                    });
-            }
-
             ordemServico.Status = "Pronta";
             ordemServico.Mecanico = textBox_mecanico.Text;
             ordemServico.Servicos_realizados = textBox_realizados.Text;
             ordemServico.Lavacao = checkBox_lavado.Checked;
             ordemServico.DataFim = DateTime.Now.ToShortDateString();
             ordemServico.HoraFim = DateTime.Now.ToShortTimeString();
+            new Repository<OrdemServico>().Update(ordemServico);
         }
 
         private void DataGridView_pecas_ordem_MouseHover(object sender, EventArgs e)
@@ -314,14 +281,9 @@ namespace GarageManager.Forms
         {
             if (checkBox_voltar.Checked)
             {
-                using (var conn = GarageDb.OpenConnection())
-                {
-                    conn.Execute("UPDATE OrdemServico SET Status = 'Em serviço' WHERE Id = @id", new { id = id_os });
-                }
-
                 ordemServico.Status = "Em serviço";
+                new Repository<OrdemServico>().Update(ordemServico);
                 MessageBox.Show("A ordem de serviço está ativa novamente.", "Ordem de serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 MainForm.AbrirInicio();
             }
         }
@@ -335,26 +297,14 @@ namespace GarageManager.Forms
                     case "Pronta":
                         if (DialogResult.Yes == MessageBox.Show("Você deseja finalizar a ordem de serviço?", "Ordem de serviço", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                         {
-                            using (var conn = GarageDb.OpenConnection())
-                            {
-                                conn.Execute(
-                                    @"UPDATE OrdemServico
-                                      SET Status = 'Finalizada', Mecanico = @mecanico, Servicos_realizados = @servicos,
-                                          DataFim = @dataFim, HoraFim = @horaFim
-                                      WHERE Id = @id",
-                                    new
-                                    {
-                                        mecanico = textBox_mecanico.Text,
-                                        servicos = textBox_realizados.Text,
-                                        dataFim = DateTime.Now.ToShortDateString(),
-                                        horaFim = DateTime.Now.ToShortTimeString(),
-                                        id = id_os
-                                    });
-                            }
-
+                            ordemServico.Status = "Finalizada";
+                            ordemServico.Mecanico = textBox_mecanico.Text;
+                            ordemServico.Servicos_realizados = textBox_realizados.Text;
+                            ordemServico.DataFim = DateTime.Now.ToShortDateString();
+                            ordemServico.HoraFim = DateTime.Now.ToShortTimeString();
+                            new Repository<OrdemServico>().Update(ordemServico);
                             MessageBox.Show("A ordem de serviço foi finalizada!\nPara realizar uma consulta procure pela placa no histórico.", "Ordem de serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Close();
-
                             MainForm.AbrirInicio();
                         }
 
@@ -380,46 +330,24 @@ namespace GarageManager.Forms
                 HabilitarEdicaoDados();
                 button_alterar.Text = "Retornar/Salvar";
             }
-            else if (button_alterar.Text == "Retornar/Salvar" && ordemServico.Status != "Pronta")
+            else             if (button_alterar.Text == "Retornar/Salvar" && ordemServico.Status != "Pronta")
             {
-                using (var conn = GarageDb.OpenConnection())
+                ordemServico.Modelo_veiculo = textBox_veiculo.Text;
+                ordemServico.Cor_veiculo = textBox_cor.Text;
+                ordemServico.Ano_veiculo = textBox_ano.Text;
+                ordemServico.Km_veiculo = textBox_km.Text;
+                ordemServico.Placa_veiculo = textBox_placa.Text;
+                ordemServico.Servicos_esperados = textBox_servicos.Text;
+                ordemServico.Nome_cliente = textBox_nome.Text;
+                ordemServico.Telefone_cliente = textBox_telefone.Text;
+                try
                 {
-                    int atualizados = conn.Execute(
-                        @"UPDATE OrdemServico
-                          SET Modelo_veiculo = @modelo, Cor_veiculo = @cor, Ano_veiculo = @ano, Km_veiculo = @km,
-                              Placa_veiculo = @placa, Servicos_esperados = @servicos, Nome_cliente = @nome,
-                              Telefone_cliente = @telefone
-                          WHERE Id = @id",
-                        new
-                        {
-                            modelo = textBox_veiculo.Text,
-                            cor = textBox_cor.Text,
-                            ano = textBox_ano.Text,
-                            km = textBox_km.Text,
-                            placa = textBox_placa.Text,
-                            servicos = textBox_servicos.Text,
-                            nome = textBox_nome.Text,
-                            telefone = textBox_telefone.Text,
-                            id = id_os
-                        });
-
-                    if (atualizados > 0)
-                    {
-                        MessageBox.Show("Os dados foram alterados com sucesso!", "Ordem de Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        ordemServico.Modelo_veiculo = textBox_veiculo.Text;
-                        ordemServico.Cor_veiculo = textBox_cor.Text;
-                        ordemServico.Ano_veiculo = textBox_ano.Text;
-                        ordemServico.Km_veiculo = textBox_km.Text;
-                        ordemServico.Placa_veiculo = textBox_placa.Text;
-                        ordemServico.Servicos_esperados = textBox_servicos.Text;
-                        ordemServico.Nome_cliente = textBox_nome.Text;
-                        ordemServico.Telefone_cliente = textBox_telefone.Text;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não foi realizada nenhuma alteração nos dados!", "Ordem de Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    new Repository<OrdemServico>().Update(ordemServico);
+                    MessageBox.Show("Os dados foram alterados com sucesso!", "Ordem de Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Não foi realizada nenhuma alteração nos dados!", "Ordem de Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 DesabilitarEdicaoDados();
@@ -486,11 +414,7 @@ namespace GarageManager.Forms
             try
             {
                 ordemServico.Lavacao = checkBox_lavado.Checked;
-
-                using (var conn = GarageDb.OpenConnection())
-                {
-                    conn.Execute("UPDATE OrdemServico SET Lavacao = @lavacao WHERE Id = @id", new { lavacao = checkBox_lavado.Checked, id = id_os });
-                }
+                new Repository<OrdemServico>().Update(ordemServico);
             }
             catch (Exception ex)
             {

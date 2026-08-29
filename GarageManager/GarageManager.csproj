@@ -25,6 +25,9 @@
 
   <ItemGroup>
     <Content Include="ordem_servico.ico" />
+    <Content Include="Data\schema.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

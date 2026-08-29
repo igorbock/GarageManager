@@ -1,7 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace GarageManager.Models
 {
+    [Table("OrdemServico")]
     public class OrdemServico
     {
+        [Key]
         public int Id { get; set; }
 
         public string HoraInicio { get; set; }
