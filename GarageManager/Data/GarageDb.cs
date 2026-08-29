@@ -199,8 +199,11 @@ namespace GarageManager.Data
                 try { cmd.ExecuteNonQuery(); } catch { }
                 cmd.CommandText = "INSERT OR IGNORE INTO funcionario(id, id_pessoa, id_empresa, carga_horaria_semanal) VALUES (1, 1, 1, 44)";
                 try { cmd.ExecuteNonQuery(); } catch { }
-                cmd.CommandText = "INSERT OR IGNORE INTO usuario(id, hash, id_colaborador) VALUES (1, 'seed', 1)";
-                try { cmd.ExecuteNonQuery(); } catch { }
+                var hashSeed = BCrypt.Net.BCrypt.HashPassword("admin123");
+                cmd.CommandText = "INSERT OR IGNORE INTO usuario(id, hash, id_colaborador) VALUES (1, @hash, 1)";
+                try { cmd.Parameters.Clear(); cmd.Parameters.AddWithValue("@hash", hashSeed); cmd.ExecuteNonQuery(); } catch { }
+                cmd.CommandText = "UPDATE usuario SET hash=@hash2 WHERE id=1 AND hash='seed'";
+                try { using (var upd = connection.CreateCommand()) { upd.CommandText = "UPDATE usuario SET hash=@h WHERE id=1 AND hash='seed'"; upd.Parameters.AddWithValue("@h", hashSeed); upd.ExecuteNonQuery(); } } catch { }
                 Sessao.UsuarioId = Sessao.UsuarioId ?? 1;
                 Sessao.EmpresaId = Sessao.EmpresaId ?? 1;
             }
