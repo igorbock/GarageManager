@@ -466,11 +466,14 @@ LEFT JOIN empresa e ON e.id = a.id_empresa;
 -- 13. Dados iniciais
 -- =============================================================================
 
--- Seed mínimo para auditoria sem login (Sessao fallback id=1)
+-- Seed mínimo para auditoria sem login (Sessao fallback id=1) + usuário ADM (senha 12345)
 INSERT OR IGNORE INTO empresa(id, nome, razao_social, cnpj, guid_empresa) VALUES (1, 'Matriz', 'Matriz LTDA', '00000000000191', lower(hex(randomblob(16))));
 INSERT OR IGNORE INTO pessoa(id, nome) VALUES (1, 'Admin');
+INSERT OR IGNORE INTO pessoa(id, nome) VALUES (2, 'ADM');
 INSERT OR IGNORE INTO funcionario(id, id_pessoa, id_empresa, carga_horaria_semanal) VALUES (1, 1, 1, 44);
+INSERT OR IGNORE INTO funcionario(id, id_pessoa, id_empresa, carga_horaria_semanal) VALUES (2, 2, 1, 44);
 INSERT OR IGNORE INTO usuario(id, hash, id_colaborador) VALUES (1, 'seed', 1);
+INSERT OR IGNORE INTO usuario(id, hash, id_colaborador) VALUES (2, '$2a$11$dj0II0wGaiSSyPGJVczPr.iBRbA7CuQ4fBRsrTBg9n3jGiCKCvgae', 2);
 
 INSERT OR IGNORE INTO estado (id, nome, sigla, codigo_ibge) VALUES
 (1, 'Acre', 'AC', 12),

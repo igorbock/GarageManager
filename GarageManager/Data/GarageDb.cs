@@ -197,13 +197,43 @@ namespace GarageManager.Data
                 try { cmd.ExecuteNonQuery(); } catch { }
                 cmd.CommandText = "INSERT OR IGNORE INTO pessoa(id, nome) VALUES (1, 'Admin')";
                 try { cmd.ExecuteNonQuery(); } catch { }
+                cmd.CommandText = "INSERT OR IGNORE INTO pessoa(id, nome) VALUES (2, 'ADM')";
+                try { cmd.ExecuteNonQuery(); } catch { }
                 cmd.CommandText = "INSERT OR IGNORE INTO funcionario(id, id_pessoa, id_empresa, carga_horaria_semanal) VALUES (1, 1, 1, 44)";
+                try { cmd.ExecuteNonQuery(); } catch { }
+                cmd.CommandText = "INSERT OR IGNORE INTO funcionario(id, id_pessoa, id_empresa, carga_horaria_semanal) VALUES (2, 2, 1, 44)";
                 try { cmd.ExecuteNonQuery(); } catch { }
                 var hashSeed = BCrypt.Net.BCrypt.HashPassword("admin123");
                 cmd.CommandText = "INSERT OR IGNORE INTO usuario(id, hash, id_colaborador) VALUES (1, @hash, 1)";
                 try { cmd.Parameters.Clear(); cmd.Parameters.AddWithValue("@hash", hashSeed); cmd.ExecuteNonQuery(); } catch { }
                 cmd.CommandText = "UPDATE usuario SET hash=@hash2 WHERE id=1 AND hash='seed'";
                 try { using (var upd = connection.CreateCommand()) { upd.CommandText = "UPDATE usuario SET hash=@h WHERE id=1 AND hash='seed'"; upd.Parameters.AddWithValue("@h", hashSeed); upd.ExecuteNonQuery(); } } catch { }
+                var hashADM = BCrypt.Net.BCrypt.HashPassword("12345");
+                cmd.CommandText = "INSERT OR IGNORE INTO usuario(id, hash, id_colaborador) VALUES (2, @hashADM, 2)";
+                try { cmd.Parameters.Clear(); cmd.Parameters.AddWithValue("@hashADM", hashADM); cmd.ExecuteNonQuery(); } catch { }
+                try
+                {
+                    using (var chk = connection.CreateCommand())
+                    {
+                        chk.CommandText = "SELECT hash FROM usuario WHERE id=2";
+                        var atual = chk.ExecuteScalar() as string;
+                        if (!string.IsNullOrEmpty(atual) && atual != hashADM)
+                        {
+                            bool ok = false;
+                            try { ok = BCrypt.Net.BCrypt.Verify("12345", atual); } catch { ok = false; }
+                            if (!ok)
+                            {
+                                using (var upd2 = connection.CreateCommand())
+                                {
+                                    upd2.CommandText = "UPDATE usuario SET hash=@h2 WHERE id=2";
+                                    upd2.Parameters.AddWithValue("@h2", hashADM);
+                                    upd2.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                    }
+                }
+                catch { }
                 Sessao.UsuarioId = Sessao.UsuarioId ?? 1;
                 Sessao.EmpresaId = Sessao.EmpresaId ?? 1;
             }

@@ -36,6 +36,7 @@
             clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             servicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuAjuda = new System.Windows.Forms.ToolStripMenuItem();
+            menuLogout = new System.Windows.Forms.ToolStripMenuItem();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabel_versao = new System.Windows.Forms.ToolStripStatusLabel();
             panel1 = new System.Windows.Forms.Panel();
@@ -53,7 +54,7 @@
             // 
             menuStrip1.AutoSize = false;
             menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { menuInicio, menuOrdemServico, cadastrosToolStripMenuItem, menuAjuda });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { menuInicio, menuOrdemServico, cadastrosToolStripMenuItem, menuAjuda, menuLogout });
             menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             menuStrip1.Location = new System.Drawing.Point(0, 32);
             menuStrip1.Name = "menuStrip1";
@@ -122,6 +123,16 @@
             menuAjuda.Size = new System.Drawing.Size(50, 57);
             menuAjuda.Text = "Ajuda";
             menuAjuda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // menuLogout
+            // 
+            menuLogout.Image = Properties.Resources.sobre;
+            menuLogout.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            menuLogout.Name = "menuLogout";
+            menuLogout.Size = new System.Drawing.Size(57, 57);
+            menuLogout.Text = "Logout";
+            menuLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            menuLogout.Click += MenuLogout_Click;
             // 
             // statusStrip1
             // 
@@ -244,6 +255,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuInicio;
         private System.Windows.Forms.ToolStripMenuItem menuOrdemServico;
         private System.Windows.Forms.ToolStripMenuItem menuAjuda;
+        private System.Windows.Forms.ToolStripMenuItem menuLogout;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_versao;
         private System.Windows.Forms.Panel panel1;

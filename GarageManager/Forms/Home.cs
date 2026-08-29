@@ -1,4 +1,6 @@
-﻿using GarageManager.Forms.Cadastros;
+﻿using GarageManager.Auth;
+using GarageManager.Data;
+using GarageManager.Forms.Cadastros;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -43,7 +45,49 @@ namespace GarageManager.Forms
         private void Form1_Load(object sender, EventArgs e)
         {
             MaximizarNaAreaDeTrabalho();
+            Hide();
+            VerificarAutenticacao();
+        }
+
+        private void VerificarAutenticacao()
+        {
+            if (Sessao.EstaAutenticado())
+            {
+                AplicarEstadoAutenticado();
+                return;
+            }
+            menuStrip1.Enabled = false;
+            using (var login = new Forms.Auth.FrmAuth())
+            {
+                var result = login.ShowDialog(this);
+                if (result != DialogResult.OK)
+                {
+                    Application.Exit();
+                    return;
+                }
+            }
+            AplicarEstadoAutenticado();
+        }
+
+        private void AplicarEstadoAutenticado()
+        {
+            Show();
+            MaximizarNaAreaDeTrabalho();
+            menuStrip1.Enabled = true;
+            toolStripStatusLabel_versao.Text = $"Garage Manager - Versão {Application.ProductVersion} | {Sessao.UsuarioNome}";
             AbrirInicio();
+        }
+
+        private void MenuLogout_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja realmente sair e voltar ao login?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+            new AuthService().Logout();
+            foreach (var f in MdiChildren) f.Close();
+            menuStrip1.Enabled = false;
+            toolStripStatusLabel_versao.Text = "Garage Manager - Versão " + Application.ProductVersion;
+            Hide();
+            VerificarAutenticacao();
         }
 
         private void MaximizarNaAreaDeTrabalho()
