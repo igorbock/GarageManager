@@ -85,8 +85,8 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mecânicoToolStripMenuItem, clienteToolStripMenuItem, servicoToolStripMenuItem });
             cadastrosToolStripMenuItem.DropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mecânicoToolStripMenuItem, clienteToolStripMenuItem, servicoToolStripMenuItem });
             cadastrosToolStripMenuItem.Image = Properties.Resources.cadastros;
             cadastrosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
@@ -97,21 +97,21 @@
             // mecânicoToolStripMenuItem
             // 
             mecânicoToolStripMenuItem.Name = "mecânicoToolStripMenuItem";
-            mecânicoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            mecânicoToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             mecânicoToolStripMenuItem.Text = "Mecânico";
             mecânicoToolStripMenuItem.Click += mecânicoToolStripMenuItem_Click;
             // 
             // clienteToolStripMenuItem
             // 
             clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            clienteToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             clienteToolStripMenuItem.Text = "Cliente";
             clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
             // 
             // servicoToolStripMenuItem
             // 
             servicoToolStripMenuItem.Name = "servicoToolStripMenuItem";
-            servicoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            servicoToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             servicoToolStripMenuItem.Text = "Serviço";
             servicoToolStripMenuItem.Click += servicoToolStripMenuItem_Click;
             // 
@@ -126,7 +126,7 @@
             // 
             // menuLogout
             // 
-            menuLogout.Image = Properties.Resources.sobre;
+            menuLogout.Image = Properties.Resources.logout;
             menuLogout.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             menuLogout.Name = "menuLogout";
             menuLogout.Size = new System.Drawing.Size(57, 57);
