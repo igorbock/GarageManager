@@ -207,5 +207,65 @@ namespace GarageManager.Forms
             FrmCadMecanico frmCadMecanico = new FrmCadMecanico() { MdiParent = this };
             frmCadMecanico.Show();
         }
+
+        private void empresaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadEmpresa() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void estadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmEstadoView() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void cidadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadCidade() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void enderecoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadEndereco() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void pessoaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadPessoa() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void funcionarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadFuncionario() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void marcaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadMarca() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void modeloVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadModeloVeiculo() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadProduto() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmCadUsuario() { MdiParent = this };
+            frm.Show();
+        }
     }
 }

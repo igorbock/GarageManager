@@ -51,6 +51,7 @@ namespace GarageManager.Data
         public int Insert(T entity)
         {
             if (IsAuditoriaTable()) return InsertWithoutAudit(entity);
+            PreencherEmpresaId(entity);
             var insertProps = GetInsertProperties();
             var columns = string.Join(", ", insertProps.Select(p => GetColumnName(p)));
             var paramNames = string.Join(", ", insertProps.Select(p => "@" + p.Name));
@@ -76,6 +77,7 @@ namespace GarageManager.Data
         public void Update(T entity)
         {
             if (IsAuditoriaTable()) { UpdateWithoutAudit(entity); return; }
+            PreencherEmpresaId(entity);
             var id = Convert.ToInt32(_keyProperty.GetValue(entity));
             string antigoJson = null;
             try { var antigo = GetById(id); antigoJson = ToJson(antigo); } catch { }
@@ -180,7 +182,21 @@ namespace GarageManager.Data
             try { return JsonSerializer.Serialize(obj, obj.GetType(), _jsonOptions); } catch { return null; }
         }
 
-        private string GetColumnNames() => string.Join(", ", _properties.Select(p => GetColumnName(p)));
+        private void PreencherEmpresaId(T entity)
+        {
+            var prop = _properties.FirstOrDefault(p => p.Name == "IdEmpresa");
+            if (prop != null && prop.PropertyType == typeof(int))
+            {
+                var val = (int)(prop.GetValue(entity) ?? 0);
+                if (val == 0)
+                {
+                    var eid = Sessao.EmpresaId ?? 1;
+                    prop.SetValue(entity, eid);
+                }
+            }
+        }
+
+        private string GetColumnNames() => string.Join(", ", _properties.Select(p => $"{GetColumnName(p)} AS \"{p.Name}\""));
         private PropertyInfo[] GetInsertProperties() => _properties.Where(p => p.GetCustomAttribute<KeyAttribute>() == null).Where(p => p.GetCustomAttribute<NotMappedAttribute>() == null).ToArray();
         private string GetColumnName(PropertyInfo prop) => prop.GetCustomAttribute<ColumnAttribute>()?.Name ?? prop.Name;
         private string GetDisplayName(PropertyInfo prop) => prop.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? prop.Name;

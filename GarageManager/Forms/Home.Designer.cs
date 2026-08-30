@@ -35,6 +35,16 @@
             mecânicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             servicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            estadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            cidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            enderecoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            pessoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            modeloVeiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuAjuda = new System.Windows.Forms.ToolStripMenuItem();
             menuLogout = new System.Windows.Forms.ToolStripMenuItem();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -86,7 +96,7 @@
             // cadastrosToolStripMenuItem
             // 
             cadastrosToolStripMenuItem.DropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mecânicoToolStripMenuItem, clienteToolStripMenuItem, servicoToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mecânicoToolStripMenuItem, clienteToolStripMenuItem, servicoToolStripMenuItem, new System.Windows.Forms.ToolStripSeparator(), empresaToolStripMenuItem, pessoaToolStripMenuItem, funcionarioToolStripMenuItem, usuarioToolStripMenuItem, new System.Windows.Forms.ToolStripSeparator(), estadoToolStripMenuItem, cidadeToolStripMenuItem, enderecoToolStripMenuItem, new System.Windows.Forms.ToolStripSeparator(), marcaToolStripMenuItem, modeloVeiculoToolStripMenuItem, produtoToolStripMenuItem });
             cadastrosToolStripMenuItem.Image = Properties.Resources.cadastros;
             cadastrosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
@@ -111,9 +121,79 @@
             // servicoToolStripMenuItem
             // 
             servicoToolStripMenuItem.Name = "servicoToolStripMenuItem";
-            servicoToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            servicoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             servicoToolStripMenuItem.Text = "Serviço";
             servicoToolStripMenuItem.Click += servicoToolStripMenuItem_Click;
+            // 
+            // empresaToolStripMenuItem
+            // 
+            empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
+            empresaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            empresaToolStripMenuItem.Text = "Empresa";
+            empresaToolStripMenuItem.Click += empresaToolStripMenuItem_Click;
+            // 
+            // pessoaToolStripMenuItem
+            // 
+            pessoaToolStripMenuItem.Name = "pessoaToolStripMenuItem";
+            pessoaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            pessoaToolStripMenuItem.Text = "Pessoa";
+            pessoaToolStripMenuItem.Click += pessoaToolStripMenuItem_Click;
+            // 
+            // funcionarioToolStripMenuItem
+            // 
+            funcionarioToolStripMenuItem.Name = "funcionarioToolStripMenuItem";
+            funcionarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            funcionarioToolStripMenuItem.Text = "Funcionário";
+            funcionarioToolStripMenuItem.Click += funcionarioToolStripMenuItem_Click;
+            // 
+            // usuarioToolStripMenuItem
+            // 
+            usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
+            usuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            usuarioToolStripMenuItem.Text = "Usuário";
+            usuarioToolStripMenuItem.Click += usuarioToolStripMenuItem_Click;
+            // 
+            // estadoToolStripMenuItem
+            // 
+            estadoToolStripMenuItem.Name = "estadoToolStripMenuItem";
+            estadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            estadoToolStripMenuItem.Text = "Estado (visualizar)";
+            estadoToolStripMenuItem.Click += estadoToolStripMenuItem_Click;
+            // 
+            // cidadeToolStripMenuItem
+            // 
+            cidadeToolStripMenuItem.Name = "cidadeToolStripMenuItem";
+            cidadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            cidadeToolStripMenuItem.Text = "Cidade";
+            cidadeToolStripMenuItem.Click += cidadeToolStripMenuItem_Click;
+            // 
+            // enderecoToolStripMenuItem
+            // 
+            enderecoToolStripMenuItem.Name = "enderecoToolStripMenuItem";
+            enderecoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            enderecoToolStripMenuItem.Text = "Endereço";
+            enderecoToolStripMenuItem.Click += enderecoToolStripMenuItem_Click;
+            // 
+            // marcaToolStripMenuItem
+            // 
+            marcaToolStripMenuItem.Name = "marcaToolStripMenuItem";
+            marcaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            marcaToolStripMenuItem.Text = "Marca";
+            marcaToolStripMenuItem.Click += marcaToolStripMenuItem_Click;
+            // 
+            // modeloVeiculoToolStripMenuItem
+            // 
+            modeloVeiculoToolStripMenuItem.Name = "modeloVeiculoToolStripMenuItem";
+            modeloVeiculoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            modeloVeiculoToolStripMenuItem.Text = "Modelo Veículo";
+            modeloVeiculoToolStripMenuItem.Click += modeloVeiculoToolStripMenuItem_Click;
+            // 
+            // produtoToolStripMenuItem
+            // 
+            produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
+            produtoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            produtoToolStripMenuItem.Text = "Produto";
+            produtoToolStripMenuItem.Click += produtoToolStripMenuItem_Click;
             // 
             // menuAjuda
             // 
@@ -267,5 +347,15 @@
         private System.Windows.Forms.ToolStripMenuItem mecânicoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem servicoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem empresaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cidadeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem enderecoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pessoaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem funcionarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modeloVeiculoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
     }
 }
