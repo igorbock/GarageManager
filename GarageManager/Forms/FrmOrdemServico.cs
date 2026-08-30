@@ -19,6 +19,7 @@ namespace GarageManager.Forms
 
         private void ConfigurarEntityComboBox()
         {
+            // Mecânico
             var repo = new Repository<Mecanico>();
             entityComboBox_mecanico.Reload(repo.GetAll());
 
@@ -29,6 +30,18 @@ namespace GarageManager.Forms
                     frm.ShowDialog();
                 }
                 entityComboBox_mecanico.Reload(repo.GetAll());
+            };
+            // Modelo veículo
+            var objRepositoryModelo = new Repository<ModeloVeiculo>();
+            entityComboBox1.Reload(objRepositoryModelo.GetAll());
+
+            entityComboBox1.ReloadAction = () =>
+            {
+                using (var frm = new FrmCadModeloVeiculo())
+                {
+                    frm.ShowDialog();
+                }
+                entityComboBox1.Reload(objRepositoryModelo.GetAll());
             };
         }
 
@@ -65,8 +78,8 @@ namespace GarageManager.Forms
         {
             textBox_placa.Text = "Placa";
             textBox_placa.ForeColor = Color.DarkBlue;
-            textBox_modelo.Text = "Modelo do veículo";
-            textBox_modelo.ForeColor = Color.DarkBlue;
+            //textBox_modelo.Text = "Modelo do veículo";
+            //textBox_modelo.ForeColor = Color.DarkBlue;
             textBox_cor.Text = "Cor";
             textBox_cor.ForeColor = Color.DarkBlue;
             textBox_ano.Text = "Ano";
@@ -98,7 +111,7 @@ namespace GarageManager.Forms
                 HoraInicio = DateTime.Now.ToShortTimeString(),
                 DataInicio = DateTime.Now.ToShortDateString(),
                 Placa_veiculo = textBox_placa.Text,
-                Modelo_veiculo = textBox_modelo.Text,
+                //Modelo_veiculo = textBox_modelo.Text,
                 Cor_veiculo = textBox_cor.Text,
                 Ano_veiculo = textBox_ano.Text,
                 Km_veiculo = textBox_km.Text,
@@ -144,22 +157,22 @@ namespace GarageManager.Forms
 
         private void TextBox_modelo_Enter(object sender, EventArgs e)
         {
-            if(textBox_modelo.Text == "Modelo do veículo")
-            {
-                textBox_modelo.Text = "";
+            //if(textBox_modelo.Text == "Modelo do veículo")
+            //{
+            //    textBox_modelo.Text = "";
 
-                textBox_modelo.ForeColor = Color.Black;
-            }
+            //    textBox_modelo.ForeColor = Color.Black;
+            //}
         }
 
         private void TextBox_modelo_Leave(object sender, EventArgs e)
         {
-            if(textBox_modelo.Text == "")
-            {
-                textBox_modelo.Text = "Modelo do veículo";
+            //if(textBox_modelo.Text == "")
+            //{
+            //    textBox_modelo.Text = "Modelo do veículo";
 
-                textBox_modelo.ForeColor = Color.DarkBlue;
-            }
+            //    textBox_modelo.ForeColor = Color.DarkBlue;
+            //}
         }
 
         private void TextBox_cor_Enter(object sender, EventArgs e)
@@ -306,12 +319,12 @@ namespace GarageManager.Forms
                     {
                         MessageBox.Show("Esta placa já realizou serviços na oficina. Confira os dados do cliente e preencha o restante do formulário.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        textBox_modelo.ForeColor = Color.Black;
+                        //textBox_modelo.ForeColor = Color.Black;
                         textBox_cor.ForeColor = Color.Black;
                         textBox_ano.ForeColor = Color.Black;
                         textBox_nome.ForeColor = Color.Black;
 
-                        textBox_modelo.Text = placaCadastrada.Modelo_veiculo;
+                        //textBox_modelo.Text = placaCadastrada.Modelo_veiculo;
                         textBox_cor.Text = placaCadastrada.Cor_veiculo;
                         textBox_ano.Text = placaCadastrada.Ano_veiculo;
                         textBox_nome.Text = placaCadastrada.Nome_cliente;
@@ -326,7 +339,7 @@ namespace GarageManager.Forms
                     else
                     {
                         MessageBox.Show("Este veículo é novo na oficina. Preencha os dados restantes.\n\nNão foi encontrado nenhum registro anterior.", "Novo veículo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        textBox_modelo.Focus();
+                        //textBox_modelo.Focus();
                     }
                 }
             }

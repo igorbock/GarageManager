@@ -33,6 +33,7 @@ namespace GarageManager.Forms
             textBox_telefone = new System.Windows.Forms.TextBox();
             textBox_nome = new System.Windows.Forms.TextBox();
             groupBox3 = new System.Windows.Forms.GroupBox();
+            entityComboBox1 = new GarageManager.Controls.EntityComboBox();
             radioButton_servico = new System.Windows.Forms.RadioButton();
             radioButton_aguardo = new System.Windows.Forms.RadioButton();
             label_status = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@ namespace GarageManager.Forms
             textBox_km = new System.Windows.Forms.TextBox();
             textBox_ano = new System.Windows.Forms.TextBox();
             textBox_cor = new System.Windows.Forms.TextBox();
-            textBox_modelo = new System.Windows.Forms.TextBox();
             textBox_placa = new System.Windows.Forms.TextBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
             label_horaInicio = new System.Windows.Forms.Label();
@@ -113,6 +113,7 @@ namespace GarageManager.Forms
             // groupBox3
             // 
             groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            groupBox3.Controls.Add(entityComboBox1);
             groupBox3.Controls.Add(radioButton_servico);
             groupBox3.Controls.Add(radioButton_aguardo);
             groupBox3.Controls.Add(label_status);
@@ -120,7 +121,6 @@ namespace GarageManager.Forms
             groupBox3.Controls.Add(textBox_km);
             groupBox3.Controls.Add(textBox_ano);
             groupBox3.Controls.Add(textBox_cor);
-            groupBox3.Controls.Add(textBox_modelo);
             groupBox3.Controls.Add(textBox_placa);
             groupBox3.Font = new System.Drawing.Font("Candara", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, 0);
             groupBox3.Location = new System.Drawing.Point(7, 65);
@@ -131,6 +131,16 @@ namespace GarageManager.Forms
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Veículo";
+            // 
+            // entityComboBox1
+            // 
+            entityComboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            entityComboBox1.LabelText = "Modelo:";
+            entityComboBox1.Location = new System.Drawing.Point(10, 67);
+            entityComboBox1.Margin = new System.Windows.Forms.Padding(0);
+            entityComboBox1.Name = "entityComboBox1";
+            entityComboBox1.Size = new System.Drawing.Size(241, 27);
+            entityComboBox1.TabIndex = 11;
             // 
             // radioButton_servico
             // 
@@ -230,21 +240,6 @@ namespace GarageManager.Forms
             textBox_cor.Enter += TextBox_cor_Enter;
             textBox_cor.Leave += TextBox_cor_Leave;
             // 
-            // textBox_modelo
-            // 
-            textBox_modelo.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            textBox_modelo.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            textBox_modelo.ForeColor = System.Drawing.SystemColors.GrayText;
-            textBox_modelo.Location = new System.Drawing.Point(10, 67);
-            textBox_modelo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            textBox_modelo.MaxLength = 100;
-            textBox_modelo.Name = "textBox_modelo";
-            textBox_modelo.Size = new System.Drawing.Size(241, 27);
-            textBox_modelo.TabIndex = 2;
-            textBox_modelo.Text = "Modelo do veículo";
-            textBox_modelo.Enter += TextBox_modelo_Enter;
-            textBox_modelo.Leave += TextBox_modelo_Leave;
-            // 
             // textBox_placa
             // 
             textBox_placa.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
@@ -254,9 +249,9 @@ namespace GarageManager.Forms
             textBox_placa.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox_placa.MaxLength = 7;
             textBox_placa.Name = "textBox_placa";
+            textBox_placa.PlaceholderText = "Placa";
             textBox_placa.Size = new System.Drawing.Size(241, 33);
             textBox_placa.TabIndex = 1;
-            textBox_placa.Text = "Placa";
             textBox_placa.TextChanged += TextBox_placa_TextChanged;
             textBox_placa.Enter += TextBox_placa_Enter;
             textBox_placa.Leave += TextBox_placa_Leave;
@@ -313,10 +308,11 @@ namespace GarageManager.Forms
             // entityComboBox_mecanico
             // 
             entityComboBox_mecanico.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            entityComboBox_mecanico.Location = new System.Drawing.Point(7, 289);
-            entityComboBox_mecanico.Margin = new System.Windows.Forms.Padding(1);
+            entityComboBox_mecanico.LabelText = "Mecânico:";
+            entityComboBox_mecanico.Location = new System.Drawing.Point(7, 290);
+            entityComboBox_mecanico.Margin = new System.Windows.Forms.Padding(0);
             entityComboBox_mecanico.Name = "entityComboBox_mecanico";
-            entityComboBox_mecanico.Size = new System.Drawing.Size(803, 30);
+            entityComboBox_mecanico.Size = new System.Drawing.Size(803, 27);
             entityComboBox_mecanico.TabIndex = 10;
             // 
             // FrmOrdemServico
@@ -355,7 +351,6 @@ namespace GarageManager.Forms
         private System.Windows.Forms.Label label_id;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBox_placa;
-        private System.Windows.Forms.TextBox textBox_modelo;
         private System.Windows.Forms.TextBox textBox_cor;
         private System.Windows.Forms.TextBox textBox_ano;
         private System.Windows.Forms.TextBox textBox_km;
@@ -367,5 +362,6 @@ namespace GarageManager.Forms
         private System.Windows.Forms.TextBox textBox_nome;
         private System.Windows.Forms.TextBox textBox_telefone;
         private Controls.EntityComboBox entityComboBox_mecanico;
+        private Controls.EntityComboBox entityComboBox1;
     }
 }

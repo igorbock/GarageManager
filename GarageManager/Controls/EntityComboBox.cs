@@ -12,11 +12,13 @@ namespace GarageManager.Controls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Action ReloadAction { get; set; }
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Category("Appearance")]
+        [DefaultValue("Entidade")]
+        [Description("Texto exibido no label da entidade")]
         public string LabelText
         {
-            get => labelEntidade.Text;
-            set => labelEntidade.Text = value;
+            get => labelEntidade?.Text ?? "Entidade";
+            set { if (labelEntidade != null) labelEntidade.Text = value; }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -40,14 +42,6 @@ namespace GarageManager.Controls
             btnAbrir.Click += BtnAbrir_Click;
             comboBoxEntidade.SelectedIndexChanged += (s, e) =>
                 SelectedIndexChanged?.Invoke(this, EventArgs.Empty);
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            if (comboBoxEntidade == null || btnAbrir == null) return;
-            comboBoxEntidade.Width = Width - 140;
-            btnAbrir.Left = Width - 33;
         }
 
         private void BtnAbrir_Click(object sender, EventArgs e)
