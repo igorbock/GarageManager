@@ -9,7 +9,6 @@ namespace GarageManager.Models
     public class Produto : ICadastro
     {
         [Key]
-        [Browsable(false)]
         public int Id { get; set; }
 
         [Column("id_marca")]

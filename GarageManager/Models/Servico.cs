@@ -8,7 +8,6 @@ namespace GarageManager.Models
     public class Servico : ICadastro
     {
         [Key]
-        [Browsable(false)]
         public int Id { get; set; }
 
         [Column("Descricao")]

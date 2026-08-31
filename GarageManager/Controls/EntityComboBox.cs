@@ -64,9 +64,11 @@ namespace GarageManager.Controls
             comboBoxEntidade.DataSource = null;
             comboBoxEntidade.BindingContext = new BindingContext();
             comboBoxEntidade.ValueMember = "Id";
+            comboBoxEntidade.DisplayMember = "";
             comboBoxEntidade.DataSource = dataSource;
-            if (selecionado != null)
-                comboBoxEntidade.SelectedValue = selecionado;
+            comboBoxEntidade.DisplayMember = "";
+            if (selecionado != null && selecionado is int selId && selId > 0)
+                comboBoxEntidade.SelectedValue = selId;
             else
                 comboBoxEntidade.SelectedIndex = -1;
         }

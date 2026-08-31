@@ -8,7 +8,6 @@ namespace GarageManager.Models
     public class Funcionario : ICadastro
     {
         [Key]
-        [Browsable(false)]
         public int Id { get; set; }
 
         [Column("carga_horaria_semanal")]

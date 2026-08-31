@@ -45,6 +45,7 @@
             modeloVeiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            menuCompra = new System.Windows.Forms.ToolStripMenuItem();
             menuAjuda = new System.Windows.Forms.ToolStripMenuItem();
             menuLogout = new System.Windows.Forms.ToolStripMenuItem();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -64,7 +65,7 @@
             // 
             menuStrip1.AutoSize = false;
             menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { menuInicio, menuOrdemServico, cadastrosToolStripMenuItem, menuAjuda, menuLogout });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { menuInicio, menuOrdemServico, cadastrosToolStripMenuItem, menuCompra, menuAjuda, menuLogout });
             menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             menuStrip1.Location = new System.Drawing.Point(0, 32);
             menuStrip1.Name = "menuStrip1";
@@ -194,6 +195,16 @@
             produtoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             produtoToolStripMenuItem.Text = "Produto";
             produtoToolStripMenuItem.Click += produtoToolStripMenuItem_Click;
+            // 
+            // menuCompra
+            // 
+            menuCompra.Image = Properties.Resources.cadastros;
+            menuCompra.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            menuCompra.Name = "menuCompra";
+            menuCompra.Size = new System.Drawing.Size(71, 57);
+            menuCompra.Text = "Compras";
+            menuCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            menuCompra.Click += menuCompra_Click;
             // 
             // menuAjuda
             // 
@@ -357,5 +368,6 @@
         private System.Windows.Forms.ToolStripMenuItem modeloVeiculoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuCompra;
     }
 }

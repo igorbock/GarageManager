@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
 namespace GarageManager.Forms
@@ -29,6 +30,7 @@ namespace GarageManager.Forms
                     if (!seen.Add(prop.Name)) continue;
                     var browsable = (BrowsableAttribute)prop.Attributes[typeof(BrowsableAttribute)];
                     if (browsable != null && !browsable.Browsable) continue;
+                    if (prop.Attributes[typeof(KeyAttribute)] is KeyAttribute) continue;
                     properties.Add(prop);
                 }
             }

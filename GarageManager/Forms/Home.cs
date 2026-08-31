@@ -267,5 +267,16 @@ namespace GarageManager.Forms
             var frm = new FrmCadUsuario() { MdiParent = this };
             frm.Show();
         }
+
+        private void menuCompra_Click(object sender, EventArgs e)
+        {
+            var frm = (FrmCompraGerencia)ObterFilho(typeof(FrmCompraGerencia));
+            if (frm == null)
+            {
+                frm = new FrmCompraGerencia(this) { MdiParent = this };
+                frm.Show();
+            }
+            frm.Activate();
+        }
     }
 }

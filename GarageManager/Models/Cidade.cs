@@ -9,7 +9,6 @@ namespace GarageManager.Models
     public class Cidade : ICadastro
     {
         [Key]
-        [Browsable(false)]
         public int Id { get; set; }
 
         [Column("nome")]

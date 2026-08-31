@@ -8,7 +8,6 @@ namespace GarageManager.Models
     public class Estado : ICadastro
     {
         [Key]
-        [Browsable(false)]
         public int Id { get; set; }
 
         [Column("nome")]
