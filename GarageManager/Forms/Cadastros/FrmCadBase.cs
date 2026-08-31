@@ -293,6 +293,7 @@ namespace GarageManager.Forms.Cadastros
             btnSalvar.Visible = editando;
             btnCancelar.Visible = editando;
             propertyGrid1.Enabled = editando;
+            cbxRegistros.Enabled = !editando;
         }
 
         private void BtnSalvar_Click(object sender, EventArgs e)
@@ -308,6 +309,10 @@ namespace GarageManager.Forms.Cadastros
                 var registro = (T)cbxRegistros.SelectedItem;
                 var completo = _repository.GetById(registro.Id);
                 propertyGrid1.SelectedObject = new OrderedPropertyGridWrapper(completo);
+            }
+            else
+            {
+                propertyGrid1.SelectedObject = null;
             }
         }
     }

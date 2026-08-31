@@ -18,15 +18,8 @@ namespace GarageManager.Forms
 
         private void Button_salvar_Click(object sender, EventArgs e)
         {
-            using (var conn = GarageDb.OpenConnection())
-            {
-                conn.Execute(
-                    "UPDATE OrdemServico SET Pagamento = @pagamento WHERE Id = @id",
-                    new { pagamento = textBox_pagamento.Text, id = id_os });
-            }
-
             ordemServico.Pagamento = textBox_pagamento.Text;
-
+            new Repository<OrdemServico>().Update(ordemServico);
             MessageBox.Show("Salvo com sucesso", "Pagamento O.S.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }

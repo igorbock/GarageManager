@@ -230,20 +230,18 @@ namespace GarageManager.Forms
                 return;
             }
 
-            using (var conn = GarageDb.OpenConnection())
+            var repoOS = new Repository<OrdemServico>();
+            var os = repoOS.GetById(id);
+            if (os == null) return;
+            if (os.Status == "Pronta" || os.Status == "Finalizada")
             {
-                string status = conn.QuerySingleOrDefault<string>(
-                    "SELECT Status FROM OrdemServico WHERE Id = @id", new { id });
-
-                if (status == "Pronta" || status == "Finalizada")
-                {
-                    MessageBox.Show("Ordens de serviço prontas ou finalizadas não podem ser removidas.", "Excluir", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                conn.Execute("DELETE FROM Pecas WHERE OrdemServicoId = @id", new { id });
-                conn.Execute("DELETE FROM OrdemServico WHERE Id = @id", new { id });
+                MessageBox.Show("Ordens de serviço prontas ou finalizadas não podem ser removidas.", "Excluir", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+            var repoPeca = new Repository<Peca>();
+            var pecas = repoPeca.GetAll().Where(p => p.OrdemServicoId == id).ToList();
+            foreach (var p in pecas) repoPeca.Delete(p.Id);
+            repoOS.Delete(id);
 
             MessageBox.Show("Registro excluído com sucesso.", "Excluir", MessageBoxButtons.OK, MessageBoxIcon.Information);
             CarregarGrid();
