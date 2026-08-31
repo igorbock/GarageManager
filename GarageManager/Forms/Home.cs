@@ -33,7 +33,12 @@ namespace GarageManager.Forms
             menuAjuda.Click += (s, e) => AbrirSobre();
         }
 
-        private void Fechar(object sender, EventArgs e) => Close();
+        private void Fechar(object sender, EventArgs e)
+        {
+            var objConfirmacao = MessageBox.Show("Você confirma sair do GarageManager?", "Confirma", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (objConfirmacao == DialogResult.No) return;
+            Close();
+        }
         private void Minimizar(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
         private void MovimentarJanela(object sender, MouseEventArgs e)
         {

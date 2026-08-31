@@ -36,15 +36,15 @@
             clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             servicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            pessoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             estadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             cidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             enderecoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            pessoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             modeloVeiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuCompra = new System.Windows.Forms.ToolStripMenuItem();
             menuAjuda = new System.Windows.Forms.ToolStripMenuItem();
             menuLogout = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +97,7 @@
             // cadastrosToolStripMenuItem
             // 
             cadastrosToolStripMenuItem.DropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.BelowRight;
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mecânicoToolStripMenuItem, clienteToolStripMenuItem, servicoToolStripMenuItem, new System.Windows.Forms.ToolStripSeparator(), empresaToolStripMenuItem, pessoaToolStripMenuItem, funcionarioToolStripMenuItem, usuarioToolStripMenuItem, new System.Windows.Forms.ToolStripSeparator(), estadoToolStripMenuItem, cidadeToolStripMenuItem, enderecoToolStripMenuItem, new System.Windows.Forms.ToolStripSeparator(), marcaToolStripMenuItem, modeloVeiculoToolStripMenuItem, produtoToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mecânicoToolStripMenuItem, clienteToolStripMenuItem, servicoToolStripMenuItem, empresaToolStripMenuItem, pessoaToolStripMenuItem, funcionarioToolStripMenuItem, usuarioToolStripMenuItem, estadoToolStripMenuItem, cidadeToolStripMenuItem, enderecoToolStripMenuItem, marcaToolStripMenuItem, modeloVeiculoToolStripMenuItem, produtoToolStripMenuItem });
             cadastrosToolStripMenuItem.Image = Properties.Resources.cadastros;
             cadastrosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
@@ -108,100 +108,100 @@
             // mecânicoToolStripMenuItem
             // 
             mecânicoToolStripMenuItem.Name = "mecânicoToolStripMenuItem";
-            mecânicoToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            mecânicoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             mecânicoToolStripMenuItem.Text = "Mecânico";
             mecânicoToolStripMenuItem.Click += mecânicoToolStripMenuItem_Click;
             // 
             // clienteToolStripMenuItem
             // 
             clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            clienteToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            clienteToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             clienteToolStripMenuItem.Text = "Cliente";
             clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
             // 
             // servicoToolStripMenuItem
             // 
             servicoToolStripMenuItem.Name = "servicoToolStripMenuItem";
-            servicoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            servicoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             servicoToolStripMenuItem.Text = "Serviço";
             servicoToolStripMenuItem.Click += servicoToolStripMenuItem_Click;
             // 
             // empresaToolStripMenuItem
             // 
             empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            empresaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            empresaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             empresaToolStripMenuItem.Text = "Empresa";
             empresaToolStripMenuItem.Click += empresaToolStripMenuItem_Click;
             // 
             // pessoaToolStripMenuItem
             // 
             pessoaToolStripMenuItem.Name = "pessoaToolStripMenuItem";
-            pessoaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            pessoaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             pessoaToolStripMenuItem.Text = "Pessoa";
             pessoaToolStripMenuItem.Click += pessoaToolStripMenuItem_Click;
             // 
             // funcionarioToolStripMenuItem
             // 
             funcionarioToolStripMenuItem.Name = "funcionarioToolStripMenuItem";
-            funcionarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            funcionarioToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             funcionarioToolStripMenuItem.Text = "Funcionário";
             funcionarioToolStripMenuItem.Click += funcionarioToolStripMenuItem_Click;
             // 
             // usuarioToolStripMenuItem
             // 
             usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            usuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            usuarioToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             usuarioToolStripMenuItem.Text = "Usuário";
             usuarioToolStripMenuItem.Click += usuarioToolStripMenuItem_Click;
             // 
             // estadoToolStripMenuItem
             // 
             estadoToolStripMenuItem.Name = "estadoToolStripMenuItem";
-            estadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            estadoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             estadoToolStripMenuItem.Text = "Estado (visualizar)";
             estadoToolStripMenuItem.Click += estadoToolStripMenuItem_Click;
             // 
             // cidadeToolStripMenuItem
             // 
             cidadeToolStripMenuItem.Name = "cidadeToolStripMenuItem";
-            cidadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            cidadeToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             cidadeToolStripMenuItem.Text = "Cidade";
             cidadeToolStripMenuItem.Click += cidadeToolStripMenuItem_Click;
             // 
             // enderecoToolStripMenuItem
             // 
             enderecoToolStripMenuItem.Name = "enderecoToolStripMenuItem";
-            enderecoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            enderecoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             enderecoToolStripMenuItem.Text = "Endereço";
             enderecoToolStripMenuItem.Click += enderecoToolStripMenuItem_Click;
             // 
             // marcaToolStripMenuItem
             // 
             marcaToolStripMenuItem.Name = "marcaToolStripMenuItem";
-            marcaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            marcaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             marcaToolStripMenuItem.Text = "Marca";
             marcaToolStripMenuItem.Click += marcaToolStripMenuItem_Click;
             // 
             // modeloVeiculoToolStripMenuItem
             // 
             modeloVeiculoToolStripMenuItem.Name = "modeloVeiculoToolStripMenuItem";
-            modeloVeiculoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            modeloVeiculoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             modeloVeiculoToolStripMenuItem.Text = "Modelo Veículo";
             modeloVeiculoToolStripMenuItem.Click += modeloVeiculoToolStripMenuItem_Click;
             // 
             // produtoToolStripMenuItem
             // 
             produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            produtoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            produtoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             produtoToolStripMenuItem.Text = "Produto";
             produtoToolStripMenuItem.Click += produtoToolStripMenuItem_Click;
             // 
             // menuCompra
             // 
-            menuCompra.Image = Properties.Resources.cadastros;
+            menuCompra.Image = Properties.Resources.compras;
             menuCompra.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             menuCompra.Name = "menuCompra";
-            menuCompra.Size = new System.Drawing.Size(71, 57);
+            menuCompra.Size = new System.Drawing.Size(67, 57);
             menuCompra.Text = "Compras";
             menuCompra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             menuCompra.Click += menuCompra_Click;
