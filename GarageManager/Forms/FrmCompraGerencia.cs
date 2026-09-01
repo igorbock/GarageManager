@@ -43,7 +43,7 @@ namespace GarageManager.Forms
         {
             dtpInicio.Checked = false;
             dtpFim.Checked = false;
-            txtFornecedor.Text = "";
+            //txtFornecedor.Text = "";
             comboStatus.SelectedIndex = 0;
             CarregarGrid();
         }
@@ -81,11 +81,11 @@ namespace GarageManager.Forms
                 where.Add("date(c.data) <= date(@fim)");
                 param.Add("fim", dtpFim.Value.ToString("yyyy-MM-dd"));
             }
-            if (!string.IsNullOrWhiteSpace(txtFornecedor.Text))
-            {
-                where.Add("p.nome LIKE @forn");
-                param.Add("forn", "%" + txtFornecedor.Text.Trim() + "%");
-            }
+            //if (!string.IsNullOrWhiteSpace(txtFornecedor.Text))
+            //{
+            //    where.Add("p.nome LIKE @forn");
+            //    param.Add("forn", "%" + txtFornecedor.Text.Trim() + "%");
+            //}
             string filtro = comboStatus.SelectedItem?.ToString();
             if (filtro != null && filtro != "Todas")
             {
