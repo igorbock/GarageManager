@@ -34,8 +34,17 @@ namespace GarageManager.Forms
             }
         }
 
-        private void ComboStatus_SelectedIndexChanged(object sender, EventArgs e)
+        private void BtnFiltrar_Click(object sender, EventArgs e)
         {
+            CarregarGrid();
+        }
+
+        private void BtnLimpar_Click(object sender, EventArgs e)
+        {
+            dtpInicio.Checked = false;
+            dtpFim.Checked = false;
+            txtFornecedor.Text = "";
+            comboStatus.SelectedIndex = 0;
             CarregarGrid();
         }
 
@@ -58,47 +67,40 @@ namespace GarageManager.Forms
 
         private void CarregarGrid()
         {
-            dgv.DataSource = null;
-            dgv.Columns.Clear();
-            string filtro = comboStatus.SelectedItem?.ToString();
-            string where = "";
+            var where = new List<string>();
             var param = new DynamicParameters();
             param.Add("eid", Sessao.EmpresaId ?? 1);
+
+            if (dtpInicio.Checked)
+            {
+                where.Add("date(c.data) >= date(@inicio)");
+                param.Add("inicio", dtpInicio.Value.ToString("yyyy-MM-dd"));
+            }
+            if (dtpFim.Checked)
+            {
+                where.Add("date(c.data) <= date(@fim)");
+                param.Add("fim", dtpFim.Value.ToString("yyyy-MM-dd"));
+            }
+            if (!string.IsNullOrWhiteSpace(txtFornecedor.Text))
+            {
+                where.Add("p.nome LIKE @forn");
+                param.Add("forn", "%" + txtFornecedor.Text.Trim() + "%");
+            }
+            string filtro = comboStatus.SelectedItem?.ToString();
             if (filtro != null && filtro != "Todas")
             {
-                where = " AND c.status=@st ";
+                where.Add("c.status=@st");
                 param.Add("st", filtro);
             }
+            string whereClause = where.Count > 0 ? " AND " + string.Join(" AND ", where) : "";
             using (var conn = GarageDb.OpenConnection())
             {
                 var dados = conn.Query(
-                    @"SELECT c.id AS Id, c.data AS Data, COALESCE(p.nome,'Avulso') AS Fornecedor, c.total AS Total, c.status AS Status, c.observacao AS Observacao
+                    @"SELECT c.id AS Id, strftime('%d/%m/%Y', c.data) AS Data, COALESCE(p.nome,'Avulso') AS Fornecedor, c.total AS Total, c.status AS Status, c.observacao AS Observacao
                       FROM compra c LEFT JOIN pessoa p ON p.id=c.id_fornecedor
-                      WHERE c.id_empresa=@eid " + where + " ORDER BY c.id DESC", param).ToList();
+                      WHERE c.id_empresa=@eid " + whereClause + " ORDER BY c.id DESC", param).ToList();
+                dgv.DataSource = null;
                 dgv.DataSource = dados;
-            }
-            if (dgv.Columns.Count >= 6)
-            {
-                var check = new DataGridViewCheckBoxColumn
-                {
-                    Name = "Selecionar",
-                    HeaderText = "",
-                    Width = 40,
-                    FalseValue = false,
-                    ReadOnly = false
-                };
-                dgv.Columns.Insert(0, check);
-                if (dgv.Columns["Id"] != null) dgv.Columns["Id"].Visible = false;
-                if (dgv.Columns["Data"] != null) dgv.Columns["Data"].Width = 140;
-                if (dgv.Columns["Fornecedor"] != null) dgv.Columns["Fornecedor"].Width = 150;
-                if (dgv.Columns["Total"] != null) dgv.Columns["Total"].Width = 80;
-                if (dgv.Columns["Status"] != null) dgv.Columns["Status"].Width = 90;
-                if (dgv.Columns["Observacao"] != null) dgv.Columns["Observacao"].Width = 200;
-                foreach (DataGridViewColumn col in dgv.Columns)
-                {
-                    if (col is DataGridViewCheckBoxColumn) continue;
-                    col.ReadOnly = true;
-                }
             }
         }
 
